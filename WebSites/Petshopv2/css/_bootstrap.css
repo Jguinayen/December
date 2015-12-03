@@ -1403,6 +1403,7 @@ pre code {
 table {
   max-width: 100%;
   background-color: transparent;
+    margin-right: 159px;
 }
 th {
   text-align: left;
@@ -3455,6 +3456,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+    top: 0px;
+    left: 0px;
 }
 .nav > li > a {
   position: relative;
