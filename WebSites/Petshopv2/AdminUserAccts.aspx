@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="UserAccounts.aspx.cs" Inherits="UserAccounts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="AdminUserAccts.aspx.cs" Inherits="AdminUserAccts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
@@ -113,7 +113,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
-                    <asp:Button Width="150px"  ID="Button2" runat="server" Text="Create User" OnClick="Button2_Click" />
+                    <asp:Button Width="150px"  ID="Button2" runat="server" Text="Create User" />
                     &nbsp;&nbsp;
                     <asp:Button ID="Button3" runat="server" Text="Cancel" Width="99px" />
  
