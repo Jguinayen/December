@@ -31,7 +31,12 @@
         <li class="active"><a href="Admin.aspx">Calendar</a></li>
         <li><a href="UserAccounts.aspx">User Accounts</a></li>
         <li><a href="AdminReports.aspx">Reports</a></li>
-        <li><a href="AdminMyAcct.aspx">My Account</a></li>
+        <li><a href="AdminMyAcct.aspx">My Account</a>
+            <ul>
+            <li><a href="AdminMyAcct.aspx">Update Profile</a></li>
+            <li><a href="AdminMyAcct.aspx">Change Password</a></li>
+            </ul>
+        </li>
         <li><a href="AdminInvoice.aspx">Invoice</a></li>
         <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>

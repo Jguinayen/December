@@ -81,6 +81,19 @@
             </tr>
         <tr>
                 <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style1">User Type</td>
+                <td class="auto-style4">
+                    <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:ListItem>Admin</asp:ListItem>
+                        <asp:ListItem>Groomer</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style2">
+                    &nbsp;</td>
+            </tr>
+        <tr>
+                <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">Active</td>
                 <td class="auto-style4"><asp:CheckBox ID="CheckBox1" runat="server" /></td>
                 <td class="auto-style6">&nbsp;</td>
