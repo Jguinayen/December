@@ -15,8 +15,20 @@
         .auto-style3 {
             width: 17px;
         }
-        .auto-style4 {
-            height: 42px;
+        .auto-style5 {
+            height: 26px;
+        }
+        .auto-style6 {
+            width: 17px;
+            height: 26px;
+        }
+        .auto-style7 {
+            width: 118px;
+            height: 26px;
+        }
+        .auto-style8 {
+            width: 101px;
+            height: 26px;
         }
     </style>
 </head>
@@ -25,6 +37,14 @@
     <div>
         
     <!-- Forms -->
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <asp:Label ID="LBLCUSTOMER" runat="server" Text="MILLIE"></asp:Label>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <asp:Label ID="LBLBOOKNO" runat="server" Text="Label"></asp:Label>
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -41,15 +61,17 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet ID</td>
                 <td class="auto-style3">
-                    001</td>
+                    <asp:Label ID="LBLPETID1" runat="server" Text="Label"></asp:Label>
+                </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
-                    Labrador</td>
+                    <asp:TextBox ID="TXTBXBREED1" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownList27" runat="server">
+                    <asp:DropDownList ID="DRPPETNAME1" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
                         <asp:ListItem>Charlie</asp:ListItem>
                         <asp:ListItem>Tuffy</asp:ListItem>
                         <asp:ListItem>Pollux</asp:ListItem>
@@ -58,44 +80,31 @@
                 </td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList2" runat="server">
-                        <asp:ListItem>Smooth Coat</asp:ListItem>
-                        <asp:ListItem>Medium Coat</asp:ListItem>
-                        <asp:ListItem>Long Coat</asp:ListItem>
-                        <asp:ListItem>Wire or Broken Coat</asp:ListItem>
-                        <asp:ListItem>Wavy Coat</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TXTHAIRTYPE1" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
                 <td class="auto-style3">
-                    Dog</td>
+                    <asp:TextBox ID="TXTBXPETTYPE1" runat="server"></asp:TextBox>
+                </td>
                 <td class="auto-style1">Weight</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList6" runat="server">
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr style="background-color:#ffe44c;">
-                <td class="auto-style1">Others</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style1">Coat Condition</td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList3" runat="server">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TXTBXWEIGHT1" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Notes</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox11" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXNOTES1" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                 </td>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <asp:DropDownList ID="DRPCOAT1" runat="server" Height="16px">
+                        <asp:ListItem>Please select</asp:ListItem>
+                        <asp:ListItem>Matted</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">&nbsp;</td>
@@ -104,6 +113,16 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
                     &nbsp;</td>
+            </tr>
+            
+        </table>
+        <br />
+
+        <!-- pet2-->
+        <table style="width: 800px;" border="0">
+            <tr style="background-color:#ffd800;">
+                <td class="auto-style29" colspan="4"></td>
+                
             </tr>
             <tr style="background-color:#808080;">
                 <td class="auto-style31">PET 2</td>
@@ -113,72 +132,71 @@
                 <td class="auto-style14">
                     &nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style31">Pet ID</td>
-                <td class="auto-style3">
-                    002</td>
-                <td class="auto-style31">Breed</td>
-                <td class="auto-style14">
-                    Labrador</td>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style5">Pet ID</td>
+                <td class="auto-style6">
+                    <asp:Label ID="LBL2" runat="server" Text="Label"></asp:Label>
+                </td>
+                <td class="auto-style5">Breed</td>
+                <td class="auto-style5">
+                    <asp:TextBox ID="TXTBXBREED2" runat="server"></asp:TextBox>
+                </td>
             </tr>
-            <tr>
-                <td class="auto-style1">Pet Name</td>
-                <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownList31" runat="server">
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style7">Pet Name</td>
+                <td class="auto-style6">
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
                         <asp:ListItem>Charlie</asp:ListItem>
                         <asp:ListItem>Tuffy</asp:ListItem>
                         <asp:ListItem>Pollux</asp:ListItem>
                         <asp:ListItem>Hachiko</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style1">Hairtype</td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList32" runat="server">
-                        <asp:ListItem>Smooth Coat</asp:ListItem>
-                        <asp:ListItem>Medium Coat</asp:ListItem>
-                        <asp:ListItem>Long Coat</asp:ListItem>
-                        <asp:ListItem>Wire or Broken Coat</asp:ListItem>
-                        <asp:ListItem>Wavy Coat</asp:ListItem>
-                    </asp:DropDownList>
+                <td class="auto-style7">Hairtype</td>
+                <td class="auto-style8">
+                    <asp:TextBox ID="TXTHAIRTYPE2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
                 </td>
             </tr>
-            <tr>
+            <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
                 <td class="auto-style3">
-                    Dog</td>
+                    <asp:TextBox ID="TXTBXPETTYPE2" runat="server"></asp:TextBox>
+                </td>
                 <td class="auto-style1">Weight</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList33" runat="server">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TXTBXWEIGHT2" runat="server"></asp:TextBox>
                 </td>
             </tr>
-            <tr>
-                <td class="auto-style1">Others</td>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Notes</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox25" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXNOTES2" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList34" runat="server">
+                    <asp:DropDownList ID="DRPCOAT2" runat="server">
+                        <asp:ListItem>Please select</asp:ListItem>
+                        <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
-            <tr>
-                <td class="auto-style1">Notes</td>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox26" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style2">
                     &nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
+            
+        </table>
+        <br />
+
+        <!--pet3-->
+        <table style="width: 800px;" border="0">
+            <tr style="background-color:#ffd800;">
+                <td class="auto-style29" colspan="4"></td>
+                
             </tr>
             <tr style="background-color:#808080;">
                 <td class="auto-style31">PET 3</td>
@@ -191,15 +209,17 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet ID</td>
                 <td class="auto-style3">
-                    003</td>
+                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
-                    Labrador</td>
+                    <asp:TextBox ID="TXTBXBREED3" runat="server"></asp:TextBox>
+                </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownList35" runat="server">
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
                         <asp:ListItem>Charlie</asp:ListItem>
                         <asp:ListItem>Tuffy</asp:ListItem>
                         <asp:ListItem>Pollux</asp:ListItem>
@@ -208,119 +228,31 @@
                 </td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList36" runat="server">
-                        <asp:ListItem>Smooth Coat</asp:ListItem>
-                        <asp:ListItem>Medium Coat</asp:ListItem>
-                        <asp:ListItem>Long Coat</asp:ListItem>
-                        <asp:ListItem>Wire or Broken Coat</asp:ListItem>
-                        <asp:ListItem>Wavy Coat</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TXTHAIRTYPE3" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
                 <td class="auto-style3">
-                    Dog</td>
+                    <asp:TextBox ID="TXTBXPETTYPE3" runat="server"></asp:TextBox>
+                </td>
                 <td class="auto-style1">Weight</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList37" runat="server">
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr style="background-color:#ffe44c;">
-                <td class="auto-style1">Others</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style1">Coat Condition</td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList38" runat="server">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TXTBXWEIGHT3" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Notes</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox28" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
-                </td>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
-                    &nbsp;</td>
-            </tr>
-            <tr style="background-color:#ffe44c;">
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
-            </tr>
-            <tr style="background-color:#808080;">
-                <td class="auto-style31">PET 4</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style31">Pet ID</td>
-                <td class="auto-style3">
-                    004</td>
-                <td class="auto-style31">Breed</td>
-                <td class="auto-style14">
-                    Labrador</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">Pet Name</td>
-                <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownList39" runat="server">
-                        <asp:ListItem>Charlie</asp:ListItem>
-                        <asp:ListItem>Tuffy</asp:ListItem>
-                        <asp:ListItem>Pollux</asp:ListItem>
-                        <asp:ListItem>Hachiko</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td class="auto-style1">Hairtype</td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList40" runat="server">
-                        <asp:ListItem>Smooth Coat</asp:ListItem>
-                        <asp:ListItem>Medium Coat</asp:ListItem>
-                        <asp:ListItem>Long Coat</asp:ListItem>
-                        <asp:ListItem>Wire or Broken Coat</asp:ListItem>
-                        <asp:ListItem>Wavy Coat</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style5">Pet Type</td>
-                <td class="auto-style3">
-                    Dog</td>
-                <td class="auto-style1">Weight</td>
-                <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList41" runat="server">
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style1">Others</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TextBox29" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXNOTES3" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownList42" runat="server">
+                    <asp:DropDownList ID="DRPCOAT3" runat="server">
+                        <asp:ListItem>Please select</asp:ListItem>
+                        <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-            </tr>
-            <tr>
-                <td class="auto-style1">Notes</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TextBox30" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
-                </td>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
-                    &nbsp;</td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">&nbsp;</td>
@@ -330,14 +262,15 @@
                 <td class="auto-style2">
                     &nbsp;</td>
             </tr>
-            <tr style="background-color:#808080;">
-                <td class="auto-style4"></td>
-                <td class="auto-style4" colspan="3">
-                    <asp:Button ID="Button1" runat="server" Text="Book an Appointment" Width="154px" />
-                    &nbsp;<asp:Button ID="Button2" runat="server" Text="Cancel" Width="113px" />
-                &nbsp;&nbsp;</td>
-            </tr>
+            
         </table>
+        <br />
+        <!--pet4-->
+        
+        <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" />
+        
+        <br />
+
     <!-- /Forms -->
         <p></p>
 
