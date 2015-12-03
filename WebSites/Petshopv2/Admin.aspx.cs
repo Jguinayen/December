@@ -160,7 +160,8 @@ public partial class Admin : System.Web.UI.Page
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     FillHolidayDataset();
-                    Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
+                    Calendar1.SelectedDates.Clear();
+                    //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
                     Session.RemoveAll();
                     //string display = "Pop-up!";
                     //ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + display + "');", true);
@@ -172,6 +173,8 @@ public partial class Admin : System.Web.UI.Page
     }
     protected void btnAdminCalViewBlockDates_Click(object sender, EventArgs e)
     {
+        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+        newList.Clear();
         grdviewAdminCalendar.Visible = true;
         conn = new SqlConnection(connstr);
         cmd = new SqlCommand("select * from AdminCalendar", conn);
@@ -200,7 +203,8 @@ public partial class Admin : System.Web.UI.Page
     }
     protected void btnAdminCalEdit_Click(object sender, EventArgs e)
     {
-        
+        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+        newList.Clear();
         lblAdminCalBlockDate.Visible = true;
         txtAdminCalBlockDate.Visible = true;
         grdviewAdminCalendar.Visible = true;
@@ -235,6 +239,8 @@ public partial class Admin : System.Web.UI.Page
     {
         try
         {
+            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+            newList.Clear();
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("update AdminCalendar set Name=@Name, Holidays_Dayoff=@Holidays_Dayoff, Notes=@Notes where AdminUserID=@AdminUserID", conn);
 
@@ -261,6 +267,9 @@ public partial class Admin : System.Web.UI.Page
     }
     protected void grdviewAdminCalendar_SelectedIndexChanged(object sender, EventArgs e)
     {
+        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+        newList.Clear();
+        Calendar1.SelectedDates.Clear();
         int rowIndex = grdviewAdminCalendar.SelectedIndex;
         lblAdminCalID.Text = grdviewAdminCalendar.SelectedRow.Cells[1].Text;
         txtAdminCalName.Text = grdviewAdminCalendar.SelectedRow.Cells[2].Text;
