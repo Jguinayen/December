@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage-1.master" %>
+
+<script runat="server">
+
+</script>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+
+            #daytable  td {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:30px;
+                border-bottom: 1px dashed #cccccc;
+            }
+               
+            #daytable  td a:link {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:100%;
+                background-color: #efefef;
+            }
+
+            #daytable td a:visited {
+                text-decoration: none;
+            }
+
+            #daytable td a:hover {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:100%;
+                background-color: #808080;
+                color: white;
+            }
+
+            #daytable td a:active {
+                text-decoration: underline;
+            }
+
+             #CancelTable td {
+                height:30px;
+            }
+
+             #UpcomingTable td {
+                height:30px;
+            }
+
+             #UpcomingTable th {
+                height:35px;
+            }
+
+
+    </style>
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" href="css/calendar.css"/>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <br /><br /><br /><br /><br />
+    <div class="container">
+
+        <!-- TOP MEMBER NAVBAR-->
+        <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Hi, Johana</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+           <li><a href="BookAppointment.aspx">Book Now</a></li>
+           <li><a href="UpcomingBookings.aspx">Upcoming Bookings</a></li>
+           <li><a href="CancelledBook.aspx">Cancelled Bookings</a></li>
+           <li><a href="TransHistory.aspx">Transaction History</a></li>
+           <li><a href="RegisterAPet.aspx">Register My Pet</a></li>
+           <li><a href="MemberAccount.aspx">My Account</a></li>
+           
+         </ul>
+      <%--<ul class="nav navbar-nav navbar-right">
+       <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>--%>
+    </div>
+  </div>
+</nav>
+       <!-- /TOP MEMBER NAVBAR-->
+
+    <!------Child ContentPlaceHolder------>
+    <div id="2col">
+  <asp:ContentPlaceHolder ID="leftcolumn" runat="server">
+  </asp:ContentPlaceHolder>
+  <asp:ContentPlaceHolder ID="rightcolumn" runat="server">
+  </asp:ContentPlaceHolder>
+</div>
+      <!------end of Child ContentPlaceHolder------>
+
+</asp:Content>
+
