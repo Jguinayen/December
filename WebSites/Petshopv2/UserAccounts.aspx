@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="false" CodeFile="UserAccounts.aspx.vb" Inherits="UserAccounts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="UserAccounts.aspx.cs" Inherits="UserAccounts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-    <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
+     <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
                 <td class="auto-style7" colspan="2"><h3>Add New User</h3></td>
@@ -113,7 +113,11 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
+<<<<<<< HEAD
                     <asp:Button Width="150px"  ID="btntxtAdminUserAcctCreateUser" runat="server" Text="Create User" />
+=======
+                    <asp:Button Width="150px"  ID="Button2" runat="server" Text="Create User" OnClick="Button2_Click" />
+>>>>>>> refs/remotes/origin/master
                     &nbsp;&nbsp;
                     <asp:Button ID="btntxtAdminUserAcctCancel" runat="server" Text="Cancel" Width="99px" />
  
