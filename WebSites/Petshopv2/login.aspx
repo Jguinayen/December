@@ -10,13 +10,13 @@
 
             <label class="col-xs-11">Email</label>
             <div class="col-xs-11">
-            <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+            <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" TextMode="Email" OnTextChanged="tbEmail_TextChanged" Width="300px"></asp:TextBox>
             </div>
 
              <label class="col-xs-11">Password</label>
             <div class="col-xs-11">
             
-            <asp:TextBox runat="server" ID="tbPass" CssClass="form-control" />
+            <asp:TextBox runat="server" ID="tbPass" CssClass="form-control" Width="300px" />
 
             </div>
 

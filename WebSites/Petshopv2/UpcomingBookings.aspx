@@ -4,16 +4,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-    <table id="UpcomingTable" style="border: 1px; width: 100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
+    <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr style="background-color: #e8dede;">
-                <td class="auto-style32"></td>
-                <td class="auto-style33" colspan="4"><h3>Upcoming Bookings</h3></td>
+                <td class="auto-style8">&nbsp;</td>
+                <td class="auto-style7" colspan="2"><h3>Upcoming Bookings</h3></td>
+                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    &nbsp;</td>
             </tr>
-            <tr style="background-color: #e8dede;">
-                <td class="auto-style3">&nbsp;</td>
-                <td style="width: 100%" class="auto-style7" colspan="4">
+           
+        </table>
+        <br />
 
-                    <table id="UpcomingTable" style="width: 98%; border: solid 1px black">
+
+    <table id="UpcomingTable" style="width: 100%; border: solid 1px black">
                         <tr style="background-color: aliceblue">
                             <td class="auto-style29">&nbsp;</td>
                             <td class="auto-style21">Booking ID</td>
@@ -31,7 +35,7 @@
                             <td class="auto-style26" nowrap>10-11-2015</td>
                             <td class="auto-style27">10:00 AM</td>
                             <td class="auto-style28" align=center>
-                                <asp:Button ID="Button1" runat="server" Text="Cancel" />
+                                <asp:Button ID="Button6" runat="server" Text="Cancel" />
                             </td>
                         </tr>
                         <tr>
@@ -42,7 +46,7 @@
                             <td class="auto-style26" nowrap>30-12-2015</td>
                             <td class="auto-style27">10:00 AM</td>
                             <td class="auto-style28" align=center>
-                                <asp:Button ID="Button2" runat="server" Text="Cancel" />
+                                <asp:Button ID="Button7" runat="server" Text="Cancel" />
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +57,7 @@
                             <td class="auto-style19" nowrap>24-12-2015</td>
                             <td class="auto-style15">10:00 AM</td>
                             <td class="auto-style17" align=center>
-                                <asp:Button ID="Button3" runat="server" Text="Cancel" />
+                                <asp:Button ID="Button8" runat="server" Text="Cancel" />
                             </td>
                         </tr>
                         <tr>
@@ -64,7 +68,7 @@
                             <td class="auto-style19" nowrap>10-01-2016</td>
                             <td class="auto-style15">10:00 AM</td>
                             <td class="auto-style17" align=center>
-                                <asp:Button ID="Button4" runat="server" Text="Cancel" />
+                                <asp:Button ID="Button9" runat="server" Text="Cancel" />
                             </td>
                         </tr>
                         <tr>
@@ -75,20 +79,15 @@
                             <td class="auto-style19" nowrap>14-02-2016</td>
                             <td class="auto-style15">10:00 AM</td>
                             <td class="auto-style17" align=center>
-                                <asp:Button ID="Button5" runat="server" Text="Cancel" />
+                                <asp:Button ID="Button10" runat="server" Text="Cancel" />
                             </td>
                         </tr>
                                                 
                     </table>
-                    <br /><br />
-                </td>
-            </tr>
-            
-            
 
+    <br /><br />
 
-            
-            </table>
+  
 
 </asp:Content>
 

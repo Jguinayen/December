@@ -4,14 +4,26 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-        <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
+    <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr style="background-color: #e8dede;">
+                <td class="auto-style8">&nbsp;</td>
+                <td class="auto-style7" colspan="2"><h3>Book an Appointment</h3></td>
+                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    &nbsp;</td>
+            </tr>
+           
+    </table>
+        <br />
+
+        <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
+            <%--<tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
                 <td class="auto-style7" colspan="2"><h3>Book Now</h3></td>
                 <td class="auto-style7">[Customer ID]</td>
                 <td class="auto-style7">
                     [Booking No.]</td>
-            </tr>
+            </tr>--%>
             <tr>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style5">No. of Pets</td>

@@ -7,11 +7,26 @@
     <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
+                <td class="auto-style7" colspan="2"><h3>Book an Appointment</h3></td>
+                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    &nbsp;</td>
+            </tr>
+           
+    </table>
+        <br />
+
+    <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
+            <%--<tr style="background-color: #e8dede;">
+                <td class="auto-style8">&nbsp;</td>
                 <td class="auto-style7" colspan="2"><h3>Book Now</h3></td>
                 <td class="auto-style7">[Customer ID]</td>
                 <td class="auto-style7">
                     [Booking No.]</td>
-            </tr>
+            </tr>--%>
+           <tr style="background-color: #e8dede;">
+                <td class="auto-style8" colspan="5">&nbsp;</td>
+           </tr>
             <tr>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style5">No. of Pets</td>
@@ -49,15 +64,13 @@
                     &nbsp;<asp:Button ID="Button2" runat="server" Text="Cancel" Width="113px" />
                 &nbsp;&nbsp;</td>
             </tr>
+        <tr style="background-color: #e8dede;">
+                <td colspan="5">&nbsp;</td>
+           </tr>
         </table>
 
     <br />
 
-    
-
-    
-    <br />
-        `<br /><br />
      <!--with TIME-->
     
     <table id="daytable" border="0" width="100%" cellspacing="2" cellpadding="10px" style="background-color:#ffffff;">

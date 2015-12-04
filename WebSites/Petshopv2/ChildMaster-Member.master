@@ -74,18 +74,27 @@
         <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Hi, Johana</a>
+      <a class="navbar-brand" href="BookAppointment.aspx">Hi, Johana</a>
     </div>
     <div>
-        <ul class="nav navbar-nav">
+        <%--<ul class="nav navbar-nav">
            <li><a href="BookAppointment.aspx">Book Now</a></li>
            <li><a href="UpcomingBookings.aspx">Upcoming Bookings</a></li>
            <li><a href="CancelledBook.aspx">Cancelled Bookings</a></li>
            <li><a href="TransHistory.aspx">Transaction History</a></li>
            <li><a href="RegisterAPet.aspx">Register My Pet</a></li>
            <li><a href="MemberAccount.aspx">My Account</a></li>
-           
-         </ul>
+        </ul>--%>
+
+        <ul class="nav navbar-nav">
+           <li><a href="MemberBookAppt.aspx">Book Now</a></li>
+           <li><a href="MemberUpcoming.aspx">Upcoming Bookings</a></li>
+           <li><a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>
+           <li><a href="MemberHistory.aspx">Transaction History</a></li>
+           <li><a href="MemberRegisterPet.aspx">Register My Pet</a></li>
+           <li><a href="MemberAccount.aspx">My Account</a></li>
+        </ul>
+
       <%--<ul class="nav navbar-nav navbar-right">
        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>--%>
@@ -102,6 +111,7 @@
   </asp:ContentPlaceHolder>
 </div>
       <!------end of Child ContentPlaceHolder------>
+</div>
 
 </asp:Content>
 
