@@ -37,7 +37,7 @@
   line-height:60px;
   color:#FFF;
   text-transform:uppercase;
-  margin-top:20%;
+  margin-top:10%;
   font-weight:700;
   padding-left:0;
 }
@@ -72,7 +72,7 @@
   position: absolute;
   width: 100%;
   display: block !important;
-  height: 600px;
+  height: 400px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
@@ -163,11 +163,12 @@
 
 
 /* Section Title */
+
 .section-title h1{
 	font-size:48px;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 	font-weight:700;
-	margin-bottom:50px;
+	margin-bottom:10px;
 }
 
 .section-title h1:before{
