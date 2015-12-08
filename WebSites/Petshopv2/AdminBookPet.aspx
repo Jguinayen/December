@@ -16,6 +16,8 @@
     </table>
         <br />
 
+
+
     <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <%--<tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
@@ -70,6 +72,21 @@
         </table>
 
     <br />
+
+
+        <%---------------- CALENDAR --------------------%>
+
+    <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth"  Width="100%" DayNameFormat="Full" ShowGridLines="true">
+        <DayHeaderStyle Font-Bold="True" Font-Size="10pt" ForeColor="#333333" Height="5pt" />
+        <DayStyle BackColor="#ffffff" />
+        <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="White" />
+        <OtherMonthDayStyle ForeColor="#cccccc" />
+        <SelectedDayStyle BackColor="#cccccc" ForeColor="White" />
+        <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="5pt" />
+        <TodayDayStyle BackColor="#cccccc" ForeColor="White" Font-Bold="true" />
+    </asp:Calendar>
+        
+     <%---------------- CALENDAR --------------------%>
 
      <!--with TIME-->
     

@@ -56,7 +56,7 @@
         <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
     <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 25px;">Hi, Admin</a>
+      <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 20px;">Hi, Admin</a>
     </div>
     <div>
       <ul class="nav navbar-nav">  
@@ -72,7 +72,7 @@
          </li>
         
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+            <a href="AdminMyAcct.aspx" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminMyAcct.aspx">Update Profile</a></li>
                 <li><a href="AdminMyAcct.aspx">Change Password</a></li>
