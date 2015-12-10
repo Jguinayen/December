@@ -4,16 +4,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-     <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
-            <tr style="background-color: #e8dede;">
-                <td style="width: 91px" class="input-medium">
+     <table style="width: 100%; border: 1px solid #000; background-color: #e8dede; padding: 2px 2px 2px 2px;">
+            <tr>
+                <td style="width: 91px;" class="input-medium">
                     <asp:Label ID="lblAdminCalID" runat="server" Text=""></asp:Label>
                 </td>
-                <td style="width: 887px"><h3>Holidays and Groomer&#39;s Day Off</h3></td>
+                <td style="width: 887px"><h3>Holidays and Groomer&#39;s Day Off </h3></td>
             </tr>
             <tr>
                 <td class="auto-style9" style="width: 91px; height: 36px;">
                     <asp:Label ID="lblAdminCalName" runat="server" Text="Name"></asp:Label>
+                   
                 </td>
                 <td class="auto-style9" style="width: 887px; height: 36px;">
                     <asp:TextBox ID="txtAdminCalName" runat="server" Width="100%"></asp:TextBox>

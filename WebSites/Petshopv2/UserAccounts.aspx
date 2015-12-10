@@ -16,7 +16,7 @@
         </table>
         <br />
 
-    <table width="100%">
+    <table width:="100%">
            
             <tr>
                 <td class="auto-style3">&nbsp;</td>
@@ -113,11 +113,8 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
-<<<<<<< HEAD
+
                     <asp:Button Width="150px"  ID="btntxtAdminUserAcctCreateUser" runat="server" Text="Create User" />
-=======
-                    <asp:Button Width="150px"  ID="Button2" runat="server" Text="Create User" OnClick="Button2_Click" />
->>>>>>> refs/remotes/origin/master
                     &nbsp;&nbsp;
                     <asp:Button ID="btntxtAdminUserAcctCancel" runat="server" Text="Cancel" Width="99px" />
  

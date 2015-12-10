@@ -22,6 +22,23 @@
             width: 60%;
             padding: 10px;
             }
+        .auto-style1 {
+            height: 49px;
+        }
+        .auto-style2 {
+            height: 50px;
+        }
+        .auto-style3 {
+            width: 130px;
+        }
+        .auto-style4 {
+            height: 49px;
+            width: 130px;
+        }
+        .auto-style5 {
+            height: 50px;
+            width: 130px;
+        }
     </style>
 
 </asp:Content>
@@ -32,36 +49,36 @@
      <!-- Sign Up -->
 
    
-    <table id="signup">
+    <table id="signup" style="width:300px;">
         <tr>
-            <td width="200px"> <label class="col-xs-11">Username</label></td>
-            <td><asp:TextBox ID="tbUname" runat="server" CssClass="form-control"></asp:TextBox></td>
+            <td width:="200px"> <label class="col-xs-11">Username</label></td>
+            <td class="auto-style3"><asp:TextBox ID="txtSignupUserName" runat="server" CssClass="form-control"></asp:TextBox></td>
         
         </tr>
         <tr>
-            <td><label class="col-xs-11">Password</label></td>
-            <td><%--<asp:TextBox ID="tbPass" runat="server" Class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>--%>
-            <asp:TextBox runat="server" ID="tbPass" CssClass="form-control" /></td>
+            <td class="auto-style1"><label class="col-xs-11">Password</label></td>
+            <td class="auto-style4"><asp:TextBox runat="server" ID="txtSignupPassword" CssClass="form-control" TextMode="Password"></asp:TextBox></td>
         
         </tr>
         <tr>
-            <td><label class="col-xs-11">Confirm Password</label></td>  
-            <td><asp:TextBox ID="tbCPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox></td>
+            <td class="auto-style2"><label class="col-xs-11">Confirm Password</label></td>  
+            <td class="auto-style5"><asp:TextBox ID="txtSignupConfirmPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox></td>
       
         </tr>
         <tr>
-            <td><label class="col-xs-11">Name</label></td>  
-            <td>&nbsp;<asp:TextBox runat="server" ID="tbName" CssClass="form-control" /></td>
+            <td class="auto-style2"><label class="col-xs-11">Email</label></td>  
+            <td class="auto-style5"><asp:TextBox ID="txtSignupEmail" runat="server" CssClass="form-control"></asp:TextBox> </td>
       
         </tr>
+
         <tr>
-            <td><label class="col-xs-11">Email</label></td>  
-            <td><asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox></td>
-      
+            <td class="auto-style5"><asp:DropDownList ID="cbSignupUserType" runat="server" Visible="False">
+                <asp:ListItem>Member</asp:ListItem>
+                </asp:DropDownList></td>
         </tr>
         <tr>
             <td></td>  
-            <td><asp:Button ID="btSignup" runat="server" CssClass="btn btn-success" Text="Sign Up" OnClick="btSignup_Click" /></td>
+            <td class="auto-style3"><asp:Button ID="btSignup" runat="server" CssClass="btn btn-success" Text="Sign Up" OnClick="btSignup_Click" /></td>
       
         </tr>
 
