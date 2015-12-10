@@ -71,13 +71,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME1" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
-                        <asp:ListItem>Charlie</asp:ListItem>
-                        <asp:ListItem>Tuffy</asp:ListItem>
-                        <asp:ListItem>Pollux</asp:ListItem>
-                        <asp:ListItem>Hachiko</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXTHAIRTYPE1" runat="server"></asp:TextBox>
@@ -145,16 +139,10 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style7">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
-                        <asp:ListItem>Charlie</asp:ListItem>
-                        <asp:ListItem>Tuffy</asp:ListItem>
-                        <asp:ListItem>Pollux</asp:ListItem>
-                        <asp:ListItem>Hachiko</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style7">Hairtype</td>
                 <td class="auto-style8">
-                    <asp:TextBox ID="TXTHAIRTYPE2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="TXTHAIRTYPE2" runat="server"> </asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
@@ -219,13 +207,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="Database" DataTextField="PetName" DataValueField="PetName" OnSelectedIndexChanged="DRPPETNAME1_SelectedIndexChanged">
-                        <asp:ListItem>Charlie</asp:ListItem>
-                        <asp:ListItem>Tuffy</asp:ListItem>
-                        <asp:ListItem>Pollux</asp:ListItem>
-                        <asp:ListItem>Hachiko</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXTHAIRTYPE3" runat="server"></asp:TextBox>
