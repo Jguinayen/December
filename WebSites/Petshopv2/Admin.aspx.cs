@@ -18,15 +18,13 @@ public partial class Admin : System.Web.UI.Page
         {
             Calendar1.VisibleDate = DateTime.Today;
             FillHolidayDataset();
+            lblAdminCalID.Text = Session["UserName"].ToString();
+            
         }
-        //lblAdminCalName.Visible = false;
         lblAdminCalBlockDate.Visible = false;
-        //lblAdminCalNotes.Visible = false;
-        //txtAdminCalName.Visible = false;
         txtAdminCalBlockDate.Visible = false;
-        //txtAdminCalNotes.Visible = false;
         grdviewAdminCalendar.Visible = false;
-        lblAdminCalID.Visible = false;
+        lblAdminCalID.Visible = true;
     }
 
     protected void clear()
