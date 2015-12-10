@@ -1,0 +1,47 @@
+﻿
+            #daytable  td {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:30px;
+                border-bottom: 1px dashed #cccccc;
+            }
+               
+            #daytable  td a:link {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:100%;
+                background-color: #efefef;
+            }
+
+            #daytable td a:visited {
+                text-decoration: none;
+            }
+
+            #daytable td a:hover {
+                text-decoration: none;
+                display:block;
+                width:100%;
+                height:100%;
+                background-color: #808080;
+                color: white;
+            }
+
+            #daytable td a:active {
+                text-decoration: underline;
+            }
+
+             #CancelTable td {
+                height:30px;
+            }
+
+             #UpcomingTable td {
+                height:30px;
+            }
+
+             #UpcomingTable th {
+                height:35px;
+            }
+
+
