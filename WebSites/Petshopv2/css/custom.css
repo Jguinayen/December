@@ -318,6 +318,16 @@
 	top: 30px;
 }
 
+/* --- NEW ADDED STYLES ---*/
+
+#pagetitle {
+    border-radius: 5px 5px 0px 0px;
+    background: #e8dede;
+    padding: 8px; 
+    width: 100%; 
+    font-size: 22px;
+    text-indent: 12px;
+}
 
 
 

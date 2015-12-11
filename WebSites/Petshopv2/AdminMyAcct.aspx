@@ -4,19 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-     <table style="width: 100%; background-color: #e8dede; padding: 2px 2px 2px 2px;">
-            <tr style="background-color: #e8dede;">
-                <td class="auto-style8">&nbsp;</td>
-                <td class="auto-style7" colspan="2"><h3>Manage My Account</h3></td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style7">
-                    &nbsp;</td>
-            </tr>
-           
-        </table>
-        <br />
-
-    <table width:="100%">
+     <p id="pagetitle">Manage My Account</p>
+    
+    <table style="width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
            
             <tr>
                 <td class="auto-style3">&nbsp;</td>

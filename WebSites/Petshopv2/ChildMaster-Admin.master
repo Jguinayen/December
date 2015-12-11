@@ -50,18 +50,29 @@
      <div class="container">
 
         <!-- TOP ADMIN NAVBAR-->
-        <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Hi, Admin</a>
-    </div>
+
+        <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
+  <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hi, <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a>
+        </div>
+
+   
     <div>
       <ul class="nav navbar-nav">
         <li><a href="Admin.aspx">Calendar</a></li>
         <li><a href="AdminUserAccts.aspx">User Accounts</a></li>
-        <li><a href="AdminReports.aspx">Reports</a></li>
-        
         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+            <ul class="dropdown-menu">
+                <li><a href="AdminReports.aspx">Upcoming Bookings</a></li>
+                <li><a href="AdminReports.aspx">Users</a></li>
+                <li><a href="AdminReports.aspx">Customers</a></li>
+                <li><a href="AdminReports.aspx">Invoices</a></li>
+            </ul>
+         </li>
+        
+         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminMyAcct.aspx">Update Profile</a></li>
