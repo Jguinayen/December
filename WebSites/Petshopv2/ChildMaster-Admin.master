@@ -54,7 +54,7 @@
         <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
   <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hi, <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a>
+          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hello <%:Session["UserName"]%></a>
         </div>
 
    

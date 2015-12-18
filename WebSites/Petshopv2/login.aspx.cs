@@ -41,7 +41,7 @@ public partial class login : System.Web.UI.Page
             if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Admin")
             {
                 Conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("select UserName2 from Session where Email2='" + txtLoginEmail.Text + "'", Conn);
+                cmd = new SqlCommand("select * from AdminUsers where Email='" + txtLoginEmail.Text + "'", Conn);
 
                 SqlDataAdapter newAdapter2 = new SqlDataAdapter(cmd);
                 DataSet newDataSet2 = new DataSet();
@@ -52,32 +52,25 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
-                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName2"].ToString();
+                    string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
+                    Session["Name"] = Name;
+                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
                     Session["UserName"] = UserName;
+                    string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
+                    Session["Address"] = Address;
+                    string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
+                    Session["Phone"] = Phone;
+                    string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
+                    Session["Email"] = Email;
+                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                    Session["Password"] = Password;
                     Response.Redirect("Admin.aspx");
                 }
-
-                //SqlConnection con1 = new SqlConnection();
-                //con1.ConnectionString = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ToString();
-                //string sql1 = " select * from Session where Email2 = @Email2 and Password2 = @Password2";
-                //SqlCommand cmd1 = new SqlCommand(sql1, con1);
-                //cmd1.Parameters.AddWithValue("Email2", txtLoginEmail.Text);
-                //cmd1.Parameters.AddWithValue("Password2", txtLoginPassword.Text);
-
-                //con1.Open();
-                //SqlDataReader dr = cmd1.ExecuteReader();
-                //if (dr.Read())
-                //{
-                //    con1.Close();
-                //    string UserName = ;
-                //    Session["UserName"] = UserName;
-                //    Response.Redirect("Admin.aspx");
-                //}
             }
             else if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Groomer")
             {
                 Conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("select UserName2 from Session where Email2='" + txtLoginEmail.Text + "'", Conn);
+                cmd = new SqlCommand("select * from AdminUsers where Email='" + txtLoginEmail.Text + "'", Conn);
 
                 SqlDataAdapter newAdapter2 = new SqlDataAdapter(cmd);
                 DataSet newDataSet2 = new DataSet();
@@ -88,15 +81,25 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
-                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName2"].ToString();
+                    string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
+                    Session["Name"] = Name;
+                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
                     Session["UserName"] = UserName;
+                    string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
+                    Session["Address"] = Address;
+                    string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
+                    Session["Phone"] = Phone;
+                    string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
+                    Session["Email"] = Email;
+                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                    Session["Password"] = Password;
                     Response.Redirect("GroomerReport.aspx");
                 }
             }
             else if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Member")
             {
                 Conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("select UserName2 from Session where Email2='" + txtLoginEmail.Text + "'", Conn);
+                cmd = new SqlCommand("select * from CustomerDetails where Email='" + txtLoginEmail.Text + "'", Conn);
 
                 SqlDataAdapter newAdapter2 = new SqlDataAdapter(cmd);
                 DataSet newDataSet2 = new DataSet();
@@ -107,8 +110,22 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
-                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName2"].ToString();
+                    string LastName = newDataSet2.Tables[0].Rows[0]["LastName"].ToString();
+                    Session["LastName"] = LastName;
+                    string FirstName = newDataSet2.Tables[0].Rows[0]["FirstName"].ToString();
+                    Session["FirstName"] = FirstName;
+                    string Mobile = newDataSet2.Tables[0].Rows[0]["Mobile"].ToString();
+                    Session["Mobile"] = Mobile;
+                    string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
+                    Session["Email"] = Email;
+                    string MembershipDate = newDataSet2.Tables[0].Rows[0]["MembershipDate"].ToString();
+                    Session["MembershipDate"] = MembershipDate;
+                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
                     Session["UserName"] = UserName;
+                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                    Session["Password"] = Password;
+                    string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
+                    Session["Address"] = Address;
                     Response.Redirect("booknow.aspx");
                 }
             }

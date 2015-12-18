@@ -66,7 +66,7 @@
 
 <tr><td>Time</td></tr>
 
-<tr><td><a href="#">09:00 a.m.</a></td></tr>
+<tr><td><a href="#" aria-haspopup="True">09:00 a.m.</a></td></tr>
 
 <tr><td><a href="#">10:00 a.m.</a></td></tr> 
         

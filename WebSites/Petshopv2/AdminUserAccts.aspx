@@ -34,7 +34,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style15">Password</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtAdminUserAcctsPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminUserAcctsPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
                 <td class="auto-style6">&nbsp;</td>
                 <td class="auto-style15">
@@ -65,7 +65,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">E-mail Address</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtAdminUserAcctsEmail" runat="server" Width="205px"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminUserAcctsEmail" runat="server" Width="205px"  ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtAdminUserAcctsEmail" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style6">&nbsp;</td>

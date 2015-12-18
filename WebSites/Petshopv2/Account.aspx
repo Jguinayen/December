@@ -85,7 +85,7 @@
             <tr>
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style15">
-                    &nbsp;Lastname</td>
+                    Lastname</td>
                 
                 <td class="auto-style4">
                     <asp:TextBox ID="TXTBXLNAME" runat="server" Width="205px"></asp:TextBox>

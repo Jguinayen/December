@@ -16,7 +16,7 @@
              <label class="col-xs-11">Password</label>
             <div class="col-xs-11">
             
-            <asp:TextBox runat="server" ID="txtLoginPassword" CssClass="form-control" Width="250px" />
+            <asp:TextBox runat="server" ID="txtLoginPassword" CssClass="form-control" Width="250px" TextMode="Password" />
 
             </div>
 

@@ -35,6 +35,7 @@
                         <asp:ListItem>Groomer 1</asp:ListItem>
                         <asp:ListItem>Groomer 2</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:TextBox ID="txtAdminBookPetDate" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style3"></td>
                 <td class="auto-style4">
@@ -56,7 +57,7 @@
 
     <%---------------- CALENDAR --------------------%>
 
-    <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth"  Width="100%" DayNameFormat="Full" ShowGridLines="true">
+    <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth"  Width="100%" DayNameFormat="Full" ShowGridLines="true" OnDayRender="Calendar2_DayRender" OnSelectionChanged="Calendar2_SelectionChanged">
         <DayHeaderStyle Font-Bold="True" Font-Size="10pt" ForeColor="#333333" Height="5pt" />
         <DayStyle BackColor="#ffffff" />
         <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="White" />
@@ -71,7 +72,8 @@
 
     <!--with TIME-->
     
-    <table id="daytable" border="0" width="100%" cellspacing="2" cellpadding="10px" style="background-color:#ffffff;">
+    
+    <table id="daytable" style: border="0" width="100%" cellspacing="2" cellpadding="10px" style="background-color:#ffffff;">
 
 <tr style="background-color:#ffffff;"><td style="height: 39px;">Friday 27 November 2015</td></tr>
 

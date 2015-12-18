@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td class="auto-style2"><label class="col-xs-11">Email</label></td>  
-            <td class="auto-style5"><asp:TextBox ID="txtSignupEmail" runat="server" CssClass="form-control"></asp:TextBox> </td>
+            <td class="auto-style5"><asp:TextBox ID="txtSignupEmail" runat="server" CssClass="form-control" ></asp:TextBox> </td>
       
         </tr>
 

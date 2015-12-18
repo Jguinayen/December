@@ -101,7 +101,7 @@
         
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="BookAppointment.aspx" style="background-color: #000; padding-top: 15px;">Hi, <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a>
+      <a class="navbar-brand" href="BookAppointment.aspx" style="background-color: #000; padding-top: 15px;">Hello <%:Session["UserName"]%></a>
     </div>
     <div>
         <%--<ul class="nav navbar-nav">
@@ -118,8 +118,8 @@
            <li><a href="MemberUpcoming.aspx">Upcoming Bookings</a></li>
            <li><a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>
            <li><a href="MemberHistory.aspx">Transaction History</a></li>
-           <li><a href="MemberRegisterPet.aspx">Register My Pet</a></li>
-           <li><a href="MemberAccount.aspx">My Account</a></li>
+           <li><a href="RegisterMyPet.aspx">Register My Pet</a></li>
+           <li><a href="Account.aspx">My Account</a></li>
         </ul>
 
       <%--<ul class="nav navbar-nav navbar-right">
