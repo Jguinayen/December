@@ -14,7 +14,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
         {
             LBLCUSTOMERID.Text = Session["CustomerID"].ToString();
             LBLBOOKINGNO.Text = Session["BookingNo"].ToString();
-            LBLFNAME.Text = Session["CustomerName"].ToString();
+            LBLCUSTOMERNAME.Text = Session["CustomerName"].ToString();
             TXTBXGROOMER1.Text = Session["Groomer"].ToString();
             TXTBXBRANCH1.Text = Session["Branch"].ToString();
             TXTBXGROOMER2.Text = Session["Groomer"].ToString();
@@ -29,20 +29,5 @@ public partial class BookPetPopUp : System.Web.UI.Page
     {
 
     }
-    protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-
-    }
-    protected void TextBox5_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-    protected void TextBox20_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-    protected void TextBox24_TextChanged(object sender, EventArgs e)
-    {
-
-    }
+   
 }

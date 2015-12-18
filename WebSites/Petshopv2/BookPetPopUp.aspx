@@ -184,7 +184,7 @@
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
-                    <asp:TextBox ID="TXTBXWEIGHT2" runat="server" ReadOnly="True" OnTextChanged="TextBox5_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXWEIGHT2" runat="server" ReadOnly="True" ></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
@@ -214,7 +214,7 @@
                 </td>
                 <td class="auto-style1">Groomer</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTXBXGROOMER2" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXGROOMER2" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             
@@ -357,7 +357,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETTYPE4" runat="server" ReadOnly="True" OnTextChanged="TextBox20_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXPETTYPE4" runat="server" ReadOnly="True" ></asp:TextBox>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
@@ -401,7 +401,7 @@
                     &nbsp;</td>
                 <td class="auto-style1">Branch</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXBRANCH4" runat="server" ReadOnly="True" OnTextChanged="TextBox24_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXBRANCH4" runat="server" ReadOnly="True" ></asp:TextBox>
                 </td>
             </tr>
             
