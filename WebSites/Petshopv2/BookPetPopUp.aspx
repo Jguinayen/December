@@ -30,6 +30,9 @@
             width: 101px;
             height: 26px;
         }
+        .auto-style9 {
+            height: 24px;
+        }
     </style>
 </head>
 <body>
@@ -49,9 +52,15 @@
         <asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
         <asp:TextBox ID="TXTBXDATE" runat="server"></asp:TextBox>
-&nbsp;<table style="width: 800px;" border="0">
+&nbsp;
+        <%--  PET 1--%>
+        <asp:PlaceHolder ID="PHOLDER1" runat="server">
+        <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
-                <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
+
+             
+
+                <td class="auto-style9" colspan="4"><h3>PET DETAILS</h3></td>
                 
             </tr>
             <tr style="background-color:#808080;">
@@ -140,9 +149,11 @@
             </tr>
             
         </table>
+            </asp:PlaceHolder>
         <br />
 
         <!-- pet2-->
+        <asp:PlaceHolder ID="PHOLDER2" runat="server">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -229,9 +240,11 @@
             </tr>
             
         </table>
+            </asp:PlaceHolder>
         <br />
 
         <!--pet3-->
+        <asp:PlaceHolder ID="PHOLDER3" runat="server">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -318,15 +331,18 @@
             </tr>
             
         </table>
+            </asp:PlaceHolder>
         <br />
+
         <!--pet4-->
+        <asp:PlaceHolder ID="PHOLDER4" runat="server">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
                 
             </tr>
             <tr style="background-color:#808080;">
-                <td class="auto-style31">PET 1</td>
+                <td class="auto-style31">PET 4</td>
                 <td class="auto-style3">
                     &nbsp;</td>
                 <td class="auto-style31">&nbsp;</td>
@@ -406,6 +422,7 @@
             </tr>
             
         </table>
+            </asp:PlaceHolder>
         <br />
         <br />
 
@@ -416,7 +433,7 @@
     <!-- /Forms -->
         <br />
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="LBLMESS" runat="server" Text="Label"></asp:Label>
         <p></p>
 
 
