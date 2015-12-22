@@ -55,11 +55,11 @@
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style5">Customer ID</td>
                 <td class="auto-style6" style="width: 80px">
-                    <asp:TextBox ID="TXTBXCUSTOMERID" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXCUSTOMERID" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style15">Customer Name</td>
                 <td class="auto-style16">
-                    <asp:TextBox ID="TXTBXCUSTOMERNAME" runat="server" ReadOnly="True"></asp:TextBox></td>
+                    <asp:TextBox ID="TXTBXCUSTOMERNAME" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="auto-style9">&nbsp;</td>

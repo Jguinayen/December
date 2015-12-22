@@ -68,12 +68,33 @@ public partial class BookPetPopUp : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTOMERID.Text);
             cmd.Parameters.AddWithValue("@PetID", DRPPETNAME1.SelectedItem.Value);
             cmd.Parameters.AddWithValue("@PetName", DRPPETNAME1.SelectedItem.Text);
-            cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE1.Text);
+            cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE1.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXDATE.Text);
             cmd.Parameters.AddWithValue("@DateBooked", TXTBXDATE.Text);
             cmd.Parameters.AddWithValue("@Groomer", Session["Groomer"] = TXTBXGROOMER1.Text);
             cmd.Parameters.AddWithValue("@Branch", Session["Branch"] = TXTBXBRANCH1.Text);
             cmd.Parameters.AddWithValue("@STATUS", "Upcoming");
+
+            if(DRPJOBTYPE1.SelectedItem.Text == "Full Groom")
+            {
+                cmd.Parameters.AddWithValue("@JobTypeCode", "1");
+            }
+            else if (DRPJOBTYPE1.SelectedItem.Text == "Shampoo")
+            {
+                cmd.Parameters.AddWithValue("@JobTypeCode", "2");
+            }
+            else if (DRPJOBTYPE1.SelectedItem.Text == "Dye")
+            {
+                cmd.Parameters.AddWithValue("@JobTypeCode", "3");
+            }
+            else if (DRPJOBTYPE1.SelectedItem.Text == "Cut")
+            {
+                cmd.Parameters.AddWithValue("@JobTypeCode", "4");
+            }
+            else if (DRPJOBTYPE1.SelectedItem.Text == "Nail Trim")
+            {
+                cmd.Parameters.AddWithValue("@JobTypeCode", "5");
+            }
 
             conn.Open();
 

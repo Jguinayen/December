@@ -33,6 +33,13 @@
         .auto-style9 {
             height: 24px;
         }
+        .auto-style10 {
+            height: 23px;
+        }
+        .auto-style11 {
+            width: 17px;
+            height: 23px;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +61,7 @@
         <asp:TextBox ID="TXTBXDATE" runat="server"></asp:TextBox>
 &nbsp;
         <%--  PET 1--%>
-        <asp:PlaceHolder ID="PHOLDER1" runat="server">
+        <%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
 
@@ -64,12 +71,12 @@
                 
             </tr>
             <tr style="background-color:#808080;">
-                <td class="auto-style31">PET 1</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
+                <td class="auto-style10">PET 1</td>
+                <td class="auto-style11">
+                    </td>
+                <td class="auto-style10"></td>
+                <td class="auto-style10">
+                    </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
@@ -127,9 +134,9 @@
                         <asp:ListItem>Select Job Type</asp:ListItem>
                         <asp:ListItem>Full Groom</asp:ListItem>
                         <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                         <asp:ListItem>Dye</asp:ListItem>
                         <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -149,11 +156,11 @@
             </tr>
             
         </table>
-            </asp:PlaceHolder>
+            <%--</asp:PlaceHolder>--%>
         <br />
 
         <!-- pet2-->
-        <asp:PlaceHolder ID="PHOLDER2" runat="server">
+        <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -218,9 +225,9 @@
                         <asp:ListItem>Select Job Type</asp:ListItem>
                         <asp:ListItem>Full Groom</asp:ListItem>
                         <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                         <asp:ListItem>Dye</asp:ListItem>
                         <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -244,7 +251,7 @@
         <br />
 
         <!--pet3-->
-        <asp:PlaceHolder ID="PHOLDER3" runat="server">
+        <asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -309,9 +316,9 @@
                         <asp:ListItem>Select Job Type</asp:ListItem>
                         <asp:ListItem>Full Groom</asp:ListItem>
                         <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                         <asp:ListItem>Dye</asp:ListItem>
                         <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -335,7 +342,7 @@
         <br />
 
         <!--pet4-->
-        <asp:PlaceHolder ID="PHOLDER4" runat="server">
+        <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -400,9 +407,9 @@
                         <asp:ListItem>Select Job Type</asp:ListItem>
                         <asp:ListItem>Full Groom</asp:ListItem>
                         <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                         <asp:ListItem>Dye</asp:ListItem>
                         <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
