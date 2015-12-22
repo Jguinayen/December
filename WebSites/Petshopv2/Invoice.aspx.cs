@@ -9,7 +9,14 @@ public partial class Invoice : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        TXTBXDATE.Text = DateTime.Now.ToShortDateString();
+        if (IsPostBack != null)
+        {
+            TXTBXCUSTNAME.Text = Session["CustomerName"].ToString();
+            TXTBXCUSTID.Text = Session["CustomerID"].ToString();
+            TXTBX
+        }
     }
-    
+
+   
 }

@@ -137,13 +137,13 @@
     <table style="border: 1px solid #000; width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
             <tr style="background-color: #e8dede; height: 20px;">
                 <td class="auto-style12"><h3>Invoice No.:
-                    <asp:TextBox ID="TextBox3" runat="server" Width="146px"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXINVNO" runat="server" Width="146px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h3></td>
                 <td class="auto-style16" rowspan="2" style="vertical-align:top;">
 
                      <!----------RECEIPT PREVIEW--------------->
                     <div id="centertable">
-                        <h5>CUSTOMER INVOICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h5>INVOICE PREVIEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:TextBox ID="TXTBXDATE" runat="server" Width="105px"></asp:TextBox>
                         </h5>
                     <table class="centerbutton" style="background-color: aliceblue; width: 95%; border: solid 1px black">
@@ -160,7 +160,9 @@
                         </tr>
                         <tr>
                             <td class="auto-style18">
-                                <h6>&nbsp;Invoice #94875&nbsp; 21-11-2015 12:18 pm</h6>
+                                <h6>&nbsp;Invoice #
+                                    <asp:Label ID="Label1" runat="server" Text="LBLINVNO"></asp:Label>
+&nbsp;21-11-2015 12:18 pm</h6>
                             </td>
                             
                         </tr>
@@ -210,7 +212,7 @@
                         <tr>
                             <td>Customer Name</td>
                             <td>
-                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server" Width="111px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server" OnTextChanged="TXTBXCUSTID_TextChanged" Width="111px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
