@@ -20,11 +20,11 @@
             text-align: center;
         }
         .auto-style7 {
-            width: 62%;
+            width: 60%;
             height: 23px;
         }
         .auto-style12 {
-            width: 62%;
+            width: 60%;
         }
         .auto-style16 {
             width: 335px;
@@ -96,6 +96,10 @@
         .auto-style32 {
             width: 106px;
             height: 30px;
+        }
+        
+        .auto-style33 {
+            width: 55px;
         }
         
      </style>
@@ -212,7 +216,7 @@
                         <tr>
                             <td>Customer Name</td>
                             <td>
-                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server" OnTextChanged="TXTBXCUSTID_TextChanged" Width="111px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="111px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -227,7 +231,7 @@
 
                     <table id="invoice" style="width: 100%; border: solid 2px white">
                         <tr>
-                            <th style="width:20px; text-align:center;">Delete</td>
+                            <th style="text-align:center;" class="auto-style33">Delete</td>
                             <th class="auto-style27">Job Type
                             <th class="auto-style2">Qty
                             <th class="auto-style30">Price</td>
@@ -407,7 +411,7 @@
                         </tr>
                         <tr class="alt">
                             <td class="auto-style24">
-                                <asp:CheckBox ID="CHKKISSABLE" runat="server" OnCheckedChanged="CheckBox20_CheckedChanged" />
+                                <asp:CheckBox ID="CHKKISSABLE" runat="server" />
                             </td>
                             <td class="auto-style28">Kissable Dog</td>
                             <td class="auto-style32">

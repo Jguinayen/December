@@ -14,7 +14,7 @@ public partial class Invoice : System.Web.UI.Page
         {
             TXTBXCUSTNAME.Text = Session["CustomerName"].ToString();
             TXTBXCUSTID.Text = Session["CustomerID"].ToString();
-            TXTBX
+            
         }
     }
 
