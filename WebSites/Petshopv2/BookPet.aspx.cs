@@ -14,7 +14,7 @@ public partial class BookPet : System.Web.UI.Page
     //private void getData(string user)
     //{
     //    DataTable dt = new DataTable();
-    //    SqlConnection connection = new SqlConnection("petshoppeConnstr");
+    //    SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\OEM\Desktop\FinalDecember\December\WebSites\Petshopv2\App_Data\Database.mdf;Integrated Security=True");
     //    connection.Open();
     //    SqlCommand sqlCmd = new SqlCommand("SELECT * from CustomerDetails WHERE Email = @Email", connection);
     //    SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
@@ -42,7 +42,6 @@ public partial class BookPet : System.Web.UI.Page
         {
             //Display Session Details
 
-            //TXTBXBOOKINGNO.Text = Session["BookingNo"].ToString();
             //TXTBXCUSTOMERID.Text = Session["CustomerID"].ToString();
             //TXTBXCUSTOMERNAME.Text = Session["CustomerName"].ToString();
         }
@@ -56,14 +55,14 @@ public partial class BookPet : System.Web.UI.Page
         Session["PetNumber"] = PetNumber;
         string Groomer = DRPGROOMER.SelectedItem.Text;
         Session["Groomer"] = Groomer;
-        //string CustomerID = TXTBXCUSTOMERID.Text;
-        //Session["CustomerID"] = CustomerID;
+        string CustomerID = TXTBXCUSTOMERID.Text;
+        Session["CustomerID"] = CustomerID;
         string Branch = DRPBRANCH.SelectedItem.Text;
         Session["Branch"] = Branch;
         string BookingNo = TXTBXBOOKINGNO.Text;
         Session["BookingNo"] = BookingNo;
-        //string CustomerName = TXTBXCUSTOMERNAME.Text;
-        //Session["CustomerName"] = CustomerName;
+        string CustomerName = TXTBXCUSTOMERNAME.Text;
+        Session["CustomerName"] = CustomerName;
 
         Response.Redirect("BookPetPopUp.aspx");
     }

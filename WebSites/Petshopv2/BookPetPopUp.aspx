@@ -56,12 +56,10 @@
         &nbsp; CustomerID:&nbsp;
         <asp:Label ID="LBLCUSTOMERID" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Booking #:
-        <asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
+        <%--<asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
         <asp:TextBox ID="TXTBXDATE" runat="server"></asp:TextBox>
 &nbsp;
-        <%--  PET 1--%>
-        <%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
+        <%--  PET 1--%>        <%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
 
@@ -81,47 +79,47 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME1" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId" OnSelectedIndexChanged="DRPPETNAME_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetId], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
                         <SelectParameters>
-                            <asp:SessionParameter Name="CustomerID" SessionField="LBLCUSTOMERID" Type="String" />
+                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                 </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TXTBXBREED1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXBREED" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Pet ID</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXPETID1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXPETID" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTHAIRTYPE1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTHAIRTYPE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETTYPE1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXPETTYPE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
-                    <asp:TextBox ID="TXTBXWEIGHT1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXWEIGHT" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Notes</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXNOTES1" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXNOTES" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DRPCOAT1" runat="server" Height="16px">
+                    <asp:DropDownList ID="DRPCOAT" runat="server" Height="16px">
                         <asp:ListItem>Please select</asp:ListItem>
                         <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
@@ -130,7 +128,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Job Type</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPJOBTYPE1" runat="server">
+                    <asp:DropDownList ID="DRPJOBTYPE" runat="server">
                         <asp:ListItem>Select Job Type</asp:ListItem>
                         <asp:ListItem>Full Groom</asp:ListItem>
                         <asp:ListItem>Shampoo</asp:ListItem>
@@ -141,7 +139,7 @@
                 </td>
                 <td class="auto-style1">Groomer</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXGROOMER1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXGROOMER" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             
@@ -151,16 +149,16 @@
                     &nbsp;</td>
                 <td class="auto-style1">Branch</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXBRANCH1" runat="server" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXBRANCH" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             
         </table>
-            <%--</asp:PlaceHolder>--%>
+        <%--</asp:PlaceHolder>--%>
         <br />
 
         <!-- pet2-->
-        <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
+        <%--<asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -247,11 +245,11 @@
             </tr>
             
         </table>
-            </asp:PlaceHolder>
+            </asp:PlaceHolder>--%>
         <br />
 
         <!--pet3-->
-        <asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
+        <%--<asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -338,11 +336,11 @@
             </tr>
             
         </table>
-            </asp:PlaceHolder>
+            </asp:PlaceHolder>--%>
         <br />
 
         <!--pet4-->
-        <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
+        <%--<asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -429,7 +427,7 @@
             </tr>
             
         </table>
-            </asp:PlaceHolder>
+            </asp:PlaceHolder>--%>
         <br />
         <br />
 

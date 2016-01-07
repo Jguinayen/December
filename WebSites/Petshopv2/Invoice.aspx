@@ -250,7 +250,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style24">
-                                <asp:CheckBox ID="CHKFULLGROOM" runat="server" />
+                                <asp:CheckBox ID="CHKFULLGROOM" runat="server"  />
                             </td>
                             <td class="auto-style28">Standard Full groom</td>
                             <td class="auto-style32">
@@ -513,7 +513,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style4" id="CHKSHEDDING">
+                            <td class="auto-style4" >
                                 <asp:CheckBox ID="CHKSHEDDING" runat="server" />
                             </td>
                             <td class="auto-style27">De-Shedding</td>
