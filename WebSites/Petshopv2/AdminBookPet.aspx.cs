@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Web.UI.HtmlControls;
 
 public partial class AdminBookPet : System.Web.UI.Page
 {
@@ -15,10 +16,14 @@ public partial class AdminBookPet : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            txtAdminBookPetDate.Visible = false;
+            txtAdminBookPetDate.Visible = true;
             Calendar2.VisibleDate = DateTime.Today;
             FillHolidayDataset();
         }
+        HtmlLink canonical = new HtmlLink();
+        canonical.Href = "http://localhost:57317/AdminHolidayPopup.aspx";
+        canonical.Attributes["rel"] = "canonical";
+        Page.Header.Controls.Add(canonical);
     }
 
     protected void FillHolidayDataset()
@@ -77,26 +82,28 @@ public partial class AdminBookPet : System.Web.UI.Page
     private SqlDataReader rdr;
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("Insert into AdminCalendar (Holidays_Dayoff) values (@Holidays_Dayoff)", conn);
+        string DatePick = Calendar2.SelectedDate.ToString("dd/MM/yyyy");
+        Session["DatePick"] = DatePick;
+        txtAdminBookPetDate.Text = DatePick;
+        //conn = new SqlConnection(connstr);
+        //cmd = new SqlCommand("Insert into AdminCalendar (Holidays_Dayoff) values (@Holidays_Dayoff)", conn);
 
-        cmd.Parameters.AddWithValue("@Holidays_Dayoff", txtAdminBookPetDate.Text);
+        //cmd.Parameters.AddWithValue("@Holidays_Dayoff", txtAdminBookPetDate.Text);
 
-        conn.Open();
+        //conn.Open();
 
-        if (cmd.ExecuteNonQuery() == 1)
-        {
-            FillHolidayDataset();
-            Calendar2.SelectedDates.Clear();
-            //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
-            Session.RemoveAll();
-        }
-        conn.Close();
-        FillHolidayDataset();
+        //if (cmd.ExecuteNonQuery() == 1)
+        //{
+        //    FillHolidayDataset();
+        //    Calendar2.SelectedDates.Clear();
+        //    //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
+        //    Session.RemoveAll();
+        //}
+        //conn.Close();
+        //FillHolidayDataset();
     }
     protected void Calendar2_DayRender(object sender, DayRenderEventArgs e)
     {
-        
         if (e.Day.IsOtherMonth || e.Day.Date < (System.DateTime.Now.AddDays(-1)))
         {
             e.Day.IsSelectable = false;
@@ -114,7 +121,7 @@ public partial class AdminBookPet : System.Web.UI.Page
                     e.Cell.BackColor = System.Drawing.Color.Red;
                     e.Cell.ForeColor = System.Drawing.Color.White;
                     e.Cell.ToolTip = "Not Available";
-                    e.Cell.Controls.Add(new LiteralControl("<br/>Holiday / Day Off <br/>"));// + TextBox1.text));
+                    e.Cell.Controls.Add(new LiteralControl("<br/>Holidays / Day Off<br/>"));// + Notes));
                 }
             }
         }

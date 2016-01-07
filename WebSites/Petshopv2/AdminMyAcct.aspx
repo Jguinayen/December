@@ -58,7 +58,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">E-mail address</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtAdminMyAcctEmail" runat="server" Width="205px"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminMyAcctEmail" runat="server" Width="205px" TextMode="Email"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAdminMyAcctEmail" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style6">&nbsp;</td>
@@ -79,7 +79,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style15">New Password</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtAdminMyAcctNewPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminMyAcctNewPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
                 <td class="auto-style6">&nbsp;</td>
                 <td class="auto-style15">
@@ -89,7 +89,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style15">Confirm Password</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtAdminMyAcctConfirmPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminMyAcctConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
                 <td class="auto-style6">&nbsp;</td>
                 <td class="auto-style15">
@@ -100,6 +100,8 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style4">
                     <asp:Label ID="lblAdminMyAcctID" runat="server" Text=""></asp:Label>
+                    
+                    <asp:Label ID="lblAdminMyAcctSessionID" runat="server" Text=""></asp:Label>
                     
                 </td>
                 <td class="auto-style6">&nbsp;</td>

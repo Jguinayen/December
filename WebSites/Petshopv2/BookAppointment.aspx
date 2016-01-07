@@ -59,7 +59,7 @@
     <br />
         `<br /><br />
      <!--with TIME-->
-    
+
     <table id="daytable" border="0" width="100%" cellspacing="2" cellpadding="10px" style="background-color:#ffffff;">
 
 <tr style="background-color:#ffffff;"><td style="height: 39px;">Friday 27 November 2015</td></tr>
