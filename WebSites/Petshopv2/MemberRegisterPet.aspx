@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-    <p id="pagetitle">Register A Pet</p>
+    <p id="pagetitle">Register My Pet</p>
           
     <table style="width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
             
@@ -142,10 +142,11 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
-                    <%--<asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Add Pet" Width="154px" />
-                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" />--%>
-
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                    <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Add Pet" Width="154px" />
+                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" />
+                    <br />
+                    <br />
+                    <br />
                 </td>
             </tr>
             <tr>
@@ -155,6 +156,7 @@
                     <asp:Label ID="LBLMSG" runat="server"></asp:Label>
                 </td>
             </tr>
+            
         </table>
 
 </asp:Content>

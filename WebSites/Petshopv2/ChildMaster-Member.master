@@ -117,7 +117,7 @@
            <li><a href="MemberUpcoming.aspx">Upcoming Bookings</a></li>
            <li><a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>
            <li><a href="MemberHistory.aspx">Transaction History</a></li>
-           <li><a href="RegisterMyPet.aspx">Register My Pet</a></li>
+           <li><a href="MemberRegisterPet.aspx">Register My Pet</a></li>
            <li><a href="MemberAccount.aspx">My Account</a></li>
         </ul>
 
