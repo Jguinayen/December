@@ -30,6 +30,16 @@
             width: 101px;
             height: 26px;
         }
+        .auto-style9 {
+            height: 24px;
+        }
+        .auto-style10 {
+            height: 23px;
+        }
+        .auto-style11 {
+            width: 17px;
+            height: 23px;
+        }
     </style>
 </head>
 <body>
@@ -38,84 +48,120 @@
         
     <!-- Forms -->
         &nbsp;
+        Welcome &nbsp;
         &nbsp;
+        <asp:Label ID="LBLCUSTOMERNAME" runat="server" Text="MILLIE"></asp:Label>
         &nbsp;
-        <asp:Label ID="LBLCUSTOMER" runat="server" Text="MILLIE"></asp:Label>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        <asp:Label ID="LBLBOOKNO" runat="server" Text="Label"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp; CustomerID:&nbsp;
+        <asp:Label ID="LBLCUSTOMERID" runat="server" Text="Label"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Booking #:
+        <%--<asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
+        <asp:TextBox ID="TXTBXDATE" runat="server"></asp:TextBox>
+&nbsp;
+        <%--  PET 1--%>        <%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
-                <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
+
+             
+
+                <td class="auto-style9" colspan="4"><h3>PET DETAILS</h3></td>
                 
             </tr>
             <tr style="background-color:#808080;">
-                <td class="auto-style31">PET 1</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
+                <td class="auto-style10">PET 1</td>
+                <td class="auto-style11">
+                    </td>
+                <td class="auto-style10"></td>
+                <td class="auto-style10">
+                    </td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style31">Pet ID</td>
+                <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:Label ID="LBLPETID1" runat="server" Text="Label"></asp:Label>
+                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId" OnSelectedIndexChanged="DRPPETNAME_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetId], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TXTBXBREED1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXBREED" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style1">Pet Name</td>
+                <td class="auto-style1">Pet ID</td>
                 <td class="auto-style3">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXPETID" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTHAIRTYPE1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTHAIRTYPE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXPETTYPE1" runat="server"></asp:TextBox>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TXTBXPETTYPE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
-                <td class="auto-style1">Weight</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXWEIGHT1" runat="server"></asp:TextBox>
+                <td class="auto-style7">Weight</td>
+                <td class="auto-style8">
+                    <asp:TextBox ID="TXTBXWEIGHT" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">Notes</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXNOTES1" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXNOTES" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DRPCOAT1" runat="server" Height="16px">
+                    <asp:DropDownList ID="DRPCOAT" runat="server" Height="16px">
                         <asp:ListItem>Please select</asp:ListItem>
                         <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Job Type</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPJOBTYPE" runat="server">
+                        <asp:ListItem>Select Job Type</asp:ListItem>
+                        <asp:ListItem>Full Groom</asp:ListItem>
+                        <asp:ListItem>Shampoo</asp:ListItem>
+                        <asp:ListItem>Dye</asp:ListItem>
+                        <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style1">Groomer</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXGROOMER" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            
+            <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3">
                     &nbsp;</td>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">Branch</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXBRANCH" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
             </tr>
             
         </table>
+        <%--</asp:PlaceHolder>--%>
         <br />
 
         <!-- pet2-->
+        <%--<asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
         <table style="width: 800px;" border="0">
-            <tr style="background-color:#ffd800;">
-                <td class="auto-style29" colspan="4"></td>
+               <tr style="background-color:#ffd800;">
+                <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
                 
             </tr>
             <tr style="background-color:#808080;">
@@ -127,32 +173,34 @@
                     &nbsp;</td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style5">Pet ID</td>
-                <td class="auto-style6">
-                    <asp:Label ID="LBL2" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style31">Pet Name</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    </asp:DropDownList>
                 </td>
-                <td class="auto-style5">Breed</td>
-                <td class="auto-style5">
-                    <asp:TextBox ID="TXTBXBREED2" runat="server"></asp:TextBox>
+                <td class="auto-style31">Breed</td>
+                <td class="auto-style14">
+                    <asp:TextBox ID="TXTBXBREED2" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style7">Pet Name</td>
-                <td class="auto-style6">
-                    &nbsp;</td>
-                <td class="auto-style7">Hairtype</td>
-                <td class="auto-style8">
-                    <asp:TextBox ID="TXTHAIRTYPE2" runat="server"> </asp:TextBox>
+                <td class="auto-style1">Pet ID</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TXTBXPETID2" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+                <td class="auto-style1">Hairtype</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXHAIRTYPE2" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXPETTYPE2" runat="server"></asp:TextBox>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TXTBXPETTYPE2" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
-                <td class="auto-style1">Weight</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXWEIGHT2" runat="server"></asp:TextBox>
+                <td class="auto-style7">Weight</td>
+                <td class="auto-style8">
+                    <asp:TextBox ID="TXTBXWEIGHT2" runat="server" ReadOnly="True" ></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
@@ -162,28 +210,49 @@
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DRPCOAT2" runat="server">
+                    <asp:DropDownList ID="DRPCOAT2" runat="server" Height="16px">
                         <asp:ListItem>Please select</asp:ListItem>
                         <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Job Type</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPJOBTYPE2" runat="server">
+                        <asp:ListItem>Select Job Type</asp:ListItem>
+                        <asp:ListItem>Full Groom</asp:ListItem>
+                        <asp:ListItem>Shampoo</asp:ListItem>
+                        <asp:ListItem>Dye</asp:ListItem>
+                        <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style1">Groomer</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXGROOMER2" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            
+            <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3">
                     &nbsp;</td>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">Branch</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXBRANCH2" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
             </tr>
             
         </table>
+            </asp:PlaceHolder>--%>
         <br />
 
         <!--pet3-->
+        <%--<asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
-            <tr style="background-color:#ffd800;">
-                <td class="auto-style29" colspan="4"></td>
+               <tr style="background-color:#ffd800;">
+                <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
                 
             </tr>
             <tr style="background-color:#808080;">
@@ -195,32 +264,34 @@
                     &nbsp;</td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style31">Pet ID</td>
+                <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TXTBXBREED3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXBREED3" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
-                <td class="auto-style1">Pet Name</td>
+                <td class="auto-style1">Pet ID</td>
                 <td class="auto-style3">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXPETID3" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
                 <td class="auto-style1">Hairtype</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTHAIRTYPE3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXHAIRTYPE3" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Type</td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TXTBXPETTYPE3" runat="server"></asp:TextBox>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TXTBXPETTYPE3" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
-                <td class="auto-style1">Weight</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXWEIGHT3" runat="server"></asp:TextBox>
+                <td class="auto-style7">Weight</td>
+                <td class="auto-style8">
+                    <asp:TextBox ID="TXTBXWEIGHT3" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
@@ -230,30 +301,144 @@
                 </td>
                 <td class="auto-style1">Coat Condition</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DRPCOAT3" runat="server">
+                    <asp:DropDownList ID="DRPCOAT3" runat="server" Height="16px">
                         <asp:ListItem>Please select</asp:ListItem>
                         <asp:ListItem>Matted</asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Job Type</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPJOBTYPE3" runat="server">
+                        <asp:ListItem>Select Job Type</asp:ListItem>
+                        <asp:ListItem>Full Groom</asp:ListItem>
+                        <asp:ListItem>Shampoo</asp:ListItem>
+                        <asp:ListItem>Dye</asp:ListItem>
+                        <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style1">Groomer</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXGROOMER3" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            
+            <tr style="background-color:#ffe44c;">
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3">
                     &nbsp;</td>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">Branch</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXBRANCH3" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
             </tr>
             
         </table>
+            </asp:PlaceHolder>--%>
         <br />
+
         <!--pet4-->
-        
+        <%--<asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
+        <table style="width: 800px;" border="0">
+               <tr style="background-color:#ffd800;">
+                <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
+                
+            </tr>
+            <tr style="background-color:#808080;">
+                <td class="auto-style31">PET 4</td>
+                <td class="auto-style3">
+                    &nbsp;</td>
+                <td class="auto-style31">&nbsp;</td>
+                <td class="auto-style14">
+                    &nbsp;</td>
+            </tr>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style31">Pet Name</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style31">Breed</td>
+                <td class="auto-style14">
+                    <asp:TextBox ID="TXTBXBREED4" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Pet ID</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TXTBXPETID4" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+                <td class="auto-style1">Hairtype</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXHAIRTYPE4" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style5">Pet Type</td>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TXTBXPETTYPE4" runat="server" ReadOnly="True" ></asp:TextBox>
+                </td>
+                <td class="auto-style7">Weight</td>
+                <td class="auto-style8">
+                    <asp:TextBox ID="TXTBXWEIGHT4" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Notes</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="TXTBXNOTES4" runat="server" Height="50px" TextMode="MultiLine" Width="300px"></asp:TextBox>
+                </td>
+                <td class="auto-style1">Coat Condition</td>
+                <td class="auto-style2">
+                    <asp:DropDownList ID="DRPCOAT4" runat="server" Height="16px">
+                        <asp:ListItem>Please select</asp:ListItem>
+                        <asp:ListItem>Matted</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">Job Type</td>
+                <td class="auto-style3">
+                    <asp:DropDownList ID="DRPJOBTYPE4" runat="server">
+                        <asp:ListItem>Select Job Type</asp:ListItem>
+                        <asp:ListItem>Full Groom</asp:ListItem>
+                        <asp:ListItem>Shampoo</asp:ListItem>
+                        <asp:ListItem>Dye</asp:ListItem>
+                        <asp:ListItem>Cut</asp:ListItem>
+                        <asp:ListItem>Nail Trim</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style1">Groomer</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXGROOMER4" runat="server" ReadOnly="True"></asp:TextBox>
+                </td>
+            </tr>
+            
+            <tr style="background-color:#ffe44c;">
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style3">
+                    &nbsp;</td>
+                <td class="auto-style1">Branch</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXBRANCH4" runat="server" ReadOnly="True" ></asp:TextBox>
+                </td>
+            </tr>
+            
+        </table>
+            </asp:PlaceHolder>--%>
+        <br />
+        <br />
+
         <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" />
         
         <br />
 
     <!-- /Forms -->
+        <br />
+        <br />
+        <asp:Label ID="LBLMESS" runat="server" Text="Label"></asp:Label>
         <p></p>
 
 
