@@ -20,7 +20,6 @@ public partial class login : System.Web.UI.Page
     private SqlConnection Conn;
     private SqlCommand cmd;
     private SqlDataReader rdr;
-
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         Conn = new SqlConnection(connstr);
@@ -35,6 +34,8 @@ public partial class login : System.Web.UI.Page
 
         if (rdr.HasRows)
         {
+            string SessionId = newDataSet.Tables[0].Rows[0]["SessionId"].ToString();
+            Session["SessionId"] = SessionId;
             string UEmail = newDataSet.Tables[0].Rows[0]["Email2"].ToString();
             string UPass = newDataSet.Tables[0].Rows[0]["Password2"].ToString();
             string UType = newDataSet.Tables[0].Rows[0]["UserType2"].ToString();
@@ -53,6 +54,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                    Session["AdminUserID"] = AdminUserID;
                     string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
                     Session["Name"] = Name;
                     string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
@@ -82,6 +85,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                    Session["AdminUserID"] = AdminUserID;
                     string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
                     Session["Name"] = Name;
                     string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
@@ -111,6 +116,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string CustomerID = newDataSet2.Tables[0].Rows[0]["CustomerID"].ToString();
+                    Session["CustomerID"] = CustomerID;
                     string LastName = newDataSet2.Tables[0].Rows[0]["LastName"].ToString();
                     Session["LastName"] = LastName;
                     string FirstName = newDataSet2.Tables[0].Rows[0]["FirstName"].ToString();
@@ -127,7 +134,7 @@ public partial class login : System.Web.UI.Page
                     Session["Password"] = Password;
                     string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
                     Session["Address"] = Address;
-                    Response.Redirect("BookPet.aspx");
+                    Response.Redirect("booknow.aspx");
                 }
             }
             else if (UEmail != txtLoginEmail.Text && UPass != txtLoginPassword.Text)

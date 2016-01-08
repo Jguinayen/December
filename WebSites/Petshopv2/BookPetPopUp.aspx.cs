@@ -154,8 +154,8 @@ public partial class BookPetPopUp : System.Web.UI.Page
         }
         else if (Session["Petnumber"] != "1") ;
         {
-           //declare Session["Petnumber"] as integer
-            
+            //declare Session["Petnumber"] as integer
+
         }
     }
 
