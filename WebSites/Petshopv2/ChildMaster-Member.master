@@ -118,7 +118,7 @@
            <li><a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>
            <li><a href="MemberHistory.aspx">Transaction History</a></li>
            <li><a href="RegisterMyPet.aspx">Register My Pet</a></li>
-           <li><a href="Account.aspx">My Account</a></li>
+           <li><a href="MemberAccount.aspx">My Account</a></li>
         </ul>
 
       <%--<ul class="nav navbar-nav navbar-right">
