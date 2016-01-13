@@ -10,17 +10,18 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Button ID="Button1" runat="server" Text="09:00 AM" /><br />
-        <asp:Button ID="Button2" runat="server" Text="10:00 AM" /><br />
-        <asp:Button ID="Button3" runat="server" Text="11:00 AM" /><br />
-        <asp:Button ID="Button4" runat="server" Text="12:00 PM" /><br />
-        <asp:Button ID="Button5" runat="server" Text="01:00 PM" /><br />
-        <asp:Button ID="Button6" runat="server" Text="02:00 PM" /><br />
-        <asp:Button ID="Button7" runat="server" Text="03:00 PM" /><br />
-        <asp:Button ID="Button8" runat="server" Text="04:00 PM" /><br />
-        <asp:Button ID="Button9" runat="server" Text="04:00 PM" /><br />
+        <asp:Button ID="btnAdminTimePopup09am" runat="server" Text="09:00 AM" OnClick="btnAdminTimePopup09am_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup10am" runat="server" Text="10:00 AM" OnClick="btnAdminTimePopup10am_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup11am" runat="server" Text="11:00 AM" OnClick="btnAdminTimePopup11am_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup12pm" runat="server" Text="12:00 PM" OnClick="btnAdminTimePopup12pm_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup01pm" runat="server" Text="01:00 PM" OnClick="btnAdminTimePopup01pm_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup02pm" runat="server" Text="02:00 PM" OnClick="btnAdminTimePopup02pm_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup03pm" runat="server" Text="03:00 PM" OnClick="btnAdminTimePopup03pm_Click" /><br />
+        <asp:Button ID="btnAdminTimePopup04pm" runat="server" Text="04:00 PM" OnClick="btnAdminTimePopup04pm_Click" /><br />
 
     </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>

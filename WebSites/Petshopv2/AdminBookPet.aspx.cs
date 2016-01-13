@@ -82,9 +82,11 @@ public partial class AdminBookPet : System.Web.UI.Page
     private SqlDataReader rdr;
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
+        
         string DatePick = Calendar2.SelectedDate.ToString("dd/MM/yyyy");
         Session["DatePick"] = DatePick;
         txtAdminBookPetDate.Text = DatePick;
+        Response.Redirect("AdminTimePopup.aspx");
         //conn = new SqlConnection(connstr);
         //cmd = new SqlCommand("Insert into AdminCalendar (Holidays_Dayoff) values (@Holidays_Dayoff)", conn);
 
