@@ -58,7 +58,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
     private SqlDataReader rdr;
 
     //method for saving a record in PetDetails Table
-    private void InsertPetdetails()
+    private void InsertPetdetails1()
     {
         conn = new SqlConnection(connstr);
         cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, JobType, DateBooked, Groomer, Branch, Status) values(@CustomerID, @PetID, @JobType, @DateBooked, @Groomer, @Branch, @Status)", conn);
@@ -67,8 +67,8 @@ public partial class BookPetPopUp : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@PetID", DRPPETNAME.SelectedItem.Value);
         cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
         cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
-        cmd.Parameters.AddWithValue("@JobDate", TXTBXDATE.Text);
-        cmd.Parameters.AddWithValue("@DateBooked", TXTBXDATE.Text);
+        cmd.Parameters.AddWithValue("@JobDate", Convert.ToDateTime(TXTBXDATE.Text));
+        cmd.Parameters.AddWithValue("@DateBooked", Convert.ToDateTime(TXTBXDATE.Text));
         cmd.Parameters.AddWithValue("@Groomer", Session["Groomer"] = TXTBXGROOMER.Text);
         cmd.Parameters.AddWithValue("@Branch", Session["Branch"] = TXTBXBRANCH.Text);
         cmd.Parameters.AddWithValue("@STATUS", "Upcoming");
@@ -95,95 +95,72 @@ public partial class BookPetPopUp : System.Web.UI.Page
         }
 
         conn.Open();
+        cmd.ExecuteNonQuery();
 
-        if (cmd.ExecuteNonQuery() == 1)
-        {
-            LBLMESS.Text = "SUCCESSFULLY BOOKED! Please book another Pet";
-        }
+        //if (cmd.ExecuteNonQuery() == 1)
+        //{
+        //    LBLMESS.Text = "SUCCESSFULLY BOOKED! ";
+        //}
 
         conn.Close();
     }
 
     protected void BTNBOOK_Click(object sender, EventArgs e)
     {
-        if (Session["Petnumber"] == "1")
+        if (Session["Petnumber"].ToString() == "1")
         {
-            InsertPetdetails();
-            //    conn = new SqlConnection(connstr);
-            //    cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, JobType, DateBooked, Groomer, Branch, Status) values(@CustomerID, @PetID, @JobType, @DateBooked, @Groomer, @Branch, @Status)", conn);
-
-            //    cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTOMERID.Text);
-            //    cmd.Parameters.AddWithValue("@PetID", DRPPETNAME.SelectedItem.Value);
-            //    cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
-            //    cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
-            //    cmd.Parameters.AddWithValue("@JobDate", TXTBXDATE.Text);
-            //    cmd.Parameters.AddWithValue("@DateBooked", TXTBXDATE.Text);
-            //    cmd.Parameters.AddWithValue("@Groomer", Session["Groomer"] = TXTBXGROOMER.Text);
-            //    cmd.Parameters.AddWithValue("@Branch", Session["Branch"] = TXTBXBRANCH.Text);
-            //    cmd.Parameters.AddWithValue("@STATUS", "Upcoming");
-
-            //    if(DRPJOBTYPE.SelectedItem.Text == "Full Groom")
-            //    {
-            //        cmd.Parameters.AddWithValue("@JobTypeCode", "1");
-            //    }
-            //    else if (DRPJOBTYPE.SelectedItem.Text == "Shampoo")
-            //    {
-            //        cmd.Parameters.AddWithValue("@JobTypeCode", "2");
-            //    }
-            //    else if (DRPJOBTYPE.SelectedItem.Text == "Dye")
-            //    {
-            //        cmd.Parameters.AddWithValue("@JobTypeCode", "3");
-            //    }
-            //    else if (DRPJOBTYPE.SelectedItem.Text == "Cut")
-            //    {
-            //        cmd.Parameters.AddWithValue("@JobTypeCode", "4");
-            //    }
-            //    else if (DRPJOBTYPE.SelectedItem.Text == "Nail Trim")
-            //    {
-            //        cmd.Parameters.AddWithValue("@JobTypeCode", "5");
-            //    }
-
-            //conn.Open();
-
-            //if (cmd.ExecuteNonQuery() == 1)
-            //{
-            //    LBLMESS.Text = "SUCCESSFULLY BOOKED! Please book another Pet";
-            //}
-
-            //conn.Close();
-        }
-        else if (Session["Petnumber"] != "1") ;
-        {
-           //declare Session["Petnumber"] as integer
+            InsertPetdetails1();
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                LBLMESS.Text = "SUCCESSFULLY BOOKED! ";
+            }
             
+        //}
+        //else if (Session["Petnumber"] == "2") 
+        //{
+        //    InsertPetdetails1();
+        //   // InsertPetdetails2();
+        //}
+        //else if (Session["Petnumber"] == "3") 
+        //{
+        //    InsertPetdetails1();
+        //    //InsertPetdetails2();
+        //    //InsertPetdetails3();
+        //}
+        //else if (Session["Petnumber"] == "3") 
+        //{
+        //    InsertPetdetails1();
+        //    InsertPetdetails2();
+        //    InsertPetdetails3();
+        //    InsertPetdetails4();
         }
     }
 
     protected void DRPPETNAME_SelectedIndexChanged(object sender, EventArgs e)
     {
-        using (SqlConnection conn = new SqlConnection(connstr))
-        {
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "Select * from PetDetails where PetName=@PetName ";
+    //    using (SqlConnection conn = new SqlConnection(connstr))
+    //    {
+    //        cmd.CommandType = System.Data.CommandType.Text;
+    //        cmd.CommandText = "Select * from PetDetails where PetName=@PetName ";
 
-            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
+    //        cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
 
-            conn.Open();
+    //        conn.Open();
 
-            using (SqlDataReader rdr = cmd.ExecuteReader())
-            {
-                //return row data
-                if (rdr.Read())
-                {
-                    //display returned value into textboxes
-                    TXTBXPETID.Text = rdr.GetString(0);
-                    TXTBXPETTYPE.Text = rdr.GetString(3);
-                    TXTBXNOTES.Text = rdr.GetString(5);
-                    TXTBXBREED.Text = rdr.GetString(6);
-                    TXTHAIRTYPE.Text = rdr.GetString(7);
-                    TXTHAIRTYPE.Text = rdr.GetString(8);
-                }
+    //        using (SqlDataReader rdr = cmd.ExecuteReader())
+    //        {
+    //            //return row data
+    //            if (rdr.Read())
+    //            {
+    //                //display returned value into textboxes
+    //                TXTBXPETID.Text = rdr.GetString(0);
+    //                TXTBXPETTYPE.Text = rdr.GetString(3);
+    //                TXTBXNOTES.Text = rdr.GetString(5);
+    //                TXTBXBREED.Text = rdr.GetString(6);
+    //                TXTHAIRTYPE.Text = rdr.GetString(7);
+    //                TXTHAIRTYPE.Text = rdr.GetString(8);
+    //            }
             }
-        }
-    }
+     //   }
+   // }
 }

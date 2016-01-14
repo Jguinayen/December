@@ -23,7 +23,7 @@ public partial class AdminUserAccts : System.Web.UI.Page
         //try
         //{
             conn = new SqlConnection(connstr);
-            cmd = new SqlCommand("Insert into AdminUsers (Name, UserName, Address, Phone, Email, UserType, Active, Password) values (@Name, @UserName, @Address, @Phone, @Email, @UserType, @Active, @Password)", conn);
+            cmd = new SqlCommand("Insert into AdminUsers (Name, UserName, Address, Phone, Email, UserType, Branch, Active, Password) values (@Name, @UserName, @Address, @Phone, @Email, @UserType,@Branch, @Active, @Password)", conn);
 
             cmd.Parameters.AddWithValue("@Name", txtAdminUserAcctsName.Text);
             cmd.Parameters.AddWithValue("@UserName", txtAdminUserAcctsUserName.Text);
@@ -31,6 +31,7 @@ public partial class AdminUserAccts : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Phone", txtAdminUserAcctsPhone.Text);
             cmd.Parameters.AddWithValue("@Email", txtAdminUserAcctsEmail.Text);
             cmd.Parameters.AddWithValue("@UserType", cbAdminUserAcctsUserType.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@Branch", DrpBranch.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Active", ckAdminUserAcctsActive.Checked);
             cmd.Parameters.AddWithValue("@Password", txtAdminUserAcctsPassword.Text);
             conn.Open();

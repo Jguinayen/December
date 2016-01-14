@@ -13,22 +13,24 @@
          
             <tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
-                <td class="auto-style7" colspan="2">Booking #:<asp:TextBox ID="TXTBXBOOKINGNO" runat="server" ReadOnly="True" Width="91px"></asp:TextBox>
+                <td class="auto-style7" colspan="2">
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </td>
-                <td class="auto-style7">Date</td>
-                <td class="auto-style7">
-                    <asp:TextBox ID="TXTBXDATE" runat="server" ReadOnly="True"></asp:TextBox>
+                <td class="auto-style7">&nbsp; Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TXTBXDATE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
+                <td class="auto-style7">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style9">&nbsp;</td>
-                <td class="auto-style5">Customer ID</td>
+                <td class="auto-style5">Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                 <td class="auto-style6" style="width: 80px">
                     <asp:TextBox ID="TXTBXCUSTOMERID" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style15">Customer Name</td>
-                <td class="auto-style16">
+                <td class="auto-style15">&nbsp;Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                     <asp:TextBox ID="TXTBXCUSTOMERNAME" runat="server"></asp:TextBox></td>
+                <td class="auto-style16">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style9">&nbsp;</td>
@@ -50,10 +52,9 @@
                 <td class="auto-style10"></td>
                 <td class="auto-style11">Branch</td>
                 <td class="auto-style12" style="width: 80px">
-                    <asp:DropDownList ID="DRPBRANCH" runat="server">
+                    <asp:DropDownList ID="DRPBRANCH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
                         <asp:ListItem>Select Branch</asp:ListItem>
                         <asp:ListItem>Duniden</asp:ListItem>
-                        <asp:ListItem>Glen Ines</asp:ListItem>
                         <asp:ListItem>Glenfield</asp:ListItem>
                         <asp:ListItem>Grey Lynn</asp:ListItem>
                         <asp:ListItem>Papanui</asp:ListItem>
@@ -61,16 +62,15 @@
                         <asp:ListItem>Sylvia Park</asp:ListItem>
                         <asp:ListItem>Takanini</asp:ListItem>
                         <asp:ListItem>Te Rapa</asp:ListItem>
+                        <asp:ListItem Value="Glen Innes"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style3">Groomer</td>
-                <td class="auto-style4">
+                <td class="auto-style3">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                     <asp:DropDownList ID="DRPGROOMER" runat="server">
-                        <asp:ListItem>Select Groomer</asp:ListItem>
-                        <asp:ListItem>Groomer 1</asp:ListItem>
-                        <asp:ListItem>Groomer 2</asp:ListItem>
                     </asp:DropDownList>
                     </td>
+                <td class="auto-style4">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td style="height:40px" class="auto-style9">&nbsp;</td>

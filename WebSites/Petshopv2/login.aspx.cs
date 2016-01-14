@@ -111,6 +111,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string CustomerID = newDataSet2.Tables[0].Rows[0]["CustomerID"].ToString();
+                    Session["CustomerID"] = CustomerID;
                     string LastName = newDataSet2.Tables[0].Rows[0]["LastName"].ToString();
                     Session["LastName"] = LastName;
                     string FirstName = newDataSet2.Tables[0].Rows[0]["FirstName"].ToString();
@@ -127,7 +129,7 @@ public partial class login : System.Web.UI.Page
                     Session["Password"] = Password;
                     string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
                     Session["Address"] = Address;
-                    Response.Redirect("BookPet.aspx");
+                    Response.Redirect("MemberBookAppt.aspx");
                 }
             }
             else if (UEmail != txtLoginEmail.Text && UPass != txtLoginPassword.Text)
