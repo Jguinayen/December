@@ -52,7 +52,7 @@
                 <td class="auto-style10"></td>
                 <td class="auto-style11">Branch</td>
                 <td class="auto-style12" style="width: 80px">
-                    <asp:DropDownList ID="DRPBRANCH" runat="server" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
+                    <asp:DropDownList ID="DRPBRANCH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;

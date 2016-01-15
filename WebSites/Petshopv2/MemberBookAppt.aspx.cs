@@ -46,8 +46,8 @@ public partial class MemberBookAppt : System.Web.UI.Page
 //copied today
         if (!IsPostBack)
         {
-            string queryBranchGroomer = "select Branch, BranchID from AdminUsers";
-            BindDropDownList(DRPBRANCH, queryBranchGroomer, "Branch", "BranchID", "Select Branch");
+            string query = "select Branch, BranchID from AdminUsers";
+            BindDropDownList(DRPBRANCH, query, "Branch", "BranchID", "Select Branch");
             DRPGROOMER.Enabled = false;
             DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
 
@@ -55,10 +55,10 @@ public partial class MemberBookAppt : System.Web.UI.Page
 //until here
     }
 //copied today
-    private void BindDropDownList(DropDownList DRP, string queryBranchGroomer, string text, string value, string defaultText)
+    private void BindDropDownList(DropDownList DRP, string query, string text, string value, string defaultText)
     {
         string conString = ConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
-        SqlCommand cmd = new SqlCommand(queryBranchGroomer);
+        SqlCommand cmd = new SqlCommand(query);
         using (SqlConnection con = new SqlConnection(conString))
         {
             using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -159,16 +159,16 @@ public partial class MemberBookAppt : System.Web.UI.Page
     protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
     {
         //PopulateDRPGROOMER();
+
         DRPGROOMER.Enabled = false;
         DRPGROOMER.Items.Clear();
-        DRPGROOMER.Items.Insert(0, new ListItem("Select City", "0"));
-        int branchID = int.Parse(DRPBRANCH.SelectedItem.Value);
-        if (branchID > 0)
+        DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
+        int branch = int.Parse(DRPBRANCH.SelectedItem.Value);
+        if (branch > 0)
         {
-            string queryGroomer = string.Format("select Usertype,UserName from AdminUsers where BranchID = {0}", branchID);
-            BindDropDownList(DRPGROOMER, queryGroomer, "UserName", "UserType", "Select City");
+            string query = string.Format("select UserName, AdminUserID from AdminUsers where BranchID = {0}", branch);
+            BindDropDownList(DRPGROOMER, query,  "UserName", "AdminUserID", "Select Groomer");
             DRPGROOMER.Enabled = true;
         }
-        
     }
 }
