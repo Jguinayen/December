@@ -9,8 +9,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-//namespace Petshopv2
-//{
+namespace Petshopv2
+{
 
 public partial class MemberUpcoming : System.Web.UI.Page
 {
@@ -56,4 +56,4 @@ public partial class MemberUpcoming : System.Web.UI.Page
 
 }
 
-//}
+}
