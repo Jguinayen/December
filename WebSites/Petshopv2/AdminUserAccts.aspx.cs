@@ -43,6 +43,11 @@ public partial class AdminUserAccts : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Password2", txtAdminUserAcctsPassword.Text);
             cmd.Parameters.AddWithValue("@Email2", txtAdminUserAcctsEmail.Text);
             cmd.Parameters.AddWithValue("@UserType2", cbAdminUserAcctsUserType.SelectedItem.Text);
+            //cmd.ExecuteNonQuery();
+            //cmd.Parameters.Clear();
+
+                  
+
 
         //}
         //catch (Exception ex)
