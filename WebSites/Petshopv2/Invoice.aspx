@@ -140,16 +140,15 @@
 
     <table style="border: 1px solid #000; width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
             <tr style="background-color: #e8dede; height: 20px;">
-                <td class="auto-style12"><h3>Invoice No.:
-                    <asp:TextBox ID="TXTBXINVNO" runat="server" Width="146px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h3></td>
+                <td class="auto-style12"><h3>Invoice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date:
+                            <asp:TextBox ID="TXTBXDATE" runat="server" Width="105px"></asp:TextBox>
+                    </h3></td>
                 <td class="auto-style16" rowspan="2" style="vertical-align:top;">
 
                      <!----------RECEIPT PREVIEW--------------->
                     <div id="centertable">
                         <h5>INVOICE PREVIEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="TXTBXDATE" runat="server" Width="105px"></asp:TextBox>
-                        </h5>
+                            </h5>
                     <table class="centerbutton" style="background-color: aliceblue; width: 95%; border: solid 1px black">
                         
                         <tr>

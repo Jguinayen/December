@@ -53,16 +53,6 @@
                 <td class="auto-style11">Branch</td>
                 <td class="auto-style12" style="width: 80px">
                     <asp:DropDownList ID="DRPBRANCH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
-                        <asp:ListItem>Select Branch</asp:ListItem>
-                        <asp:ListItem>Duniden</asp:ListItem>
-                        <asp:ListItem>Glenfield</asp:ListItem>
-                        <asp:ListItem>Grey Lynn</asp:ListItem>
-                        <asp:ListItem>Papanui</asp:ListItem>
-                        <asp:ListItem>St. Lukes</asp:ListItem>
-                        <asp:ListItem>Sylvia Park</asp:ListItem>
-                        <asp:ListItem>Takanini</asp:ListItem>
-                        <asp:ListItem>Te Rapa</asp:ListItem>
-                        <asp:ListItem Value="Glen Innes"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
