@@ -65,6 +65,8 @@ public partial class login : System.Web.UI.Page
                     Session["Email"] = Email;
                     string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
                     Session["Password"] = Password;
+                    string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
+                    Session["Branch"] = Branch;
                     Response.Redirect("Admin.aspx");
                 }
             }
@@ -94,6 +96,8 @@ public partial class login : System.Web.UI.Page
                     Session["Email"] = Email;
                     string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
                     Session["Password"] = Password;
+                    string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
+                    Session["Branch"] = Branch;
                     Response.Redirect("GroomerReport.aspx");
                 }
             }
