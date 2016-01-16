@@ -9,13 +9,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-public partial class MemberUpcoming : System.Web.UI.Page
+public partial class UpcomingBooks : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string UPCOMINGBOOK = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
+        string UPCOMINGBOOKS = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
 
-        SqlConnection con = new SqlConnection(UPCOMINGBOOK);
+        SqlConnection con = new SqlConnection(UPCOMINGBOOKS);
         SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails", con);
 
         DataSet ds1 = new DataSet();
@@ -28,7 +28,7 @@ public partial class MemberUpcoming : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.ClearContent();
-        Response.AppendHeader("content-disposition", "attachment; filename=UpcomingBookings.xls");
+        Response.AppendHeader("content-disposition", "attachment;filename=UpcomingBooks.xls");
         Response.ContentType = "application/excel";
 
         StringWriter stringWriter = new StringWriter();
@@ -49,6 +49,6 @@ public partial class MemberUpcoming : System.Web.UI.Page
                 gridViewRowTableCell.Style["background-color"] = "#FFF7E7";
             }
         }
-    }
 
+    }
 }

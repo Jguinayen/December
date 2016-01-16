@@ -114,10 +114,17 @@
 
         <ul class="nav navbar-nav">
            <li><a href="MemberBookAppt.aspx">Book Now</a></li>
-           <li><a href="MemberUpcoming.aspx">Upcoming Bookings</a></li>
-           <li><a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>
-           <li><a href="MemberHistory.aspx">Transaction History</a></li>
+
+           <li><a href="UpcomingBooks.aspx" onclick=" Windowopen(this.href); 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" target="_blank"> Bookings</a></li>
+
+           <li><%--<a href="MemberCancelBook.aspx" onclick=" Window.open(this.href); 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">--%>
+               <a href="MemberCancelBook.aspx">Bookings</a></li>
+
+           <li><%--<a href="MemberHistory.aspx" onclick=" Window.open(this.href); 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">--%>
+               <a href="MemberHistory.aspx">Transaction History</a></li>
+
            <li><a href="MemberRegisterPet.aspx">Register My Pet</a></li>
+
            <li><a href="MemberAccount.aspx">My Account</a></li>
         </ul>
 
