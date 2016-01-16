@@ -52,6 +52,12 @@ public partial class AdminUserAccts : System.Web.UI.Page
             {
                 //Exception ex2 = ex;
                 lblAdminUserAcctsMsg.Text = "User Succesffuly Created!";
+                txtAdminUserAcctsName.Text = "";
+                txtAdminUserAcctsUserName.Text = "";
+                txtAdminUserAcctsAddress.Text = "";
+                txtAdminUserAcctsPhone.Text = "";
+                txtAdminUserAcctsEmail.Text = "";
+                
             }
 
         //}

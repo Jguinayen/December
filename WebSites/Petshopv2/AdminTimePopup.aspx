@@ -20,8 +20,6 @@
         <asp:Button ID="btnAdminTimePopup04pm" runat="server" Text="04:00 PM" OnClick="btnAdminTimePopup04pm_Click" /><br />
 
     </div>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>

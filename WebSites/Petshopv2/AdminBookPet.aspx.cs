@@ -87,22 +87,6 @@ public partial class AdminBookPet : System.Web.UI.Page
         Session["DatePick"] = DatePick;
         txtAdminBookPetDate.Text = DatePick;
         Response.Redirect("AdminTimePopup.aspx");
-        //conn = new SqlConnection(connstr);
-        //cmd = new SqlCommand("Insert into AdminCalendar (Holidays_Dayoff) values (@Holidays_Dayoff)", conn);
-
-        //cmd.Parameters.AddWithValue("@Holidays_Dayoff", txtAdminBookPetDate.Text);
-
-        //conn.Open();
-
-        //if (cmd.ExecuteNonQuery() == 1)
-        //{
-        //    FillHolidayDataset();
-        //    Calendar2.SelectedDates.Clear();
-        //    //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
-        //    Session.RemoveAll();
-        //}
-        //conn.Close();
-        //FillHolidayDataset();
     }
     protected void Calendar2_DayRender(object sender, DayRenderEventArgs e)
     {
