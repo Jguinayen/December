@@ -46,8 +46,8 @@ public partial class MemberBookAppt : System.Web.UI.Page
 //copied today
         if (!IsPostBack)
         {
-            string query = "select Branch, BranchID from AdminUsers";
-            BindDropDownList(DRPBRANCH, query, "Branch", "BranchID", "Select Branch");
+            string query = "select BranchName, BranchID from Branch";
+            BindDropDownList(DRPBRANCH, query, "BranchName", "BranchID", "Select Branch");
             DRPGROOMER.Enabled = false;
             DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
 
@@ -74,6 +74,74 @@ public partial class MemberBookAppt : System.Web.UI.Page
         }
         DRP.Items.Insert(0, new ListItem(defaultText, "0"));
     }
+
+    //private void BindDropDownListBranch()
+    //{
+    //    DataTable dt = new DataTable();
+    //    SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString);
+    //    try
+    //    {
+    //        connection.Open();
+    //        string sqlStatement = "Select BranchName from Branch";
+    //        SqlCommand sqlCmd = new SqlCommand(sqlStatement, connection);
+    //        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+    //        sqlDa.Fill(dt);
+
+    //        if (dt.Rows.Count > 0)
+    //        {
+    //            DRPBRANCH.DataSource = dt;
+    //            DRPBRANCH.DataTextField = "BranchName";//items to be displayed
+    //            DRPBRANCH.DataValueField = "BranchID";//id of items displayed
+    //            DRPBRANCH.DataBind();
+
+    //        }
+    //    }
+    //    catch (System.Data.SqlClient.SqlException ex)
+    //    {
+    //        string msg = "Fetch Error;";
+    //        msg += ex.Message;
+    //        throw new Exception(msg);
+    //    }
+    //        finally
+    //        {
+    //            connection.Close();
+    //        }
+    //   }
+
+    //private void BindDropDownListGroomer(string field)
+    //{
+    //    DataTable dt = new DataTable();
+    //    SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString);
+    //    try
+    //    {
+    //        connection.Open();
+    //        string sqlStatement = "Select * from AdminUsers where Branch=@Branch";
+    //        SqlCommand sqlCmd = new SqlCommand(sqlStatement, connection);
+    //        sqlCmd.Parameters.AddWithValue("@Branch", DRPBRANCH.SelectedItem.Text);
+    //        SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
+    //        sqlDa.Fill(dt);
+
+    //        if (dt.Rows.Count > 0)
+    //        {
+    //            DRPGROOMER.DataSource = dt;
+    //            DRPGROOMER.DataTextField = "UserName";//items to be displayed
+    //            DRPGROOMER.DataValueField = "AdminUserID";//id of items displayed
+    //            DRPGROOMER.DataBind();
+    //        }
+    //    }
+    //    catch (System.Data.SqlClient.SqlException ex)
+    //    {
+    //        string msg = "Fetch Error;";
+    //        msg += ex.Message;
+    //        throw new Exception(msg);
+    //    }
+    //    finally
+    //    {
+    //        connection.Close();
+    //    }
+    //}
+
+
 //until here
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
     private SqlConnection conn;
@@ -161,13 +229,16 @@ public partial class MemberBookAppt : System.Web.UI.Page
         //PopulateDRPGROOMER();
 
         DRPGROOMER.Enabled = false;
-        DRPGROOMER.Items.Clear();
+       DRPGROOMER.Items.Clear();
         DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
-        int branch = int.Parse(DRPBRANCH.SelectedItem.Value);
-        if (branch > 0)
+
+        string branch = (DRPBRANCH.SelectedItem.Text);
+        if ( !string.IsNullOrEmpty(branch) )
         {
-            string query = string.Format("select UserName, AdminUserID from AdminUsers where BranchID = {0}", branch);
-            BindDropDownList(DRPGROOMER, query,  "UserName", "AdminUserID", "Select Groomer");
+           // string query = "select Branch, UserName from AdminUsers where BranchID==@BranchID";
+           string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
+
+            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
             DRPGROOMER.Enabled = true;
         }
     }

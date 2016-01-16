@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.HtmlControls;
 
-
+//ako si johana ginayen
 public partial class AdminTimePopup : System.Web.UI.Page
 {
     private string connstr =
