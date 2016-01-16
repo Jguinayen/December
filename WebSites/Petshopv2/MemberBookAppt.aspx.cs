@@ -229,16 +229,16 @@ public partial class MemberBookAppt : System.Web.UI.Page
         //PopulateDRPGROOMER();
 
         DRPGROOMER.Enabled = false;
-        DRPGROOMER.Items.Clear();
+       DRPGROOMER.Items.Clear();
         DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
 
-        int branch = int.Parse(DRPBRANCH.SelectedItem.Value);
-        if (branch > 0)
+        string branch = (DRPBRANCH.SelectedItem.Text);
+        if ( !string.IsNullOrEmpty(branch) )
         {
            // string query = "select Branch, UserName from AdminUsers where BranchID==@BranchID";
-           string query = string.Format("select  AdminUserID, UserName  from AdminUsers where BranchID = {0}", branch);
+           string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
 
-            BindDropDownList(DRPGROOMER, query, "Username", "AdminUserID", "Select Groomer");
+            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
             DRPGROOMER.Enabled = true;
         }
     }

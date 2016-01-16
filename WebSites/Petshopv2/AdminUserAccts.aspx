@@ -86,17 +86,17 @@
                     &nbsp;</td>
             </tr>
         <tr>
-                <td class="auto-style3" style="height: 20px">&nbsp;</td>
+                <td class="auto-style3" style="height: 20px"></td>
                 <td class="auto-style1" style="height: 20px">Branch</td>
                 <td class="auto-style4" style="height: 20px">
-                    <asp:DropDownList ID="DrpBranch" runat="server">
+                    <asp:DropDownList ID="cbAdminUserAcctsBranch" runat="server">
                         <asp:ListItem Value="Select Branch"></asp:ListItem>
                         <asp:ListItem Value="Glen Ines"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style6" style="height: 20px">&nbsp;</td>
+                <td class="auto-style6" style="height: 20px"></td>
                 <td class="auto-style2" style="height: 20px">
-                    &nbsp;</td>
+                    </td>
             </tr>
         <tr>
                 <td class="auto-style3" style="height: 20px"></td>

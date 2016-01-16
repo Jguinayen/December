@@ -31,7 +31,7 @@ public partial class AdminUserAccts : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Phone", txtAdminUserAcctsPhone.Text);
             cmd.Parameters.AddWithValue("@Email", txtAdminUserAcctsEmail.Text);
             cmd.Parameters.AddWithValue("@UserType", cbAdminUserAcctsUserType.SelectedItem.Text);
-            cmd.Parameters.AddWithValue("@Branch", DrpBranch.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@Branch", cbAdminUserAcctsBranch.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Active", ckAdminUserAcctsActive.Checked);
             cmd.Parameters.AddWithValue("@Password", txtAdminUserAcctsPassword.Text);
             conn.Open();
@@ -46,9 +46,9 @@ public partial class AdminUserAccts : System.Web.UI.Page
             //cmd.ExecuteNonQuery();
             //cmd.Parameters.Clear();
 
-                  
-
-
+            cmd = new SqlCommand("Insert into BranchGroomer (BranchName, UserName) values (@BranchName, @UserName)", conn);
+            cmd.Parameters.AddWithValue("@BranchName", cbAdminUserAcctsBranch.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@UserName", txtAdminUserAcctsUserName.Text);
         //}
         //catch (Exception ex)
         //{
