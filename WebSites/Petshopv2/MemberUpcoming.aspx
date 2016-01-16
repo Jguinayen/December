@@ -10,7 +10,7 @@
     <p id="pagetitle">Upcoming Bookings</p>
 
 
-   <%-- <form id="form1" runat="server">--%>
+    <%--<form id="form1" runat="server">--%>
     <div style="font: normal 12px arial;">
 
         <asp:Button ID="Button1" runat="server" Text="Export to Excel" OnClick="Button1_Click" />
@@ -102,9 +102,6 @@
                         </tr>
                                                 
                     </table>--%>
-
-
-
 
 </asp:Content>
 

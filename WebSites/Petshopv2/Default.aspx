@@ -20,8 +20,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Welcome to PETSHOPPE!</h2>
-                                    <p class="animation animated-item-2">Its Celebration Time. Upload your pet's hat pics and you could be in to win one of ten $100 vouchers. </p>
+                                    <h2 class="animation animated-item-1">PETSHOPPE GROOMING!</h2>
+                                    <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; margin-top:15px;">Safe and modern grooming facilities.</p>
                                 </div>
                             </div>
                         </div>
@@ -117,92 +117,16 @@
 
 <hr>
 
-		<!-- Our Portfolio -->	
-
-        <div class="section section-white">
-	        <div class="container">
-	        	<div class="row">
-	
-				<div class="section-title">
-				<h1>Our Recent Works</h1>
-				</div>
-		
-		
-			<ul class="grid cs-style-3">
-	        	<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/4.jpg" alt="img04">
-						<figcaption>
-							<h3>Settings</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-	        	</div>	
-				<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/1.jpg" alt="img01">
-						<figcaption>
-							<h3>Camera</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/2.jpg" alt="img02">
-						<figcaption>
-							<h3>Music</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/5.jpg" alt="img05">
-						<figcaption>
-							<h3>Safari</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/3.jpg" alt="img03">
-						<figcaption>
-							<h3>Phone</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<figure>
-						<img src="img/portfolio/6.jpg" alt="img06">
-						<figcaption>
-							<h3>Game Center</h3>
-							<span>Jacob Cummings</span>
-							<a href="portfolio-item.html">Take a look</a>
-						</figcaption>
-					</figure>
-				</div>
-			</ul>
-	        	</div>
-	        </div>
-	    </div>
 		<!-- Our Portfolio -->
 			
-<hr>
+<hr style="padding: 0px; margin:0px;">
 
 		<!-- Our Clients -->
-	    <div class="section">
+	    <div class="section" style="background-color:#cccccc;">
 	    	<div class="container">
 			
 				<div class="section-title">
-				<h1>Our Success Stories</h1>
+				<h1 style="font-size:20pt;">Popular Products</h1>
 				</div>
 
 				<div class="clients-logo-wrapper text-center row">
@@ -216,8 +140,8 @@
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-8.jpg" alt="Client Name"></a></div>
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-9.jpg" alt="Client Name"></a></div>
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-10.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-11.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-12.jpg" alt="Client Name"></a></div>
+					<%--<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-11.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-12.jpg" alt="Client Name"></a></div>--%>
 				</div>
 			</div>
 	    </div>
