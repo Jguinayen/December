@@ -74,19 +74,27 @@ public partial class MemberBookAppt : System.Web.UI.Page
         Session["CustomerName"] = CustomerName;
 
         conn.Open();
-        string cmdSrch4Pet = "Select count(*) from PetDetails where CustomerID=CustomerID";
-        SqlCommand userExist=new SqlCommand(cmdSrch4Pet, conn);
-        int temp=Convert.ToInt32(userExist.ExecuteScalar().ToString());
-        
-        conn.Close();
-        if (temp==1)
+        if (cmd.ExecuteNonQuery() == 1)
         {
             Response.Redirect("BookPetPopUp.aspx");
-        } 
-       else 
-        {
-            Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
         }
+        //else
+        //{
+
+        //}
+       // string cmdSrch4Pet = "Select count(*) from PetDetails where CustomerID=CustomerID";
+       // SqlCommand userExist=new SqlCommand(cmdSrch4Pet, conn);
+       // int temp=Convert.ToInt32(userExist.ExecuteScalar().ToString());
+        
+       // conn.Close();
+       // if (temp==1)
+       // {
+       //     Response.Redirect("BookPetPopUp.aspx");
+       // } 
+       //else 
+       // {
+       //     Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
+       // }
             
 
         //conn = new SqlConnection(connstr);
