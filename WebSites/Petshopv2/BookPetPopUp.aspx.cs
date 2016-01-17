@@ -28,28 +28,28 @@ public partial class BookPetPopUp : System.Web.UI.Page
             //TXTBXBRANCH4.Text = Session["Branch"].ToString();
         }
 
-        //if (Session["Petnumber"] == "1")
-        //{
-        //    PHOLDER1.Visible = true;
-        //}
-        //else if (Session["Petnumber"] == "2")
-        //{
-        //    PHOLDER1.Visible = true;
-        //    PHOLDER2.Visible = true;
-        //}
-        //else if (Session["Petnumber"] == "3")
-        //{
-        //    PHOLDER1.Visible = true;
-        //    PHOLDER2.Visible = true;
-        //    PHOLDER3.Visible = true;
-        //}
-        //else if (Session["Petnumber"] == "4")
-        //{
-        //    PHOLDER1.Visible = true;
-        //    PHOLDER2.Visible = true;
-        //    PHOLDER3.Visible = true;
-        //    PHOLDER4.Visible = true;
-        //}
+        if (Session["Petnumber"] == "1")
+        {
+            PHOLDER1.Visible = true;
+        }
+        else if (Session["Petnumber"] == "2")
+        {
+            PHOLDER1.Visible = true;
+            PHOLDER2.Visible = true;
+        }
+        else if (Session["Petnumber"] == "3")
+        {
+            PHOLDER1.Visible = true;
+            PHOLDER2.Visible = true;
+            PHOLDER3.Visible = true;
+        }
+        else if (Session["Petnumber"] == "4")
+        {
+            PHOLDER1.Visible = true;
+            PHOLDER2.Visible = true;
+            PHOLDER3.Visible = true;
+            PHOLDER4.Visible = true;
+        }
     }
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
