@@ -17,8 +17,8 @@ public partial class BookPetPopUp : System.Web.UI.Page
         //if (IsPostBack != null)
         //{
         LBLCUSTOMERID.Text = "2222";//Session["CustomerID"].ToString();
-        
-          //  LBLCUSTOMERNAME.Text = Session["CustomerName"].ToString();
+
+        //  LBLCUSTOMERNAME.Text = Session["CustomerName"].ToString();
         //    TXTBXGROOMER.Text = Session["Groomer"].ToString();
         //    TXTBXBRANCH.Text = Session["Branch"].ToString();
         //    //TXTBXGROOMER2.Text = Session["Groomer"].ToString();
@@ -124,79 +124,79 @@ public partial class BookPetPopUp : System.Web.UI.Page
     private SqlCommand cmd;
     private SqlDataReader rdr;
 
-   
+
     protected void BTNBOOK_Click(object sender, EventArgs e)
     {
         //if (Session["Petnumber"].ToString() == "1")
         //{
-       
-            conn = new SqlConnection(connstr);
-            cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @DateBooked, @Groomer, @Branch, @Status)", conn);
 
-            //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
-            //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
-            //TXTBXPETID.Text = queryPetID;
-           
-            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTOMERID.Text);
-            cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName",DRPPETNAME.SelectedItem.Text);
-            cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
-            cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
-            cmd.Parameters.AddWithValue("@JobDate", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
-            cmd.Parameters.AddWithValue("@DateBooked", Convert.ToDateTime(TXTBXDATE.Text));
-            cmd.Parameters.AddWithValue("@Groomer", Session["Groomer"] = TXTBXGROOMER.Text);
-            cmd.Parameters.AddWithValue("@Branch", Session["Branch"] = TXTBXBRANCH.Text);
-            cmd.Parameters.AddWithValue("@Status", "upcoming");
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            
+        conn = new SqlConnection(connstr);
+        cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @DateBooked, @Groomer, @Branch, @Status)", conn);
+
+        //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
+        //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
+        //TXTBXPETID.Text = queryPetID;
+
+        cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTOMERID.Text);
+        cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
+        cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
+        cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@JobDate", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
+        cmd.Parameters.AddWithValue("@DateBooked", Convert.ToDateTime(TXTBXDATE.Text));
+        cmd.Parameters.AddWithValue("@Groomer", Session["Groomer"] = TXTBXGROOMER.Text);
+        cmd.Parameters.AddWithValue("@Branch", Session["Branch"] = TXTBXBRANCH.Text);
+        cmd.Parameters.AddWithValue("@Status", "upcoming");
+        conn.Open();
+        cmd.ExecuteNonQuery();
+
         //pet2 insert
-            //if (cmd.ExecuteNonQuery() == 1)//dinisable ko to bernard kc dalawang beses nyang sinisave ung unang record hehehe
-            //{
-            cmd.Parameters.Clear();//sinubukan kong ilagay tong linyang to after ng cmd.Execute.....sa taas bago ung "if" pero nag eerorr kaya nilagay ko d2 kc ok pag d2 sya...
-            cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID2, @PetID2, @PetName2, @Notes2, @JobType2, @JobDate2, @DateBooked2, @Groomer2, @Branch2, @Status2)", conn);
+        //if (cmd.ExecuteNonQuery() == 1)//dinisable ko to bernard kc dalawang beses nyang sinisave ung unang record hehehe
+        //{
+        cmd.Parameters.Clear();//sinubukan kong ilagay tong linyang to after ng cmd.Execute.....sa taas bago ung "if" pero nag eerorr kaya nilagay ko d2 kc ok pag d2 sya...
+        cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID2, @PetID2, @PetName2, @Notes2, @JobType2, @JobDate2, @DateBooked2, @Groomer2, @Branch2, @Status2)", conn);
 
-                //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
-                //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
-                //TXTBXPETID.Text = queryPetID;
-                
-                cmd.Parameters.AddWithValue("@CustomerID2", LBLCUSTOMERID.Text);
-                cmd.Parameters.AddWithValue("@PetID2", TXTBXPETID2.Text);
-                cmd.Parameters.AddWithValue("@PetName2", DRPPETNAME2.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@Notes2", TXTBXNOTES2.Text);
-                cmd.Parameters.AddWithValue("@JobType2", DRPJOBTYPE2.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@JobDate2", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
-                cmd.Parameters.AddWithValue("@DateBooked2", Convert.ToDateTime(TXTBXDATE.Text));
-                cmd.Parameters.AddWithValue("@Groomer2", Session["Groomer"] = TXTBXGROOMER2.Text);
-                cmd.Parameters.AddWithValue("@Branch2", Session["Branch"] = TXTBXBRANCH2.Text);
-                cmd.Parameters.AddWithValue("@Status2", "upcoming");
-                cmd.ExecuteNonQuery();
-           // }
+        //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
+        //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
+        //TXTBXPETID.Text = queryPetID;
+
+        cmd.Parameters.AddWithValue("@CustomerID2", LBLCUSTOMERID.Text);
+        cmd.Parameters.AddWithValue("@PetID2", TXTBXPETID2.Text);
+        cmd.Parameters.AddWithValue("@PetName2", DRPPETNAME2.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@Notes2", TXTBXNOTES2.Text);
+        cmd.Parameters.AddWithValue("@JobType2", DRPJOBTYPE2.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@JobDate2", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
+        cmd.Parameters.AddWithValue("@DateBooked2", Convert.ToDateTime(TXTBXDATE.Text));
+        cmd.Parameters.AddWithValue("@Groomer2", Session["Groomer"] = TXTBXGROOMER2.Text);
+        cmd.Parameters.AddWithValue("@Branch2", Session["Branch"] = TXTBXBRANCH2.Text);
+        cmd.Parameters.AddWithValue("@Status2", "upcoming");
+        cmd.ExecuteNonQuery();
+        // }
 
         //pet3 insert,d na ako naglagay ng if para itest ko muna kung nasasave tong pet3
-                cmd.Parameters.Clear();
-                cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID3, @PetID3, @PetName3, @Notes3, @JobType3, @JobDate3, @DateBooked3, @Groomer3, @Branch3, @Status3)", conn);
+        cmd.Parameters.Clear();
+        cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, DateBooked, Groomer, Branch, Status) values(@CustomerID3, @PetID3, @PetName3, @Notes3, @JobType3, @JobDate3, @DateBooked3, @Groomer3, @Branch3, @Status3)", conn);
 
-                //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
-                //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
-                //TXTBXPETID.Text = queryPetID;
+        //bernard d ko pa nagawa tong pagdisplay ng PETID ng naselect na PetName
+        //string queryPetID = "select PetID from PetDetails where PetName=DRPPETNAME.SelectedItem.text";
+        //TXTBXPETID.Text = queryPetID;
 
-                cmd.Parameters.AddWithValue("@CustomerID3", LBLCUSTOMERID.Text);
-                cmd.Parameters.AddWithValue("@PetID3", TXTBXPETID3.Text);
-                cmd.Parameters.AddWithValue("@PetName3", DRPPETNAME3.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@Notes3", TXTBXNOTES3.Text);
-                cmd.Parameters.AddWithValue("@JobType3", DRPJOBTYPE3.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@JobDate3", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
-                cmd.Parameters.AddWithValue("@DateBooked3", Convert.ToDateTime(TXTBXDATE.Text));
-                cmd.Parameters.AddWithValue("@Groomer3", Session["Groomer"] = TXTBXGROOMER3.Text);
-                cmd.Parameters.AddWithValue("@Branch3", Session["Branch"] = TXTBXBRANCH3.Text);
-                cmd.Parameters.AddWithValue("@Status3", "upcoming");
-                cmd.ExecuteNonQuery();
+        cmd.Parameters.AddWithValue("@CustomerID3", LBLCUSTOMERID.Text);
+        cmd.Parameters.AddWithValue("@PetID3", TXTBXPETID3.Text);
+        cmd.Parameters.AddWithValue("@PetName3", DRPPETNAME3.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@Notes3", TXTBXNOTES3.Text);
+        cmd.Parameters.AddWithValue("@JobType3", DRPJOBTYPE3.SelectedItem.Text);
+        cmd.Parameters.AddWithValue("@JobDate3", Convert.ToDateTime(TXTBXDATE.Text));//bernard palitan mo to kc temp lng to para lng matest ko. Ung date na dabapt masave sa colum na to eh ung pinindot ng user sa calendar.
+        cmd.Parameters.AddWithValue("@DateBooked3", Convert.ToDateTime(TXTBXDATE.Text));
+        cmd.Parameters.AddWithValue("@Groomer3", Session["Groomer"] = TXTBXGROOMER3.Text);
+        cmd.Parameters.AddWithValue("@Branch3", Session["Branch"] = TXTBXBRANCH3.Text);
+        cmd.Parameters.AddWithValue("@Status3", "upcoming");
+        cmd.ExecuteNonQuery();
         //d ko muna nilagay ung para sa pet4 kc masyadong mahaba ung code na,mahirap pag magdedebug  ka...
 
         conn.Close();
 
     }
-            
- 
+
+
 }

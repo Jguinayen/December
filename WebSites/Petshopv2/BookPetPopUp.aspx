@@ -81,15 +81,7 @@
                 <td class="auto-style3">
                     <asp:DropDownList ID="DRPPETNAME" runat="server">
                     </asp:DropDownList>
-<<<<<<< HEAD
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetId], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
-                        <SelectParameters>
-                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" DefaultValue="CustomerID" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-=======
                     
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
                 </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
