@@ -14,8 +14,7 @@
             <tr style="background-color: #e8dede;">
                 <td class="auto-style8">&nbsp;</td>
                 <td class="auto-style7" colspan="2">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </td>
+                    &nbsp;</td>
                 <td class="auto-style7">&nbsp; Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TXTBXDATE" runat="server" ReadOnly="True"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
@@ -49,18 +48,18 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style10"></td>
-                <td class="auto-style11">Branch</td>
-                <td class="auto-style12" style="width: 80px">
+                <td class="auto-style10" style="height: 27px"></td>
+                <td class="auto-style11" style="height: 27px">Branch</td>
+                <td class="auto-style12" style="width: 80px; height: 27px;">
                     <asp:DropDownList ID="DRPBRANCH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style3">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                <td class="auto-style3" style="height: 27px">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                     <asp:DropDownList ID="DRPGROOMER" runat="server">
                     </asp:DropDownList>
                     </td>
-                <td class="auto-style4">
-                    &nbsp;</td>
+                <td class="auto-style4" style="height: 27px">
+                    </td>
             </tr>
             <tr>
                 <td style="height:40px" class="auto-style9">&nbsp;</td>

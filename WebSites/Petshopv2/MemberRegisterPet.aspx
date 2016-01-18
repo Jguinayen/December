@@ -143,7 +143,7 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
                     <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Add Pet" Width="154px" />
-                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" />
+                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" OnClick="BTNCANCEL_Click" />
                     <br />
                     <br />
                     <br />

@@ -84,7 +84,7 @@
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetId], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
                         <SelectParameters>
-                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" />
+                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" DefaultValue="CustomerID" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                 </td>

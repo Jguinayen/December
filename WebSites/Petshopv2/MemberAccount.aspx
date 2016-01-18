@@ -38,18 +38,24 @@
                 <td class="auto-style6">Username</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXTBXUNAME" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TXTBXCPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
-                
+                <td class="auto-style6">Current Password</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXCPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style5">Firstname</td>
-                <td class="auto-style4">
+                <td class="auto-style3" style="height: 24px"></td>
+                <td class="auto-style5" style="height: 24px">Firstname</td>
+                <td class="auto-style4" style="height: 24px">
                     <asp:TextBox ID="TXTBXFNAME" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style6">Password</td>
-                <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXPWORD" runat="server"></asp:TextBox>
+
+                <td class="auto-style6" style="height: 24px">Password</td>
+                <td class="auto-style2" style="height: 24px">
+                    <asp:TextBox ID="TXTBXPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TXTBXPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                  </td>
                 
             </tr>
@@ -59,9 +65,12 @@
                 <td class="auto-style4">
                     <asp:TextBox ID="TXTBXMOBILE" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style6">Confirm Password</td>
                 <td class="auto-style2">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXCFMPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TXTBXCFMPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
+
                 
             </tr>
             <tr>
@@ -81,7 +90,7 @@
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
                     <asp:Button ID="BTNREGISTER" runat="server" Text="Register" Width="154px" OnClick="BTNREGISTER_Click" />
-                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" />
+                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" OnClick="BTNCANCEL_Click" />
                     <br />
                     <br />
                     <br />
@@ -92,7 +101,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style3" colspan="3">
-                    <asp:Label ID="LBLMSG" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="LBLMSG" runat="server" Text=""></asp:Label>
                 </td>
                 
             </tr>

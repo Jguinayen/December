@@ -32,12 +32,14 @@ public partial class signup : System.Web.UI.Page
         else
         {
             conn = new SqlConnection(connstr);
-            cmd = new SqlCommand("Insert into CustomerDetails (UserName, Password, Email, UserType) values (@UserName, @Password, @Email, @UserType)", conn);
+            cmd = new SqlCommand("Insert into CustomerDetails (UserName, Password, Email, MembershipDate, UserType) values (@UserName, @Password, @Email, @MembershipDate, @UserType)", conn);
             
             cmd.Parameters.AddWithValue("@UserName", txtSignupUserName.Text);
             cmd.Parameters.AddWithValue("@Password", txtSignupPassword.Text);
             cmd.Parameters.AddWithValue("@Email", txtSignupEmail.Text);
+            cmd.Parameters.AddWithValue("@MembershipDate", Convert.ToDateTime(DateTime.Today.ToShortDateString()));
             cmd.Parameters.AddWithValue("@UserType", cbSignupUserType.SelectedItem.Text);
+            
             conn.Open();
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();

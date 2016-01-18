@@ -15,7 +15,22 @@ public partial class MemberRegisterPet : System.Web.UI.Page
         TXTBXSIZE.Enabled = false;
         TXTBXOTHERS.Enabled = false;
 
+        TXTBXCID.Text = Session["CustomerID"].ToString();
+        TXTBXCID.Enabled = false;
     }
+
+    private void clear()
+    {
+        TXTBXPETNAME.Text = "";
+        TXTBXCID.Text = "";
+        DRPTYPE.SelectedItem.Text = "";
+        TXTBXOTHERS.Text = "";
+        DRPBREED.SelectedItem.Text = "";
+        DRPHAIRTYPE.SelectedItem.Text = "";
+        DRPWEIGHT.SelectedItem.Text = "";
+        TXTBXSIZE.Text = "";
+        TXTBXPRECAUTION.Text = "";
+    }    
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
     private SqlConnection conn;
@@ -41,8 +56,12 @@ public partial class MemberRegisterPet : System.Web.UI.Page
         if (cmd.ExecuteNonQuery() == 1)
         {
             LBLMSG.Text = "SUCCESSFULLY REGISTERED!";
+            clear();
         }
         conn.Close();
-
+    }
+    protected void BTNCANCEL_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("MemberBookAppt.aspx");
     }
 }
