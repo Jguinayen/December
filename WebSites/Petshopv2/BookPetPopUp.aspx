@@ -56,11 +56,10 @@
         &nbsp; CustomerID:&nbsp;
         <asp:Label ID="LBLCUSTOMERID" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Booking #:
-        <%--<asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
+        <asp:Label ID="LBLBOOKINGNO" runat="server" Text="Label"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date :&nbsp;&nbsp;
         <asp:TextBox ID="TXTBXDATE" runat="server"></asp:TextBox>
 &nbsp;
-        <%--  PET 1--%>     
-        <%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
+        <%--  PET 1--%><%--<asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
 
@@ -80,13 +79,17 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId" OnSelectedIndexChanged="DRPPETNAME_SelectedIndexChanged">
+                    <asp:DropDownList ID="DRPPETNAME" runat="server">
                     </asp:DropDownList>
+<<<<<<< HEAD
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetId], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
                         <SelectParameters>
                             <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" DefaultValue="CustomerID" />
                         </SelectParameters>
                     </asp:SqlDataSource>
+=======
+                    
+>>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
                 </td>
                 <td class="auto-style31">Breed</td>
                 <td class="auto-style14">
@@ -130,13 +133,8 @@
                 <td class="auto-style1">Job Type</td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="DRPJOBTYPE" runat="server">
-                        <asp:ListItem>Select Job Type</asp:ListItem>
-                        <asp:ListItem>Full Groom</asp:ListItem>
-                        <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Dye</asp:ListItem>
-                        <asp:ListItem>Cut</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
+                    
                 </td>
                 <td class="auto-style1">Groomer</td>
                 <td class="auto-style2">
@@ -155,11 +153,11 @@
             </tr>
             
         </table>
-        <%--</asp:PlaceHolder>--%>
+        <%-- </asp:PlaceHolder>--%>
         <br />
 
         <!-- pet2-->
-        <%--<asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">--%>
+        <%-- <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">--%>
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -176,7 +174,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style31">Breed</td>
@@ -221,12 +219,6 @@
                 <td class="auto-style1">Job Type</td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="DRPJOBTYPE2" runat="server">
-                        <asp:ListItem>Select Job Type</asp:ListItem>
-                        <asp:ListItem>Full Groom</asp:ListItem>
-                        <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Dye</asp:ListItem>
-                        <asp:ListItem>Cut</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -246,11 +238,11 @@
             </tr>
             
         </table>
-            <%--</asp:PlaceHolder>--%>
+        <%-- </asp:PlaceHolder>--%>
         <br />
 
         <!--pet3-->
-        <%--<asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">--%>
+        <%-- <asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -267,7 +259,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style31">Breed</td>
@@ -312,12 +304,6 @@
                 <td class="auto-style1">Job Type</td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="DRPJOBTYPE3" runat="server">
-                        <asp:ListItem>Select Job Type</asp:ListItem>
-                        <asp:ListItem>Full Groom</asp:ListItem>
-                        <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Dye</asp:ListItem>
-                        <asp:ListItem>Cut</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -337,11 +323,11 @@
             </tr>
             
         </table>
-           <%-- </asp:PlaceHolder>--%>
+        <%-- </asp:PlaceHolder>--%>
         <br />
 
         <!--pet4-->
-       <%-- <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">--%>
+        <%-- <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">--%>
         <table style="width: 800px;" border="0">
                <tr style="background-color:#ffd800;">
                 <td class="auto-style29" colspan="4"><h3>PET DETAILS</h3></td>
@@ -358,7 +344,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style31">Pet Name</td>
                 <td class="auto-style3">
-                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetId">
+                    <asp:DropDownList ID="DRPPETNAME4" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style31">Breed</td>
@@ -403,12 +389,6 @@
                 <td class="auto-style1">Job Type</td>
                 <td class="auto-style3">
                     <asp:DropDownList ID="DRPJOBTYPE4" runat="server">
-                        <asp:ListItem>Select Job Type</asp:ListItem>
-                        <asp:ListItem>Full Groom</asp:ListItem>
-                        <asp:ListItem>Shampoo</asp:ListItem>
-                        <asp:ListItem>Dye</asp:ListItem>
-                        <asp:ListItem>Cut</asp:ListItem>
-                        <asp:ListItem>Nail Trim</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style1">Groomer</td>
@@ -428,7 +408,7 @@
             </tr>
             
         </table>
-           <%-- </asp:PlaceHolder>--%>
+        <%-- </asp:PlaceHolder>--%>
         <br />
         <br />
 

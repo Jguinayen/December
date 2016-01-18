@@ -89,10 +89,11 @@
                 <td class="auto-style3" style="height: 20px"></td>
                 <td class="auto-style1" style="height: 20px">Branch</td>
                 <td class="auto-style4" style="height: 20px">
-                    <asp:DropDownList ID="cbAdminUserAcctsBranch" runat="server">
+                    <asp:DropDownList ID="cbAdminUserAcctsBranch" runat="server" DataSourceID="SqlDataSource1" DataTextField="BranchName" DataValueField="BranchName">
                         <asp:ListItem Value="Select Branch"></asp:ListItem>
                         <asp:ListItem Value="Glen Ines"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [BranchName] FROM [Branch]"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style6" style="height: 20px"></td>
                 <td class="auto-style2" style="height: 20px">
