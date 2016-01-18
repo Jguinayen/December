@@ -12,22 +12,15 @@ using System.Configuration;
 
 public partial class MemberBookAppt : System.Web.UI.Page
 {
-<<<<<<< HEAD
-=======
-    
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
+
     protected void Page_Load(object sender, EventArgs e)
     {
         TXTBXDATE.Text = DateTime.Now.ToShortDateString();
-        
+
         //Display Session Details
         TXTBXCUSTOMERID.Text = Session["CustomerID"].ToString();
         TXTBXCUSTOMERNAME.Text = Session["UserName"].ToString();
 
-<<<<<<< HEAD
-        // getData(this.User.Identity.Name);
-=======
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
         if (!IsPostBack)
         {
             //Display list for DRPBRANCH dropdownlist
@@ -35,16 +28,12 @@ public partial class MemberBookAppt : System.Web.UI.Page
             BindDropDownList(DRPBRANCH, query, "BranchName", "BranchID", "Select Branch");
             DRPGROOMER.Enabled = false;
             DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
-        }
-<<<<<<< HEAD
-    }
 
-=======
+        }
 
     }
 
     //Genaral Function to populate dropdownlist
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
     private void BindDropDownList(DropDownList DRP, string query, string text, string value, string defaultText)
     {
         string conString = ConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
@@ -72,34 +61,19 @@ public partial class MemberBookAppt : System.Web.UI.Page
 
     protected void BTNBOOK_Click(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("Select * from PetDetails where CustomerID='" + Session["CustomerID"] + "'", conn);
-
-        SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
-        DataSet newDataSet = new DataSet();
-        newAdapter.Fill(newDataSet);
+        //pass session details to BookPetPopUp page and load said page
+        string PetNumber = DRPPETNUMBER.SelectedItem.Text;
+        Session["PetNumber"] = PetNumber;
+        string Groomer = DRPGROOMER.SelectedItem.Text;
+        Session["Groomer"] = Groomer;
+        string CustomerID = TXTBXCUSTOMERID.Text;
+        Session["CustomerID"] = CustomerID;
+        string Branch = DRPBRANCH.SelectedItem.Text;
+        Session["Branch"] = Branch;
+        string CustomerName = TXTBXCUSTOMERNAME.Text;
+        Session["CustomerName"] = CustomerName;
 
         conn.Open();
-<<<<<<< HEAD
-        rdr = cmd.ExecuteReader();
-
-        if (rdr.HasRows)
-        {
-            Response.Redirect("BookPetPopUp.aspx");
-        }
-        else
-        {
-            Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
-            Response.Redirect("MemberRegisterPet.aspx");
-        }
-        conn.Close();
-    }
-
-
-    protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        //PopulateDRPGROOMER();
-=======
         if (cmd.ExecuteNonQuery() == 1)
         {
             Response.Redirect("BookPetPopUp.aspx");
@@ -108,20 +82,23 @@ public partial class MemberBookAppt : System.Web.UI.Page
         //{
 
         //}
-       // string cmdSrch4Pet = "Select count(*) from PetDetails where CustomerID=CustomerID";
-       // SqlCommand userExist=new SqlCommand(cmdSrch4Pet, conn);
-       // int temp=Convert.ToInt32(userExist.ExecuteScalar().ToString());
-        
-       // conn.Close();
-       // if (temp==1)
-       // {
-       //     Response.Redirect("BookPetPopUp.aspx");
-       // } 
-       //else 
-       // {
-       //     Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
-       // }
-            
+
+        //bernard eto ung code ntin sana sa pagsearch kung may pet ung customer bago nya iload ung BookpetPopUp,pero d pa gumagana
+
+        // string cmdSrch4Pet = "Select count(*) from PetDetails where CustomerID=CustomerID";
+        // SqlCommand userExist=new SqlCommand(cmdSrch4Pet, conn);
+        // int temp=Convert.ToInt32(userExist.ExecuteScalar().ToString());
+
+        // conn.Close();
+        // if (temp==1)
+        // {
+        //     Response.Redirect("BookPetPopUp.aspx");
+        // } 
+        //else 
+        // {
+        //     Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
+        // }
+
 
         //conn = new SqlConnection(connstr);
         //cmd = new SqlCommand("Select * from PetDetails where CustomID='"+Session[CustomerID]+"'", conn);
@@ -154,23 +131,18 @@ public partial class MemberBookAppt : System.Web.UI.Page
     //Event to populate DRPGROOMER dropdownlist
     protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
+
         DRPGROOMER.Enabled = false;
         DRPGROOMER.Items.Clear();
         DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
 
         string branch = (DRPBRANCH.SelectedItem.Text);
-        if ( !string.IsNullOrEmpty(branch) )
+        if (!string.IsNullOrEmpty(branch))
         {
-<<<<<<< HEAD
-           //string query = "select Branch, UserName from AdminUsers where BranchID==@BranchID";
-=======
->>>>>>> dfb51fbf71734cf4e1a4edfd19bf93b41a04f1f1
-           string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
+            string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
 
-           BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
-           DRPGROOMER.Enabled = true;
+            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
+            DRPGROOMER.Enabled = true;
         }
     }
 }
