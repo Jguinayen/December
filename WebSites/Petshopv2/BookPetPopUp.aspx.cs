@@ -17,7 +17,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (IsPostBack)
+        if (!IsPostBack)
         {
             TXTBXCUSTIDNAME.Text = Session["CustomerID"].ToString();
             TXTBXJOBDATE.Text = Session["DatePick"].ToString();
@@ -39,6 +39,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             TXTBXJOBDATE4.Text = Session["DatePick"].ToString();
             TXTBXGROOMER4.Text = Session["Groomer"].ToString();
             TXTBXBRANCH4.Text = Session["Branch"].ToString();
+            TXTBXPETID.Text = DRPPETNAME.SelectedValue.ToString();
         }
         else{
             //Display list for DRPJOBTYPE dropdownlist
@@ -60,6 +61,8 @@ public partial class BookPetPopUp : System.Web.UI.Page
             string queryJobType4 = "select JobType, JobTypeID from JobTypeTable";
             BindDropDownList(DRPJOBTYPE4, queryJobType4, "JobType", "JobTypeID", "Select Job");
             DRPJOBTYPE4.Items.Insert(0, new ListItem("Select Job", "0"));
+
+            TXTBXPETID.Text = DRPPETNAME.SelectedValue.ToString();
         }
         if (Session["PetNumber"] != null)
         {
@@ -86,6 +89,12 @@ public partial class BookPetPopUp : System.Web.UI.Page
                 PHOLDER4.Visible = true;
             }
         }
+        
+    }
+
+    protected void Page_PreRenderComplete(object sender, EventArgs e)
+    {
+        TXTBXPETID.Text = DRPPETNAME.SelectedValue.ToString();
     }
 
     //Genaral Function to populate dropdownlist
@@ -107,7 +116,17 @@ public partial class BookPetPopUp : System.Web.UI.Page
         }
         DRP.Items.Insert(0, new ListItem(defaultText, "0"));
     }
+    private void getPetInfo()
+    {
 
+        //display petid in textbox
+
+
+        //binding petname in ddl
+
+
+
+    }
  
 
     private void Clear()

@@ -89,7 +89,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetID], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
                         <SelectParameters>
@@ -201,7 +201,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
@@ -308,7 +308,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
@@ -414,7 +414,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
