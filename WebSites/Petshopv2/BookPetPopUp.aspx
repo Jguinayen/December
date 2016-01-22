@@ -49,7 +49,7 @@
         
     <!-- Forms -->
         &nbsp;
-        <asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">
+            <asp:PlaceHolder ID="PHOLDER1" runat="server" Visible="False">
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
 
@@ -89,7 +89,13 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETNAME" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetID], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
+                        <SelectParameters>
+                            <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
@@ -148,11 +154,11 @@
             </tr>
             
         </table>
-         </asp:PlaceHolder>
+            </asp:PlaceHolder>
         <br />
 
         <!-- pet2-->
-         <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
+            <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
 
        
 
@@ -195,7 +201,8 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETNAME2" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
@@ -260,7 +267,7 @@
         <br />
 
         <!--pet3-->
-         <asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
+            <asp:PlaceHolder ID="PHOLDER3" runat="server" Visible="False">
         
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
@@ -301,7 +308,8 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETNAME3" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">
@@ -365,7 +373,7 @@
         <br />
 
         <!--pet4-->
-         <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
+            <asp:PlaceHolder ID="PHOLDER4" runat="server" Visible="False">
         
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
@@ -406,7 +414,8 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TXTBXPETNAME4" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
                 <td class="auto-style8">

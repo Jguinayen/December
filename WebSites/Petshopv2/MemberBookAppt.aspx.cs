@@ -127,6 +127,8 @@ public partial class MemberBookAppt : System.Web.UI.Page
 
             BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
             DRPGROOMER.Enabled = true;
+            string Branch = (DRPBRANCH.SelectedItem.Text);
+            Session["Branch"] = Branch;
         }
     }
     protected void Calendar2_DayRender(object sender, DayRenderEventArgs e)

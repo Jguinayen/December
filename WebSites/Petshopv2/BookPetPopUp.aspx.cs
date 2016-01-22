@@ -11,30 +11,36 @@ using System.Configuration;
 
 public partial class BookPetPopUp : System.Web.UI.Page
 {
+    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+    private SqlConnection conn;
+    private SqlCommand cmd;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack != null)
-        {
 
+        if (IsPostBack)
+        {
+            TXTBXCUSTIDNAME.Text = Session["CustomerID"].ToString();
             TXTBXJOBDATE.Text = Session["DatePick"].ToString();
             TXTBXJOBTIME.Text = Session["TimePick"].ToString();
             TXTBXGROOMER.Text = Session["Groomer"].ToString();
             TXTBXBRANCH.Text = Session["Branch"].ToString();
             //** Pet 2
+            TXTBXCUSTIDNAME2.Text = Session["CustomerID"].ToString();
             TXTBXJOBDATE2.Text = Session["DatePick"].ToString();
             TXTBXGROOMER2.Text = Session["Groomer"].ToString();
             TXTBXBRANCH2.Text = Session["Branch"].ToString();
             //** Pet 3
+            TXTBXCUSTIDNAME3.Text = Session["CustomerID"].ToString();
             TXTBXJOBDATE3.Text = Session["DatePick"].ToString();
             TXTBXGROOMER3.Text = Session["Groomer"].ToString();
             TXTBXBRANCH3.Text = Session["Branch"].ToString();
             //** Pet 4
+            TXTBXCUSTIDNAME4.Text = Session["CustomerID"].ToString();
             TXTBXJOBDATE4.Text = Session["DatePick"].ToString();
             TXTBXGROOMER4.Text = Session["Groomer"].ToString();
             TXTBXBRANCH4.Text = Session["Branch"].ToString();
         }
-        if (!IsPostBack)
-        {
+        else{
             //Display list for DRPJOBTYPE dropdownlist
             string queryJobType = "select JobType, JobTypeID from JobTypeTable";
             BindDropDownList(DRPJOBTYPE, queryJobType, "JobType", "JobTypeID", "Select Job");
@@ -55,40 +61,41 @@ public partial class BookPetPopUp : System.Web.UI.Page
             BindDropDownList(DRPJOBTYPE4, queryJobType4, "JobType", "JobTypeID", "Select Job");
             DRPJOBTYPE4.Items.Insert(0, new ListItem("Select Job", "0"));
         }
-
-        if (Session["PetNumber"] == "1")
+        if (Session["PetNumber"] != null)
         {
-            PHOLDER1.Visible = true;
-        }
-        else if (Session["PetNumber"] == "2")
-        {
-            PHOLDER1.Visible = true;
-            PHOLDER2.Visible = true;
-        }
-        else if (Session["PetNumber"] == "3")
-        {
-            PHOLDER1.Visible = true;
-            PHOLDER2.Visible = true;
-            PHOLDER3.Visible = true;
-        }
-        else if (Session["PetNumber"] == "4")
-        {
-            PHOLDER1.Visible = true;
-            PHOLDER2.Visible = true;
-            PHOLDER3.Visible = true;
-            PHOLDER4.Visible = true;
+            if (Convert.ToInt32(Session["PetNumber"].ToString()) == 1)
+            {
+                PHOLDER1.Visible = true;
+            }
+            else if (Convert.ToInt32(Session["PetNumber"].ToString()) == 2)
+            {
+                PHOLDER1.Visible = true;
+                PHOLDER2.Visible = true;
+            }
+            else if (Convert.ToInt32(Session["PetNumber"].ToString()) == 3)
+            {
+                PHOLDER1.Visible = true;
+                PHOLDER2.Visible = true;
+                PHOLDER3.Visible = true;
+            }
+            else if (Convert.ToInt32(Session["PetNumber"].ToString()) == 4)
+            {
+                PHOLDER1.Visible = true;
+                PHOLDER2.Visible = true;
+                PHOLDER3.Visible = true;
+                PHOLDER4.Visible = true;
+            }
         }
     }
 
     //Genaral Function to populate dropdownlist
     private void BindDropDownList(DropDownList DRP, string query, string text, string value, string defaultText)
     {
-        string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        SqlCommand cmd = new SqlCommand(query);
-        using (SqlConnection con = new SqlConnection(conString))
+        cmd = new SqlCommand(query);
+        using (SqlConnection con = new SqlConnection(connstr))
         {
-            using (SqlDataAdapter sda = new SqlDataAdapter())
-            {
+            //using (SqlDataAdapter sda = new SqlDataAdapter())
+            //{
                 cmd.Connection = con;
                 con.Open();
                 DRP.DataSource = cmd.ExecuteReader();
@@ -96,20 +103,19 @@ public partial class BookPetPopUp : System.Web.UI.Page
                 DRP.DataValueField = value;
                 DRP.DataBind();
                 con.Close();
-            }
+            //}
         }
         DRP.Items.Insert(0, new ListItem(defaultText, "0"));
     }
 
-    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-    private SqlConnection conn;
-    private SqlCommand cmd;
+ 
 
     private void Clear()
     {
+       
         TXTBXCUSTIDNAME.Text = "";
         TXTBXPETID.Text = "";
-        TXTBXPETNAME.Text = "";
+        DRPPETNAME.SelectedItem.Text = "";
         TXTBXNOTES.Text = "";
         DRPJOBTYPE.SelectedItem.Text = "";
         TXTBXJOBDATE.Text = "";
@@ -124,7 +130,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
         TXTBXCUSTIDNAME2.Text = "";
         TXTBXPETID2.Text = "";
-        TXTBXPETNAME2.Text = "";
+        DRPPETNAME2.SelectedItem.Text = "";
         TXTBXNOTES2.Text = "";
         DRPJOBTYPE2.SelectedItem.Text = "";
         TXTBXJOBDATE2.Text = "";
@@ -139,7 +145,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
         TXTBXCUSTIDNAME3.Text = "";
         TXTBXPETID3.Text = "";
-        TXTBXPETNAME3.Text = "";
+        DRPPETNAME3.SelectedItem.Text = "";
         TXTBXNOTES3.Text = "";
         DRPJOBTYPE3.SelectedItem.Text = "";
         TXTBXJOBDATE3.Text = "";
@@ -154,7 +160,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
         TXTBXCUSTIDNAME4.Text = "";
         TXTBXPETID4.Text = "";
-        TXTBXPETNAME4.Text = "";
+        DRPPETNAME4.SelectedItem.Text = "";
         TXTBXNOTES4.Text = "";
         DRPJOBTYPE4.SelectedItem.Text = "";
         TXTBXJOBDATE4.Text = "";
@@ -169,14 +175,15 @@ public partial class BookPetPopUp : System.Web.UI.Page
     }
     protected void BTNBOOK_Click(object sender, EventArgs e)
     {
-        if (Session["PetNumber"] == "1")
+
+        if (Convert.ToInt32(Session["PetNumber"] )== 1)
         {
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, JobTime, DateBooked, Groomer, Branch, Status, PetType, Breed, HairType, Weight, CoatCondition) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @JobTime, @DateBooked, @Groomer, @Branch, @Status, @PetType, @Breed, @HairType, @Weight, @CoatCondition)", conn);
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE.Text);
@@ -204,7 +211,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE.Text);
@@ -226,7 +233,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME2.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID2.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME2.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES2.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE2.Text);
@@ -253,7 +260,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE.Text);
@@ -275,7 +282,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME2.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID2.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME2.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES2.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE2.Text);
@@ -296,7 +303,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME3.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID3.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME3.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME3.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES3.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE3.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE3.Text);
@@ -324,7 +331,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE.Text);
@@ -346,7 +353,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME2.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID2.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME2.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES2.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE2.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE2.Text);
@@ -367,7 +374,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME3.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID3.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME3.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME3.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES3.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE3.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE3.Text);
@@ -388,7 +395,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTIDNAME4.Text);
             cmd.Parameters.AddWithValue("@PetID", TXTBXPETID4.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTBXPETNAME4.Text);
+            cmd.Parameters.AddWithValue("@PetName", DRPPETNAME4.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Notes", TXTBXNOTES4.Text);
             cmd.Parameters.AddWithValue("@JobType", DRPJOBTYPE4.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@JobDate", TXTBXJOBDATE4.Text);

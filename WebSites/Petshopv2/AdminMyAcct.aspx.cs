@@ -11,8 +11,8 @@ public partial class AdminMyAcct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblAdminMyAcctID.Visible = true;
-        lblAdminMyAcctIDS.Visible = true;
+        lblAdminMyAcctID.Visible = false;
+        lblAdminMyAcctIDS.Visible = false;
         lblAdminMyAcctID.Text = Session["AdminUserID"].ToString();
         lblAdminMyAcctIDS.Text = Session["SessionId"].ToString();
         txtAdminMyAcctName.Text = Session["Name"].ToString();
