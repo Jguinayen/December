@@ -4,18 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Configuration;
 
-
-public partial class BookPetPopUp : System.Web.UI.Page
+public partial class AdminBookPetPopoup : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack != null)
         {
-
+           
             TXTBXJOBDATE.Text = Session["DatePick"].ToString();
             TXTBXJOBTIME.Text = Session["TimePick"].ToString();
             TXTBXGROOMER.Text = Session["Groomer"].ToString();
@@ -56,22 +55,22 @@ public partial class BookPetPopUp : System.Web.UI.Page
             DRPJOBTYPE4.Items.Insert(0, new ListItem("Select Job", "0"));
         }
 
-        if (Session["PetNumber"] == "1")
+        if (Session["Petnumber"] == "1")
         {
             PHOLDER1.Visible = true;
         }
-        else if (Session["PetNumber"] == "2")
+        else if (Session["Petnumber"] == "2")
         {
             PHOLDER1.Visible = true;
             PHOLDER2.Visible = true;
         }
-        else if (Session["PetNumber"] == "3")
+        else if (Session["Petnumber"] == "3")
         {
             PHOLDER1.Visible = true;
             PHOLDER2.Visible = true;
             PHOLDER3.Visible = true;
         }
-        else if (Session["PetNumber"] == "4")
+        else if (Session["Petnumber"] == "4")
         {
             PHOLDER1.Visible = true;
             PHOLDER2.Visible = true;
@@ -104,7 +103,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
-
+    
     private void Clear()
     {
         TXTBXCUSTIDNAME.Text = "";
@@ -169,7 +168,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
     }
     protected void BTNBOOK_Click(object sender, EventArgs e)
     {
-        if (Session["PetNumber"] == "1")
+        if (Session["Petnumber"] == "1")
         {
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, JobTime, DateBooked, Groomer, Branch, Status, PetType, Breed, HairType, Weight, CoatCondition) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @JobTime, @DateBooked, @Groomer, @Branch, @Status, @PetType, @Breed, @HairType, @Weight, @CoatCondition)", conn);
@@ -197,7 +196,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             Clear();
         }
 
-        else if (Session["PetNumber"] == "2")
+        else if (Session["Petnumber"] == "2")
         {
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, JobTime, DateBooked, Groomer, Branch, Status, PetType, Breed, HairType, Weight, CoatCondition) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @JobTime, @DateBooked, @Groomer, @Branch, @Status, @PetType, @Breed, @HairType, @Weight, @CoatCondition)", conn);
@@ -246,7 +245,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             Clear();
         }
 
-        else if (Session["PetNumber"] == "3")
+        else if (Session["Petnumber"] == "3")
         {
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, JobTime, DateBooked, Groomer, Branch, Status, PetType, Breed, HairType, Weight, CoatCondition) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @JobTime, @DateBooked, @Groomer, @Branch, @Status, @PetType, @Breed, @HairType, @Weight, @CoatCondition)", conn);
@@ -317,7 +316,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             Clear();
         }
 
-        else if (Session["PetNumber"] == "4")
+        else if (Session["Petnumber"] == "4")
         {
             conn = new SqlConnection(connstr);
             cmd = new SqlCommand("Insert into BookingDetails(CustomerID, PetID, PetName, Notes, JobType, JobDate, JobTime, DateBooked, Groomer, Branch, Status, PetType, Breed, HairType, Weight, CoatCondition) values(@CustomerID, @PetID, @PetName, @Notes, @JobType, @JobDate, @JobTime, @DateBooked, @Groomer, @Branch, @Status, @PetType, @Breed, @HairType, @Weight, @CoatCondition)", conn);
@@ -409,6 +408,4 @@ public partial class BookPetPopUp : System.Web.UI.Page
             Clear();
         }
     }
-
-
 }

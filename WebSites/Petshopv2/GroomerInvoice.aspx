@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="AdminInvoice.aspx.cs" Inherits="AdminInvoice" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Groomer.master" AutoEventWireup="true" CodeFile="GroomerInvoice.aspx.cs" Inherits="GroomerInvoice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
+    <%-- CONTENT HERE --%>
 
-    <a href="AdminInvoice.aspx">AdminInvoice.aspx</a> <p id="pagetitle">Invoice</p>
+     <a href="AdminInvoice.aspx">AdminInvoice.aspx</a> <p id="pagetitle">Invoice</p>
 
        <table style="border: 1px solid #000; width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
             <tr style="background-color: #e8dede; height: 20px;">
@@ -298,7 +299,6 @@
             </tr>
               
             </table>
-
 
 </asp:Content>
 

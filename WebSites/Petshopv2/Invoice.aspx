@@ -25,6 +25,7 @@
         }
         .auto-style12 {
             width: 60%;
+            height: 20px;
         }
         .auto-style16 {
             width: 335px;
@@ -60,10 +61,6 @@
 
 
 /* ---- table style --- */
-
-        .auto-style23 {
-            width: 64px;
-        }
 
         .auto-style24 {
             width: 55px;
@@ -102,7 +99,11 @@
             width: 55px;
         }
         
-     </style>
+        .auto-style34 {
+            height: 22px;
+        }
+        
+        </style>
 
 
    
@@ -136,13 +137,13 @@
   </div>
 </nav>
        <!-- /TOP MEMBER NAVBAR-->
+       
 
-
-    <table style="border: 1px solid #000; width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
-            <tr style="background-color: #e8dede; height: 20px;">
-                <td class="auto-style12"><h3>Invoice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date:
-                            <asp:TextBox ID="TXTBXDATE" runat="server" Width="105px"></asp:TextBox>
-                    </h3></td>
+    <table style="width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
+            <tr style="background-color: #e8dede; ">
+                <td class="auto-style12">&nbsp;<h3>&nbsp;Invoice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    </h3>
+                            </td>
                 <td class="auto-style16" rowspan="2" style="vertical-align:top;">
 
                      <!----------RECEIPT PREVIEW--------------->
@@ -152,7 +153,7 @@
                     <table class="centerbutton" style="background-color: aliceblue; width: 95%; border: solid 1px black">
                         
                         <tr>
-                            <td class="auto-style18">
+                            <td class="text-center">
                                 <h4>PETSHOPPE
                                     </h4><h6>20 Hobson street,
                                 <br />
@@ -163,34 +164,33 @@
                         </tr>
                         <tr>
                             <td class="auto-style18">
-                                <h6>&nbsp;Invoice #
+                                <h6 class="text-center">&nbsp;Invoice #
                                     <asp:Label ID="Label1" runat="server" Text="LBLINVNO"></asp:Label>
 &nbsp;21-11-2015 12:18 pm</h6>
                             </td>
                             
                         </tr>
                         <tr>
-                            <td class="auto-style23">
-                                <asp:GridView ID="INVPARTICULARS" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="308px">
-                                    <Columns>
-                                        <asp:BoundField DataField="QTY" HeaderText="QTY" SortExpression="QTY" />
-                                        <asp:BoundField DataField="DESCRIPTION" HeaderText="DESCRIPTION" SortExpression="DESCRIPTION" />
-                                        <asp:BoundField DataField="UPRICE" HeaderText="UPRICE" SortExpression="UPRICE" />
-                                        <asp:BoundField DataField="Total" HeaderText="Total" SortExpression="Total" />
-                                    </Columns>
-                                </asp:GridView>
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [QTY], [DESCRIPTION], [UPRICE], [Total] FROM [Particulars] WHERE ([CustomerID] = @CustomerID)">
-                                    <SelectParameters>
-                                        <asp:SessionParameter Name="CustomerID" SessionField="CustomerID" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
-                            </td>
+                            <td>
+                                <div class="center-block">
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                                        <Columns>
+                                            <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
+                                            <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />
+                                            <asp:BoundField DataField="UnitPrice" HeaderText="UnitPrice" SortExpression="UnitPrice" />
+                                            <asp:BoundField DataField="TotalPrice" HeaderText="TotalPrice" SortExpression="TotalPrice" />
+                                        </Columns>
+                                    </asp:GridView>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Qty], [JobType], [UnitPrice], [TotalPrice] FROM [InvoiceTemp]"></asp:SqlDataSource>
+                                </div>
+                           
+                                 </td>
                             
                         </tr>
                         
                         
-                        <tr height="50px">
-                            <td class="auto-style13" align="center" style="font: bold 12px arial, verdana;">Thank you,
+                        <tr style="height:50px;">
+                            <td class="auto-style13"  style="font: bold 12px arial, verdana;text-align:center; ">Thank you,
                                 Come Again<br />
                                 We appreciate your Business</td>
                         </tr>
@@ -199,7 +199,7 @@
                     </table>
 
                     <br />
-                    <asp:Button ID="Button3" runat="server" Text="Print Invoice" />
+                    <asp:Button ID="BTNPRINTINVOICE" runat="server" Text="Print Invoice" OnClick="BTNPRINTINVOICE_Click" />
                     </div>
                     <br />
              <!----------/RECEIPT PREVIEW--------------->
@@ -211,30 +211,35 @@
 
         <!------ Invoice Table ------>
         
-                    <table style="width: 100%;">
+                    <table style="width: 90%;" class="center-block">
                         <tr>
-                            <td>Customer Name</td>
+                            <td class="auto-style34">
+                                Date</td>
+                            <td class="auto-style34"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="105px"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Name </td>
                             <td>
-                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="111px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
                         </tr>
                         
                     </table>
-
+                    
 
         <!------ Invoice Table ------>
-
-                    <table id="invoice" style="width: 100%; border: solid 2px white">
+                    
+                    <table id="invoice" style="width: 90%;" class="center-block">
                         <tr>
-                            <th style="text-align:center;" class="auto-style33">Delete</td>
-                            <th class="auto-style27">Job Type
-                            <th class="auto-style2">Qty
-                            <th class="auto-style30">Price</td>
-                            <th class="auto-style29">Total</td>
+                            <th style="text-align:center;" class="auto-style33">Delete</th>
+                            <th class="auto-style27">Job Type</th>
+                            <th class="auto-style2">Qty</th>
+                            <th class="auto-style30">Price</th>
+                            <th class="auto-style29">Total</th>
                         </tr>
                         <tr>
                             <td class="auto-style24">
@@ -244,27 +249,27 @@
                                 </td>
                             <td class="auto-style31">
                                 </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26">
                                 </td>
                         </tr>
                         <tr>
                             <td class="auto-style24">
-                                <asp:CheckBox ID="CHKFULLGROOM" runat="server"  />
+                                <asp:CheckBox ID="CHKFULLGROOM" runat="server" OnCheckedChanged="CHKFULLGROOM_CheckedChanged" AutoPostBack="True"  />
                             </td>
                             <td class="auto-style28">Standard Full groom</td>
                             <td class="auto-style32">
                                 <asp:TextBox ID="TXTBXQTYFGROOM" runat="server" Width="40px"></asp:TextBox>
                             </td>
                             <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPFGROOM0" runat="server" Width="40px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXPFGROOM" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
-                                <asp:TextBox ID="TXTBXTFGROOM" runat="server" Width="40px"></asp:TextBox>
+                            <td class="auto-style26">
+                                <asp:TextBox ID="TXTBXTFGROOM" runat="server" Width="40px" ></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKPLATINUM" runat="server" />
+                                <asp:CheckBox ID="CHKPLATINUM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPLATINUM_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Platinum</td>
                             <td class="auto-style32">
@@ -273,13 +278,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPPLAT" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTPLAT" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKGOLD" runat="server" />
+                                <asp:CheckBox ID="CHKGOLD" runat="server" AutoPostBack="True" OnCheckedChanged="CHKGOLD_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Gold</td>
                             <td class="auto-style32">
@@ -288,13 +293,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPGOLD" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTGOLD" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKMINI" runat="server" />
+                                <asp:CheckBox ID="CHKMINI" runat="server" AutoPostBack="True" OnCheckedChanged="CHKMINI_CheckedChanged"  />
                             </td>
                             <td class="auto-style27">Mini</td>
                             <td class="auto-style32">
@@ -303,7 +308,7 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPMINI" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTMINI" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
@@ -315,12 +320,12 @@
                                 &nbsp;</td>
                             <td class="auto-style31">
                                 &nbsp;</td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 &nbsp;</td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKSHAMPOO" runat="server" />
+                                <asp:CheckBox ID="CHKSHAMPOO" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHAMPOO_CheckedChanged" />
                             </td>
                             <td class="auto-style27">&nbsp;Standard Shampoo</td>
                             <td class="auto-style32">
@@ -329,13 +334,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPSHAMPOO" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTSHAMPOO" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKWASHBLOW" runat="server" />
+                                <asp:CheckBox ID="CHKWASHBLOW" runat="server" AutoPostBack="True" OnCheckedChanged="CHKWASHBLOW_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Wash &amp; Blow Dry</td>
                             <td class="auto-style32">
@@ -344,13 +349,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPWB" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTWB" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCALMING" runat="server" />
+                                <asp:CheckBox ID="CHKCALMING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCALMING_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Calming Canine Shampoo Treatment</td>
                             <td class="auto-style32">
@@ -359,28 +364,28 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPCALMING" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTCALMING" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCITRUS" runat="server" />
+                                <asp:CheckBox ID="CHKCITRUS" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCITRUS_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Citrus Sensation Shampoo Treatment</td>
                             <td class="auto-style32">
                                 <asp:TextBox ID="TXTBXQTYCITRUS" runat="server" Width="40px"></asp:TextBox>
                             </td>
                             <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPCITURS" runat="server" Width="40px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXPCITRUS" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTCITRUS" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKSMOOTHIE" runat="server" />
+                                <asp:CheckBox ID="CHKSMOOTHIE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSMOOTHIE_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Super Smoothie</td>
                             <td class="auto-style32">
@@ -389,13 +394,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPSMOOTHIE" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTSMOOTHIE" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKFLEARELIEF" runat="server" />
+                                <asp:CheckBox ID="CHKFLEARELIEF" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFLEARELIEF_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Flea Relief</td>
                             <td class="auto-style32">
@@ -404,13 +409,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPFLEA" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTFLEA" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style24">
-                                <asp:CheckBox ID="CHKKISSABLE" runat="server" />
+                                <asp:CheckBox ID="CHKKISSABLE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKKISSABLE_CheckedChanged" />
                             </td>
                             <td class="auto-style28">Kissable Dog</td>
                             <td class="auto-style32">
@@ -419,7 +424,7 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPKISS" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTKISS" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
@@ -433,12 +438,12 @@
                                 &nbsp;</td>
                             <td class="auto-style31">
                                 &nbsp;</td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26">
                                 &nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKDYE" runat="server" />
+                                <asp:CheckBox ID="CHKDYE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKDYE_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Dye</td>
                             <td class="auto-style32">
@@ -447,13 +452,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPDYE" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26">
                                 <asp:TextBox ID="TXTBXTDYE" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="alt">
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCUT" runat="server" />
+                                <asp:CheckBox ID="CHKCUT" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCUT_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Cut</td>
                             <td class="auto-style32">
@@ -462,13 +467,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPCUT" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTCUT" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKNAILTRIM" runat="server" />
+                                <asp:CheckBox ID="CHKNAILTRIM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKNAILTRIM_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Nail Trim Only</td>
                             <td class="auto-style32">
@@ -477,13 +482,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPNAILTRIM" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTNAILTRIM" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKPEDICURE" runat="server" />
+                                <asp:CheckBox ID="CHKPEDICURE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPEDICURE_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Perfect Pedicure</td>
                             <td class="auto-style32">
@@ -492,13 +497,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPPEDICURE" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTPEDICURE" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style4">
-                                <asp:CheckBox ID="CHKFACIAL" runat="server" />
+                                <asp:CheckBox ID="CHKFACIAL" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFACIAL_CheckedChanged" />
                             </td>
                             <td class="auto-style27">Facial</td>
                             <td class="auto-style32">
@@ -507,13 +512,13 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPFACIAL" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26" >
                                 <asp:TextBox ID="TXTBXTFACIAL" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style4" >
-                                <asp:CheckBox ID="CHKSHEDDING" runat="server" />
+                                <asp:CheckBox ID="CHKSHEDDING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHEDDING_CheckedChanged" />
                             </td>
                             <td class="auto-style27">De-Shedding</td>
                             <td class="auto-style32">
@@ -522,26 +527,25 @@
                             <td class="auto-style31">
                                 <asp:TextBox ID="TXTBXPSHEDDING" runat="server" Width="40px"></asp:TextBox>
                             </td>
-                            <td class="auto-style26" nowrap>
+                            <td class="auto-style26">
                                 <asp:TextBox ID="TXTBXTSHEDDING" runat="server" Width="40px"></asp:TextBox>
                             </td>
                         </tr>
-                        <tr height="50px" class="alt">
+                        <tr style="height:50px" class="alt">
                             <td class="auto-style21;" colspan="2">
-                                <asp:Button ID="Button1" runat="server" Text="Update Invoice" />
+                                <asp:Button ID="BTNUPDATEINVOICE" runat="server" Text="Preview Invoice" OnClick="BTNUPDATEINVOICE_Click" />
                                 &nbsp;</td>
                             <td class="auto-style2">
                                 &nbsp;</td>
                             <td class="auto-style30">
                                 &nbsp;</td>
-                            <td class="auto-style29" nowrap>
-                                &nbsp;</td>
+                            <td class="auto-style29" >
+                                </td>
                         </tr>
-                        
-                    </table>
+                        </table>
                     <br />
                     
-                    <br />
+                    
                 </td>
             </tr>
               
@@ -552,4 +556,3 @@
     
     
 </asp:Content>
-

@@ -61,14 +61,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="GroomerReport.aspx">Appointments</a></li>
                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+                    <a href="GroomerAcct.aspx" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Update Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
+                        <li><a href="GroomerAcct.aspx">Update Profile</a></li>
+                        <li><a href="GroomerAcct.aspx">Change Password</a></li>
                     </ul>
                </li>
-              <li><a href="#">Invoice</a></li>
-              <li><a href="#">Book an Appointment</a></li>
+              <li><a href="GroomerInvoice.aspx">Invoice</a></li>
+              <li><a href="GroomerBookPet.aspx">Book an Appointment</a></li>
             </ul>
        </div>
   </div>

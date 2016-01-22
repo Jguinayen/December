@@ -16,7 +16,7 @@ public partial class login : System.Web.UI.Page
 
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-            ["petshoppeConnstr"].ConnectionString;
+            ["ConnectionString"].ConnectionString;
     private SqlConnection Conn;
     private SqlCommand cmd;
     private SqlDataReader rdr;
@@ -38,6 +38,8 @@ public partial class login : System.Web.UI.Page
             string UEmail = newDataSet.Tables[0].Rows[0]["Email2"].ToString();
             string UPass = newDataSet.Tables[0].Rows[0]["Password2"].ToString();
             string UType = newDataSet.Tables[0].Rows[0]["UserType2"].ToString();
+            string SessionId = newDataSet.Tables[0].Rows[0]["SessionId"].ToString();
+            Session["SessionId"] = SessionId;
 
             if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Admin")
             {
@@ -53,6 +55,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                    Session["AdminUserID"] = AdminUserID;
                     string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
                     Session["Name"] = Name;
                     string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
@@ -63,10 +67,14 @@ public partial class login : System.Web.UI.Page
                     Session["Phone"] = Phone;
                     string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
                     Session["Email"] = Email;
-                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
-                    Session["Password"] = Password;
+                    string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
+                    Session["UserType"] = UserType;
                     string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
                     Session["Branch"] = Branch;
+                    string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                    Session["Active"] = Active;
+                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                    Session["Password"] = Password;
                     Response.Redirect("Admin.aspx");
                 }
             }
@@ -84,6 +92,8 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
+                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                    Session["AdminUserID"] = AdminUserID;
                     string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
                     Session["Name"] = Name;
                     string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
@@ -94,10 +104,14 @@ public partial class login : System.Web.UI.Page
                     Session["Phone"] = Phone;
                     string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
                     Session["Email"] = Email;
-                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
-                    Session["Password"] = Password;
+                    string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
+                    Session["UserType"] = UserType;
                     string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
                     Session["Branch"] = Branch;
+                    string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                    Session["Active"] = Active;
+                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                    Session["Password"] = Password;
                     Response.Redirect("GroomerReport.aspx");
                 }
             }

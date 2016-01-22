@@ -1,10 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="AdminMyAcct.aspx.cs" Inherits="AdminMyAcct" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Groomer.master" AutoEventWireup="true" CodeFile="GroomerAcct.aspx.cs" Inherits="GroomerAcct" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
+    <%-- CONTENT HERE --%>
 
-     <p id="pagetitle">Manage My Account</p>
+    <p id="pagetitle">Manage My Account</p>
     
     <table style="width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
            

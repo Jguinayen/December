@@ -10,7 +10,7 @@
 
             <label class="col-xs-11">Email</label>
             <div class="col-xs-11">
-            <asp:TextBox ID="txtLoginEmail" runat="server" CssClass="form-control" Width="250px"></asp:TextBox>
+            <asp:TextBox ID="txtLoginEmail" runat="server" CssClass="form-control" Width="250px" TextMode="Email"></asp:TextBox>
             </div>
 
              <label class="col-xs-11">Password</label>
@@ -25,7 +25,7 @@
 
             <div class="col-xs-11 space-vert">
                 &nbsp;<asp:Button ID="btnLogin" runat="server" CssClass="btn btn-success" style="margin-top:10px;" Text="Log In" OnClick="btnLogin_Click" />
-                </div>
+                &nbsp;&nbsp;&nbsp; <a href="signup.aspx">Sign up</a></div>
                 
         </div>
 

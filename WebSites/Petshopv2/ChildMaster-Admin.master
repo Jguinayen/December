@@ -80,7 +80,7 @@
             </ul>
          </li>
 
-        <li><a href="AdminInvoice.aspx">Invoice</a></li>
+        <li><a href="Invoice.aspx">Invoice</a></li>
         <%--<li class="divider"></li>--%>
         <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>

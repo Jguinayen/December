@@ -62,8 +62,8 @@
                     <li><a href="Default.aspx">Home</a></li>
                     <li><a href="signup.aspx">Sign Up</a></li>
                     <li><a href="login.aspx">Log In</a></li>
-                    <li><a href="MemberBookAppt.aspx">Book Now</a></li>
-                    <li><a href="Admin.aspx">Admin Page</a></li>
+                    <li><a href="login.aspx">Book Now</a></li>
+                    <%--<li><a href="Admin.aspx">Admin Page</a></li>--%>
                     <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     
                     <!--<li class="dropdown">

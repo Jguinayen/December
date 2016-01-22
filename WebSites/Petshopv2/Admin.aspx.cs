@@ -62,7 +62,7 @@ public partial class Admin : System.Web.UI.Page
     {
         DataSet dsMonth = new DataSet();
         ConnectionStringSettings cs;
-        cs = ConfigurationManager.ConnectionStrings["petshoppeConnstr"];
+        cs = ConfigurationManager.ConnectionStrings["ConnectionString"];
         String connString = cs.ConnectionString;
         SqlConnection dbConnection = new SqlConnection(connString);
         String query;
@@ -134,7 +134,7 @@ public partial class Admin : System.Web.UI.Page
 
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-            ["petshoppeConnstr"].ConnectionString;
+            ["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
     private SqlDataReader rdr;

@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Member.master" AutoEventWireup="true" CodeFile="MemberBookAppt.aspx.cs" Inherits="MemberBookAppt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Groomer.master" AutoEventWireup="true" CodeFile="GroomerBookPet.aspx.cs" Inherits="GroomerBookPet" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
-
     <%---------------- CALENDAR --------------------%>
 
      <p id="pagetitle">Book an Appointment</p>
@@ -14,9 +13,9 @@
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
            
            <tr>
-                <td style="height: 24px"></td>
-                <td style="width:100px; height: 24px;">No. of Pets</td>
-                <td class="auto-style6" style="height: 24px">
+                <td>&nbsp;</td>
+                <td style="width:100px;">No. of Pets</td>
+                <td class="auto-style6">
                     <asp:DropDownList ID="DRPPETNUMBER" runat="server" OnSelectedIndexChanged="DRPPETNUMBER_SelectedIndexChanged1">
                         <asp:ListItem>Please Select</asp:ListItem>
                         <asp:ListItem>1</asp:ListItem>
@@ -26,9 +25,9 @@
                         <asp:ListItem>5</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style15" style="height: 24px"></td>
-                <td class="auto-style16" style="height: 24px">
-                    </td>
+                <td class="auto-style15">&nbsp;</td>
+                <td class="auto-style16">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style10">&nbsp;</td>
@@ -72,9 +71,6 @@
         
      <%---------------- END OF CALENDAR --------------------%>
     <br />
-
-
- 
 
 
 </asp:Content>

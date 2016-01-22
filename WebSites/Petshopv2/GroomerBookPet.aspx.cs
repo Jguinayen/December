@@ -4,18 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Configuration;
+using System.Web.UI.HtmlControls;
 
-public partial class MemberBookAppt : System.Web.UI.Page
+public partial class GroomerBookPet : System.Web.UI.Page
 {
     protected DataSet dsHolidays;
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
 
@@ -29,7 +27,10 @@ public partial class MemberBookAppt : System.Web.UI.Page
             DRPGROOMER.Enabled = false;
             DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
         }
-       
+        HtmlLink canonical = new HtmlLink();
+        canonical.Href = "http://localhost:57317/AdminHolidayPopup.aspx";
+        canonical.Attributes["rel"] = "canonical";
+        Page.Header.Controls.Add(canonical);
     }
 
     //Genaral Function to populate dropdownlist
@@ -52,7 +53,6 @@ public partial class MemberBookAppt : System.Web.UI.Page
         }
         DRP.Items.Insert(0, new ListItem(defaultText, "0"));
     }
-
     protected void FillHolidayDataset()
     {
         DateTime firstDate = new DateTime(Calendar2.VisibleDate.Year,
@@ -101,33 +101,14 @@ public partial class MemberBookAppt : System.Web.UI.Page
         return dsMonth;
     }
 
-
+    private string connstr =
+            System.Web.Configuration.WebConfigurationManager.ConnectionStrings
+            ["ConnectionString"].ConnectionString;
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
         string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");
         Session["DatePick"] = DatePick;
-        Response.Redirect("MemberTimePopup.aspx");
-    }
-
-    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-    
-
-    //Event to populate DRPGROOMER dropdownlist
-    protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-        DRPGROOMER.Enabled = false;
-        DRPGROOMER.Items.Clear();
-        DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
-
-        string branch = (DRPBRANCH.SelectedItem.Text);
-        if (!string.IsNullOrEmpty(branch))
-        {
-            string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
-
-            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
-            DRPGROOMER.Enabled = true;
-        }
+        Response.Redirect("GroomerTimePopup.aspx");
     }
     protected void Calendar2_DayRender(object sender, DayRenderEventArgs e)
     {
@@ -151,6 +132,24 @@ public partial class MemberBookAppt : System.Web.UI.Page
                     e.Cell.Controls.Add(new LiteralControl("<br/>Holidays / Day Off<br/>"));// + Notes));
                 }
             }
+        }
+    }
+
+    protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DRPGROOMER.Enabled = false;
+        DRPGROOMER.Items.Clear();
+        DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
+
+        string branch = (DRPBRANCH.SelectedItem.Text);
+        Session["Branch"] = branch;
+        if (!string.IsNullOrEmpty(branch))
+        {
+            string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
+
+            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
+            DRPGROOMER.Enabled = true;
+            FillHolidayDataset();
         }
     }
     protected void DRPGROOMER_SelectedIndexChanged(object sender, EventArgs e)

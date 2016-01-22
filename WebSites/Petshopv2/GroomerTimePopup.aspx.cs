@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.HtmlControls;
 
-public partial class AdminTimePopup : System.Web.UI.Page
+public partial class GroomerTimePopup : System.Web.UI.Page
 {
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
@@ -66,7 +66,7 @@ public partial class AdminTimePopup : System.Web.UI.Page
                 else if (SelTime == "04pm")
                 {
                     btnAdminTimePopup04pm.Enabled = false;
-                }                             
+                }
             }
 
         }
@@ -77,48 +77,48 @@ public partial class AdminTimePopup : System.Web.UI.Page
     {
         txtAdminTimePopupTimePick.Text = "09am";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup10am_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "10am";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup11am_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "11am";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup12pm_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "12pm";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup01pm_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "01pm";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup02pm_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "02pm";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup03pm_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "03pm";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
     protected void btnAdminTimePopup04pm_Click(object sender, EventArgs e)
     {
         txtAdminTimePopupTimePick.Text = "04pm";
         Session["TimePick"] = txtAdminTimePopupTimePick.Text;
-        Response.Redirect("AdminBookPetPopoup.aspx");
+        Response.Redirect("GroomerBookPetPopup.aspx");
     }
 }

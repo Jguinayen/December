@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BookPetPopUp.aspx.cs" Inherits="BookPetPopUp" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GroomerBookPetPopup.aspx.cs" Inherits="GroomerBookPetPopup" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Book My Pet</title>
+     <title>Book My Pet</title>
     <style type="text/css">
         .auto-style1 {
             width: 118px;
@@ -45,7 +45,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <div>
         
     <!-- Forms -->
         &nbsp;
@@ -479,6 +478,9 @@
         <asp:Label ID="LBLMESS" runat="server"></asp:Label>
         <br />
         <p></p>
+
+
+
     </div>
     </form>
 </body>

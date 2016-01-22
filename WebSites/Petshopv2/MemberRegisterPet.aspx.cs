@@ -32,7 +32,7 @@ public partial class MemberRegisterPet : System.Web.UI.Page
         TXTBXPRECAUTION.Text = "";
     }    
 
-    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["petshoppeConnstr"].ConnectionString;
+    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
 

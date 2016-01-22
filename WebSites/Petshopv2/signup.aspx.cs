@@ -16,7 +16,7 @@ public partial class signup : System.Web.UI.Page
 
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-            ["petshoppeConnstr"].ConnectionString;
+            ["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
     protected void btSignup_Click(object sender, EventArgs e)

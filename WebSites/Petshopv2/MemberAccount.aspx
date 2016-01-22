@@ -1,126 +1,119 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Member.master" AutoEventWireup="true" CodeFile="MemberBookAppt.aspx.cs" Inherits="MemberBookAppt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Member.master" AutoEventWireup="true" CodeFile="MemberAccount.aspx.cs" Inherits="MemberAccount" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
 
-    <p id="pagetitle">Book an Appointment</p>
+    <p id="pagetitle">My Membership Account</p>
     
-    
-     <%---------------- NO. OF PETS ----------------%>
 
-    <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
-         
-            <tr style="background-color: #e8dede;">
-                <td class="auto-style8">&nbsp;</td>
-                <td class="auto-style7" colspan="2">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </td>
-                <td class="auto-style7">&nbsp; Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TXTBXDATE" runat="server" ReadOnly="True"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    &nbsp;</td>
-            </tr>
+    <table style="width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
+           
+           
             <tr>
-                <td class="auto-style9">&nbsp;</td>
-                <td class="auto-style5">Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-                <td class="auto-style6" style="width: 80px">
-                    <asp:TextBox ID="TXTBXCUSTOMERID" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style15">&nbsp;Customer Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                    <asp:TextBox ID="TXTBXCUSTOMERNAME" runat="server"></asp:TextBox></td>
-                <td class="auto-style16">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style9">&nbsp;</td>
-                <td class="auto-style5">No. of Pets</td>
-                <td class="auto-style6" style="width: 80px">
-                    <asp:DropDownList ID="DRPPETNUMBER" runat="server">
-                        <asp:ListItem>Please select</asp:ListItem>
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td class="auto-style15">&nbsp;</td>
-                <td class="auto-style16">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style10"></td>
-                <td class="auto-style11">Branch</td>
-                <td class="auto-style12" style="width: 80px">
-                    <asp:DropDownList ID="DRPBRANCH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPBRANCH_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </td>
-                <td class="auto-style3">&nbsp; Groomer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                    <asp:DropDownList ID="DRPGROOMER" runat="server">
-                    </asp:DropDownList>
-                    </td>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style15">
+                    Customer ID</td>
+                
                 <td class="auto-style4">
-                    &nbsp;</td>
+                    <asp:TextBox ID="TXTBXCUSTOMID" runat="server"></asp:TextBox>
+                </td>
+                
+                <td class="auto-style6">Membership Date</td>
+                
+                <td class="auto-style15">
+                    <asp:TextBox ID="TXTBXMEMDATE" runat="server"></asp:TextBox>
+                </td>
+                
             </tr>
             <tr>
-                <td style="height:40px" class="auto-style9">&nbsp;</td>
-                <td class="auto-style5"></td>
-                <td class="auto-style10" colspan="3">
-                    <asp:Button ID="BTNBOOK" runat="server" Text="Book an Appointment" Width="154px" OnClick="BTNBOOK_Click" />
-                    &nbsp;<asp:Button ID="BTNCANCEL" runat="server" Text="Cancel" Width="113px" />
-                &nbsp;&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style15">
+                    Lastname</td>
+                
+                <td class="auto-style4">
+                    <asp:TextBox ID="TXTBXLNAME" runat="server" Width="205px"></asp:TextBox>
+                </td>
+                
+                <td class="auto-style6">Username</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXUNAME" runat="server"></asp:TextBox>
+                </td>
+                
             </tr>
-      
-        </table> <br />
+            <tr>
+                <td class="auto-style3" style="height: 24px">&nbsp;</td>
+                <td class="auto-style5" style="height: 24px">Firstname</td>
+                <td class="auto-style4" style="height: 24px">
+                    <asp:TextBox ID="TXTBXFNAME" runat="server"></asp:TextBox></td>
 
-    <%---------------- END NO. OF PETS -------------%>
+                 <td class="auto-style6">Current Password</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXCPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TXTBXCPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style3" style="height: 24px"></td>
+                <td class="auto-style5" style="height: 24px">Mobile</td>
+                <td class="auto-style4" style="height: 24px">
+                    
+                    <asp:TextBox ID="TXTBXMOBILE" runat="server"></asp:TextBox></td>
 
+                <td class="auto-style6" style="height: 24px">New Password</td>
+                <td class="auto-style2" style="height: 24px">
+                    <asp:TextBox ID="TXTBXPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TXTBXPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                 </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style1">Email</td>
+                <td class="auto-style4">
+                    
+                    <asp:TextBox ID="TXTBXEMAIL" runat="server"></asp:TextBox></td>
+                <td class="auto-style6">Confirm Password</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXCFMPWORD" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TXTBXCFMPWORD" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
 
-    <%---------------- CALENDAR --------------------%>
-
-    <asp:Calendar ID="Calendar2" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth"  Width="100%" DayNameFormat="Full" ShowGridLines="true">
-        <DayHeaderStyle Font-Bold="True" Font-Size="10pt" ForeColor="#333333" Height="5pt" />
-        <DayStyle BackColor="#ffffff" />
-        <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="White" />
-        <OtherMonthDayStyle ForeColor="#cccccc" />
-        <SelectedDayStyle BackColor="#cccccc" ForeColor="White" />
-        <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="5pt" />
-        <TodayDayStyle BackColor="#cccccc" ForeColor="White" Font-Bold="true" />
-    </asp:Calendar>
-        
-     <%---------------- CALENDAR --------------------%>
-    <br />
-
-    <!--with TIME-->
-    
-    <table id="daytable" border="0" width="100%" cellspacing="2" cellpadding="10px" style="background-color:#ffffff;">
-
-<tr style="background-color:#ffffff;"><td style="height: 39px;">Friday 27 November 2015</td></tr>
-
-<tr><td>Time</td></tr>
-
-<tr><td><a href="#">09:00 a.m.</a></td></tr>
-
-<tr><td><a href="#">10:00 a.m.</a></td></tr> 
-        
-<tr><td><a href="#">11:00 a.m.</a></td></tr>  
-
-<tr><td><a href="#">12:00 p.m.</a></td></tr>
-
-<tr><td><a href="#">01:00 p.m.</a></td></tr> 
-        
-<tr><td><a href="#">02:00 p.m.</a></td></tr>
-        
-<tr><td><a href="#">03:00 p.m.</a></td></tr>
-
-<tr><td><a href="#">04:00 p.m.</a></td></tr> 
-        
-<tr><td><a href="#">05:00 p.m.</a></td></tr>             
-    
-    </table>
-       
-<!--end with TIME--> 
-
+                
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style4">
+                    
+                </td>
+                <td class="auto-style6">Address</td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TXTBXADD" runat="server" Height="50px" TextMode="MultiLine" Width="280px"></asp:TextBox>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style3" colspan="3">
+                    <asp:Button ID="BTNREGISTER" runat="server" Text="Update Profile" Width="154px" OnClick="BTNREGISTER_Click" />
+                    &nbsp;<br />
+                    <br />
+                    <br />
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style3" colspan="3">
+                    <asp:Label ID="LBLMSG" runat="server" Text=""></asp:Label>
+                </td>
+                
+            </tr>
+             </table>
 
 </asp:Content>
 

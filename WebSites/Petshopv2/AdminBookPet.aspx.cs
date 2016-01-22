@@ -16,9 +16,16 @@ public partial class AdminBookPet : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            txtAdminBookPetDate.Visible = true;
+
+
             Calendar2.VisibleDate = DateTime.Today;
             FillHolidayDataset();
+
+            //Display list for DRPBRANCH dropdownlist
+            string query = "select BranchName, BranchID from Branch";
+            BindDropDownList(DRPBRANCH, query, "BranchName", "BranchID", "Select Branch");
+            DRPGROOMER.Enabled = false;
+            DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
         }
         HtmlLink canonical = new HtmlLink();
         canonical.Href = "http://localhost:57317/AdminHolidayPopup.aspx";
@@ -26,6 +33,26 @@ public partial class AdminBookPet : System.Web.UI.Page
         Page.Header.Controls.Add(canonical);
     }
 
+    //Genaral Function to populate dropdownlist
+    private void BindDropDownList(DropDownList DRP, string query, string text, string value, string defaultText)
+    {
+        string conString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlCommand cmd = new SqlCommand(query);
+        using (SqlConnection con = new SqlConnection(conString))
+        {
+            using (SqlDataAdapter sda = new SqlDataAdapter())
+            {
+                cmd.Connection = con;
+                con.Open();
+                DRP.DataSource = cmd.ExecuteReader();
+                DRP.DataTextField = text;
+                DRP.DataValueField = value;
+                DRP.DataBind();
+                con.Close();
+            }
+        }
+        DRP.Items.Insert(0, new ListItem(defaultText, "0"));
+    }
     protected void FillHolidayDataset()
     {
         DateTime firstDate = new DateTime(Calendar2.VisibleDate.Year,
@@ -55,7 +82,7 @@ public partial class AdminBookPet : System.Web.UI.Page
     {
         DataSet dsMonth = new DataSet();
         ConnectionStringSettings cs;
-        cs = ConfigurationManager.ConnectionStrings["petshoppeConnstr"];
+        cs = ConfigurationManager.ConnectionStrings["ConnectionString"];
         String connString = cs.ConnectionString;
         SqlConnection dbConnection = new SqlConnection(connString);
         String query;
@@ -76,16 +103,11 @@ public partial class AdminBookPet : System.Web.UI.Page
 
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-            ["petshoppeConnstr"].ConnectionString;
-    private SqlConnection conn;
-    private SqlCommand cmd;
-    private SqlDataReader rdr;
+            ["ConnectionString"].ConnectionString;
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
-        
-        string DatePick = Calendar2.SelectedDate.ToString("dd/MM/yyyy");
+        string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");
         Session["DatePick"] = DatePick;
-        txtAdminBookPetDate.Text = DatePick;
         Response.Redirect("AdminTimePopup.aspx");
     }
     protected void Calendar2_DayRender(object sender, DayRenderEventArgs e)
@@ -111,5 +133,35 @@ public partial class AdminBookPet : System.Web.UI.Page
                 }
             }
         }
+    }
+
+    protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DRPGROOMER.Enabled = false;
+        DRPGROOMER.Items.Clear();
+        DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
+
+        string branch = (DRPBRANCH.SelectedItem.Text);
+        Session["Branch"] = branch;
+        if (!string.IsNullOrEmpty(branch))
+        {
+            string query = string.Format("select  GroomerID, UserName  from BranchGroomer where BranchName= '{0}'", branch);
+
+            BindDropDownList(DRPGROOMER, query, "Username", "GroomerID", "Select Groomer");
+            DRPGROOMER.Enabled = true;
+            FillHolidayDataset();
+        }
+    }
+    protected void DRPGROOMER_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string Groomer = (DRPGROOMER.SelectedItem.Text);
+        Session["Groomer"] = Groomer;
+        FillHolidayDataset();
+    }
+    protected void DRPPETNUMBER_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string Petnumber = (DRPPETNUMBER.SelectedItem.Text);
+        Session["PetNumber"] = Petnumber;
+        FillHolidayDataset();
     }
 }

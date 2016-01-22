@@ -117,12 +117,10 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style3" colspan="3">
+                <td class="auto-style3" style="height: 51px"></td>
+                <td class="auto-style1" style="height: 51px"></td>
+                <td class="auto-style3" colspan="3" style="height: 51px">
                     <asp:Button Width="150px"  ID="btnAdminUserAcctsCreate" runat="server" Text="Create User" OnClick="btnAdminUserAcctsCreate_Click" />
-                    &nbsp;&nbsp;
-                    <asp:Button ID="btnAdminUserAcctsCancel" runat="server" Text="Cancel" Width="99px" OnClick="btnAdminUserAcctsCancel_Click" />
  
                    <br /><br />
                 </td>
