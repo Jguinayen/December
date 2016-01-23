@@ -471,6 +471,8 @@
 
         <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" />
         
+        <asp:Button ID="Button1" runat="server" Text="Auto Fill Data" OnClick="Button1_Click" />
+        
         <br />
 
     <!-- /Forms -->

@@ -14,6 +14,10 @@ public partial class Invoice : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        TXTBXCUSTNAME.Visible = false;
+        TXTBXCUSTID.Visible = false;
+        //TXTBXCUSTNAME.Text = Session["UserName"].ToString();
+        //TXTBXCUSTID.Text = Session["CustomerID"].ToString();
         string USERDATE = DateTime.Now.ToShortDateString();//will be substituted by Session[Date] after all good and running
         TXTBXINVDATE.Text = USERDATE;
         // TXTBXCUSTID.Text = Session["CustomerID"].ToString();
@@ -1211,6 +1215,6 @@ public partial class Invoice : System.Web.UI.Page
     }
     protected void BTNPRINTINVOICE_Click(object sender, EventArgs e)
     {
-
+        Response.Write("<script>alert('" + "Error! Please Attach Printer!" + "')</script>");
     }
 }

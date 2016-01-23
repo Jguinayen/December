@@ -89,7 +89,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
+                    <asp:DropDownList ID="DRPPETNAME" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True" OnSelectedIndexChanged="DRPPETNAME_SelectedIndexChanged">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetID], [PetName] FROM [PetDetails] WHERE ([CustomerID] = @CustomerID)">
                         <SelectParameters>
@@ -479,7 +479,7 @@
         <br />
         <br />
 
-        <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" />
+        <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" /> &nbsp; &nbsp; <a href="MemberBookAppt.aspx">To Homepage</a>
         
         <br />
 

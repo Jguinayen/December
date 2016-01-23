@@ -408,4 +408,17 @@ public partial class AdminBookPetPopoup : System.Web.UI.Page
             Clear();
         }
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        TXTBXCUSTIDNAME.Text = "WalkIn-Aris";
+        TXTBXPETID.Text = "WI-001";
+        TXTBXPETNAME.Text = "TigerMike";
+        TXTBXNOTES.Text = "Deadly Venum";
+        //DRPJOBTYPE.SelectedItem.Text = "";
+        TXTBXPETTYPE.Text = "Dog";
+        TXTBXBREED.Text = "Russian Bulldog";
+        TXTBXHAIRTYPE.Text = "Long";
+        TXTBXWEIGHT.Text = "45";
+        //DRPCOAT.SelectedItem.Text = "";
+    }
 }

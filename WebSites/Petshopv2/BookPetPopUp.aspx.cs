@@ -14,6 +14,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
+    private SqlDataReader rdr;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -95,6 +96,38 @@ public partial class BookPetPopUp : System.Web.UI.Page
     protected void Page_PreRenderComplete(object sender, EventArgs e)
     {
         TXTBXPETID.Text = DRPPETNAME.SelectedValue.ToString();
+        TXTBXPETID2.Text = DRPPETNAME2.SelectedValue.ToString();
+        TXTBXPETID3.Text = DRPPETNAME3.SelectedValue.ToString();
+        TXTBXPETID4.Text = DRPPETNAME4.SelectedValue.ToString();
+
+        conn = new SqlConnection(connstr);
+        cmd = new SqlCommand("select * from PetDetails where PetID='" + TXTBXPETID.Text + "'", conn);
+
+        SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
+        DataSet newDataSet = new DataSet();
+        newAdapter.Fill(newDataSet);
+
+        conn.Open();
+        rdr = cmd.ExecuteReader();
+
+        if (rdr.HasRows)
+        {
+            string PetType = newDataSet.Tables[0].Rows[0]["PetType"].ToString();
+            Session["PetType"] = PetType;
+            TXTBXPETTYPE.Text = Session["PetType"].ToString();
+
+            string PetBreed = newDataSet.Tables[0].Rows[0]["PetBreed"].ToString();
+            Session["PetBreed"] = PetBreed;
+            TXTBXBREED.Text = Session["PetBreed"].ToString();
+
+            string HairType = newDataSet.Tables[0].Rows[0]["HairType"].ToString();
+            Session["HairType"] = HairType;
+            TXTBXHAIRTYPE.Text = Session["HairType"].ToString();
+
+            string Weight = newDataSet.Tables[0].Rows[0]["Weight"].ToString();
+            Session["Weight"] = Weight;
+            TXTBXWEIGHT.Text = Session["Weight"].ToString();
+        }
     }
 
     //Genaral Function to populate dropdownlist
@@ -130,8 +163,103 @@ public partial class BookPetPopUp : System.Web.UI.Page
  
 
     private void Clear()
+    {       
+        TXTBXCUSTIDNAME.Text = "";
+        TXTBXPETID.Text = "";
+        DRPPETNAME.SelectedItem.Text = "";
+        TXTBXNOTES.Text = "";
+        DRPJOBTYPE.SelectedItem.Text = "";
+        TXTBXJOBDATE.Text = "";
+        TXTBXJOBTIME.Text = "";
+        TXTBXGROOMER.Text = "";
+        TXTBXBRANCH.Text = "";
+        TXTBXPETTYPE.Text = "";
+        TXTBXBREED.Text = "";
+        TXTBXHAIRTYPE.Text = "";
+        TXTBXWEIGHT.Text = "";
+        DRPCOAT.SelectedItem.Text = "";
+    }
+    private void Clear2()
     {
-       
+        TXTBXCUSTIDNAME.Text = "";
+        TXTBXPETID.Text = "";
+        DRPPETNAME.SelectedItem.Text = "";
+        TXTBXNOTES.Text = "";
+        DRPJOBTYPE.SelectedItem.Text = "";
+        TXTBXJOBDATE.Text = "";
+        TXTBXJOBTIME.Text = "";
+        TXTBXGROOMER.Text = "";
+        TXTBXBRANCH.Text = "";
+        TXTBXPETTYPE.Text = "";
+        TXTBXBREED.Text = "";
+        TXTBXHAIRTYPE.Text = "";
+        TXTBXWEIGHT.Text = "";
+        DRPCOAT.SelectedItem.Text = "";
+
+        TXTBXCUSTIDNAME2.Text = "";
+        TXTBXPETID2.Text = "";
+        DRPPETNAME2.SelectedItem.Text = "";
+        TXTBXNOTES2.Text = "";
+        DRPJOBTYPE2.SelectedItem.Text = "";
+        TXTBXJOBDATE2.Text = "";
+        TXTBXJOBTIME2.Text = "";
+        TXTBXGROOMER2.Text = "";
+        TXTBXBRANCH2.Text = "";
+        TXTBXPETTYPE2.Text = "";
+        TXTBXBREED2.Text = "";
+        TXTBXHAIRTYPE2.Text = "";
+        TXTBXWEIGHT2.Text = "";
+        DRPCOAT2.SelectedItem.Text = "";
+    }
+    private void Clear3()
+    {
+        TXTBXCUSTIDNAME.Text = "";
+        TXTBXPETID.Text = "";
+        DRPPETNAME.SelectedItem.Text = "";
+        TXTBXNOTES.Text = "";
+        DRPJOBTYPE.SelectedItem.Text = "";
+        TXTBXJOBDATE.Text = "";
+        TXTBXJOBTIME.Text = "";
+        TXTBXGROOMER.Text = "";
+        TXTBXBRANCH.Text = "";
+        TXTBXPETTYPE.Text = "";
+        TXTBXBREED.Text = "";
+        TXTBXHAIRTYPE.Text = "";
+        TXTBXWEIGHT.Text = "";
+        DRPCOAT.SelectedItem.Text = "";
+
+        TXTBXCUSTIDNAME2.Text = "";
+        TXTBXPETID2.Text = "";
+        DRPPETNAME2.SelectedItem.Text = "";
+        TXTBXNOTES2.Text = "";
+        DRPJOBTYPE2.SelectedItem.Text = "";
+        TXTBXJOBDATE2.Text = "";
+        TXTBXJOBTIME2.Text = "";
+        TXTBXGROOMER2.Text = "";
+        TXTBXBRANCH2.Text = "";
+        TXTBXPETTYPE2.Text = "";
+        TXTBXBREED2.Text = "";
+        TXTBXHAIRTYPE2.Text = "";
+        TXTBXWEIGHT2.Text = "";
+        DRPCOAT2.SelectedItem.Text = "";
+
+        TXTBXCUSTIDNAME3.Text = "";
+        TXTBXPETID3.Text = "";
+        DRPPETNAME3.SelectedItem.Text = "";
+        TXTBXNOTES3.Text = "";
+        DRPJOBTYPE3.SelectedItem.Text = "";
+        TXTBXJOBDATE3.Text = "";
+        TXTBXJOBTIME3.Text = "";
+        TXTBXGROOMER3.Text = "";
+        TXTBXBRANCH3.Text = "";
+        TXTBXPETTYPE3.Text = "";
+        TXTBXBREED3.Text = "";
+        TXTBXHAIRTYPE3.Text = "";
+        TXTBXWEIGHT3.Text = "";
+        DRPCOAT3.SelectedItem.Text = "";
+    }
+    private void Clear4()
+    {
         TXTBXCUSTIDNAME.Text = "";
         TXTBXPETID.Text = "";
         DRPPETNAME.SelectedItem.Text = "";
@@ -220,7 +348,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             cmd.ExecuteNonQuery();
             conn.Close();
             LBLMESS.Text = "Successfully Booked!";
-            Clear();
+            //Clear();
         }
 
         else if (Session["PetNumber"] == "2")
@@ -269,7 +397,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             cmd.ExecuteNonQuery();
             conn.Close();
             LBLMESS.Text = "Successfully Booked!";
-            Clear();
+            Clear2();
         }
 
         else if (Session["PetNumber"] == "3")
@@ -340,7 +468,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
             cmd.Parameters.Clear();
             conn.Close();
             LBLMESS.Text = "Successfully Booked!";
-            Clear();
+            Clear3();
         }
 
         else if (Session["PetNumber"] == "4")
@@ -432,9 +560,41 @@ public partial class BookPetPopUp : System.Web.UI.Page
             cmd.Parameters.Clear();
             conn.Close();
             LBLMESS.Text = "Successfully Booked!";
-            Clear();
+            Clear4();
         }
     }
 
+    
+    protected void DRPPETNAME_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //conn = new SqlConnection(connstr);
+        //cmd = new SqlCommand("select * from PetDetails where PetID=PetID", conn);
 
+        //SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
+        //DataSet newDataSet = new DataSet();
+        //newAdapter.Fill(newDataSet);
+
+        //conn.Open();
+        //rdr = cmd.ExecuteReader();
+
+        //if (rdr.HasRows)
+        //{
+        //    string PetType = newDataSet.Tables[0].Rows[0]["PetType"].ToString();
+        //    Session["PetType"] = PetType;
+        //    TXTBXPETTYPE.Text = Session["PetType"].ToString();
+            
+        //    string PetBreed = newDataSet.Tables[0].Rows[0]["PetBreed"].ToString();
+        //    Session["PetBreed"] = PetBreed;
+        //    TXTBXBREED.Text = Session["PetBreed"].ToString();
+            
+        //    string HairType = newDataSet.Tables[0].Rows[0]["HairType"].ToString();
+        //    Session["HairType"] = HairType;
+        //    TXTBXHAIRTYPE.Text = Session["HairType"].ToString();
+            
+        //    string Weight = newDataSet.Tables[0].Rows[0]["Weight"].ToString();
+        //    Session["Weight"] = Weight;
+        //    TXTBXWEIGHT.Text = Session["Weight"].ToString();
+        //}
+            
+    }
 }

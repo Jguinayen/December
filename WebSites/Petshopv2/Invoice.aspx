@@ -115,20 +115,38 @@
     <div class="container">
 
         <!-- TOP MEMBER NAVBAR-->
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Hi, Admin</a>
-    </div>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hello <%:Session["UserName"]%></a>
+        </div>
+
+   
     <div>
       <ul class="nav navbar-nav">
         <li><a href="Admin.aspx">Calendar</a></li>
-        <li><a href="DateSettings.aspx">Date Settings</a></li>
-        <li><a href="UserAccts.aspx">User Accounts</a></li>
-        <li><a href="Reports.aspx">Reports</a></li>
-        <li><a href="Account.aspx">My Account</a></li>
-        <li class="active"><a href="Invoice.aspx">Invoice</a></li>
-          <li><a href="BookPet.aspx">Book an Appointment</a></li>
+        <li><a href="AdminUserAccts.aspx">User Accounts</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+            <ul class="dropdown-menu">
+                <li><a href="AdminReports.aspx">Upcoming Bookings</a></li>
+                <li><a href="AdminReports.aspx">Users</a></li>
+                <li><a href="AdminReports.aspx">Customers</a></li>
+                <li><a href="AdminReports.aspx">Invoices</a></li>
+            </ul>
+         </li>
+        
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+            <ul class="dropdown-menu">
+                <li><a href="AdminMyAcct.aspx">Update Profile</a></li>
+                <li><a href="AdminMyAcct.aspx">Change Password</a></li>
+            </ul>
+         </li>
+
+        <li><a href="Invoice.aspx">Invoice</a></li>
+        <%--<li class="divider"></li>--%>
+        <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <%--<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>--%>
@@ -173,7 +191,7 @@
                         <tr>
                             <td>
                                 <div class="center-block">
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:98%; margin-left: 0px 0px 0px 6px;">
                                         <Columns>
                                             <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                                             <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />
@@ -218,9 +236,9 @@
                             <td class="auto-style34"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="105px"></asp:TextBox></td>
                         </tr>
                         <tr>
-                            <td>Customer Name </td>
+                            <td><%--Customer Name--%> </td>
                             <td>
-                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp; ID #:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp;<%-- ID #--%>:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
