@@ -116,7 +116,7 @@
            <li><a href="MemberBookAppt.aspx">Book Now</a></li>
 
            <li><%--<a href="UpcomingBooks.aspx" onclick=" Windowopen(this.href); 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" target="_blank"> --%>
-               <a href="MemberCancelBook.aspx">Bookings</a></li>
+               <a href="MemberUpcoming.aspx">Bookings</a></li>
 
            <li><%--<a href="MemberCancelBook.aspx" onclick=" Window.open(this.href); 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">--%>
                <a href="MemberCancelBook.aspx">Cancelled Bookings</a></li>

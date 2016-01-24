@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-      <section id="main-slider" class="no-margin">
+       <section id="main-slider" class="no-margin">
         <div class="carousel slide">
             <ol class="carousel-indicators">
                 <li data-target="#main-slider" data-slide-to="0" class="active"></li>
@@ -15,39 +15,44 @@
                 <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="item active" style="background-image: url(img/slides/1.jpg)">
+                <div class="item active" style="background-image: url(img/slides/1.jpg);">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">PETSHOPPE GROOMING!</h2>
+                                    
+                                    <h2 class="animation animated-item-1" style="color:#0094ff; display:block; width:300px;">
+                                        <%--<span class="animation animated-item-1" style="font-size:18pt; color:#0094ff;">Welcome to</span>--%>
+                                        PETSHOPPE GROOMING!</h2>
                                     <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; margin-top:15px;">Safe and modern grooming facilities.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(img/slides/2.jpg)">
+                <div class="item" style="background-image: url(img/slides/2.jpg);">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content center centered">
-                                    <h2 class="animation animated-item-1">Powerful and Responsive HTML Template</h2>
-                                    <p class="animation animated-item-2">Phasellus adipiscing felis a dictum dictum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at ligula risus. </p>
-                                    <br>
-                                    <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
+                                <div class="carousel-content centered">
+                                    
+                                    <h2 class="animation animated-item-1" style="color:#ffffff; display:block; width:300px;">
+                                        <%--<span class="animation animated-item-1" style="font-size:18pt; color:#ffffff;">Welcome to</span>--%>
+                                        PETSHOPPE GROOMING!</h2>
+                                    <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; margin-top:15px;">Make an Appointment at your local Petshoppe Groomer today.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(img/slides/3.jpg)">
+                <div class="item" style="background-image: url(img/slides/3.jpg)"> 
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Works Seamlessly Well on All Devices</h2>
-                                    <p class="animation animated-item-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae euismod lacus. Maecenas in tempor lectus. Nam mattis, odio ut dapibus ornare, libero. </p>
+                                <div class="carousel-content centered" style="margin-top:10px;">
+                                    <h2 class="animation animated-item-1" style="color:#aec62c; display:block; width:300px;">
+                                        PETSHOPPE GROOMING!</h2>
+                                    <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; font-size:12pt; margin-top:15px;">Look good, smell great - keep your pet healthy and happy with regular grooming to enhance your dogs coat.</p>
                                     <br>
 									<a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
                                 </div>
@@ -72,7 +77,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="calltoaction-wrapper">
-							<h3>Welcome to <span style="color:#aec62c; text-transform:uppercase;font-size:24px;">Animates!</span> Everything for Pets!</h3> <!--<a href="http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/" class="btn btn-orange">Download here!</a>-->
+							<h3>Welcome to <span style="color:#aec62c; text-transform:uppercase;font-size:24px;">Petshoppe!</span> Everything for Pets!</h3> <!--<a href="http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/" class="btn btn-orange">Download here!</a>-->
 						</div>
 					</div>
 				</div>
@@ -82,7 +87,7 @@
 
 
 		<!-- Services -->
-        <div class="section section-white">
+       <%-- <div class="section section-white">
 	        <div class="container">
 	        	<div class="row">
 	        		<div class="col-md-4 col-sm-6">
@@ -111,12 +116,88 @@
 	        		</div>
 	        	</div>
 	        </div>
-	    </div>
+	    </div>--%>
 	    <!-- End Services -->
 
 
-<hr>
+<%--<hr>--%>
 
+		<!-- Our Portfolio -->	
+
+        <div class="section section-white">
+	        <div class="container">
+	        	<div class="row">
+	
+				<div class="section-title">
+				<h1 style="font-size:20pt;">What's New</h1>
+				</div>
+		
+		
+			<ul class="grid cs-style-3" style="margin-top:-50px;">
+	        	<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/4.jpg" alt="img04">
+						<figcaption>
+							<h3>Shop Online</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+	        	</div>	
+				<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/1.jpg" alt="img01">
+						<figcaption>
+							<h3>Events</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/2.jpg" alt="img02">
+						<figcaption>
+							<h3>Pet Grooming</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/5.jpg" alt="img05">
+						<figcaption>
+							<h3>Services</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/3.jpg" alt="img03">
+						<figcaption>
+							<h3>About Us</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<figure>
+						<img src="img/portfolio/6.jpg" alt="img06">
+						<figcaption>
+							<h3>Vet Care</h3>
+							<span>Petshoppe</span>
+							<a href="Default.aspx">Take a look</a>
+						</figcaption>
+					</figure>
+				</div>
+			</ul>
+	        	</div>
+	        </div>
+	    </div>
 		<!-- Our Portfolio -->
 			
 <hr style="padding: 0px; margin:0px;">
@@ -133,13 +214,13 @@
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-1.jpg" alt="Client Name"></a></div>
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-2.jpg" alt="Client Name"></a></div>
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-3.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-4.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-5.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-6.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-7.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-8.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-9.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-10.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-1.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-2.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-3.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-1.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-2.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-3.jpg" alt="Client Name"></a></div>
+					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-1.jpg" alt="Client Name"></a></div>
 					<%--<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-11.jpg" alt="Client Name"></a></div>
 					<div class="col-lg-1 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-12.jpg" alt="Client Name"></a></div>--%>
 				</div>

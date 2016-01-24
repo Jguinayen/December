@@ -118,7 +118,14 @@
 		    		</div>				
 		    		<div class="col-footer col-md-4 col-xs-6">
 		    			<h3>Our Social Networks</h3>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+						<p>
+SERVICES<br />
+Vet Care<br />
+Puppy School<br />
+Pet Grooming<br />
+DIY Dog Wash<br />
+Pet Adoption<br />
+Pet Insurance</p>
 		    			<div>
 		    				<img src="img/icons/facebook.png" width="32" alt="Facebook"/>
 		    				<img src="img/icons/twitter.png" width="32" alt="Twitter"/>
@@ -128,7 +135,7 @@
 		    		</div>
 		    		<div class="col-footer col-md-4 col-xs-6">
 		    			<h3>About Petshoppe</h3>
-		    				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.</p>
+		    				<p>Petshoppe sells one of the biggest ranges of pet food in NZ, as well as a huge range of veterinary products and pet accessories. It's everything for pets!</p>
 		    		</div>
 
 		    	</div>
