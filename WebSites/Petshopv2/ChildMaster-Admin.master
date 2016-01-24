@@ -66,9 +66,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminReports.aspx">Upcoming Bookings</a></li>
-                <li><a href="AdminReports.aspx">Users</a></li>
-                <li><a href="AdminReports.aspx">Customers</a></li>
-                <li><a href="AdminReports.aspx">Invoices</a></li>
+                <li><a href="ReportUsers.aspx">Users</a></li>
+                <li><a href="ReportCustomers.aspx">Customers</a></li>
+                <li><a href="ReportInvoices.aspx">Invoices</a></li>
             </ul>
          </li>
         
