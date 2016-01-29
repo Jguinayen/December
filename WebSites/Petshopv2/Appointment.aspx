@@ -20,34 +20,16 @@
     </tr>
     </table>
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
-    <tr>
         <tr>
             <td style="width:117px;">
-                <asp:GridView ID="GRIDVIEWAPPTTODAY" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GRIDVIEWAPPTTODAY_SelectedIndexChanged">
-                    <Columns>
-                        <asp:BoundField DataField="CustomerID" HeaderText="CustomerID" SortExpression="CustomerID" />
-                        <asp:BoundField DataField="PetID" HeaderText="PetID" SortExpression="PetID" />
-                        <asp:BoundField DataField="PetName" HeaderText="PetName" SortExpression="PetName" />
-                        <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />
-                        <asp:BoundField DataField="JobDate" HeaderText="JobDate" SortExpression="JobDate" />
-                        <asp:BoundField DataField="JobTime" HeaderText="JobTime" SortExpression="JobTime" />
-                        <asp:BoundField DataField="PetType" HeaderText="PetType" SortExpression="PetType" />
-                        <asp:BoundField DataField="Breed" HeaderText="Breed" SortExpression="Breed" />
-                        <asp:BoundField DataField="Weight" HeaderText="Weight" SortExpression="Weight" />
-                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-                    </Columns>
+                <asp:GridView ID="GRIDVIEWAPPTTODAY" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GRIDVIEWAPPTTODAY_SelectedIndexChanged">
                 </asp:GridView>
             </td>
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [CustomerID], [PetID], [PetName], [JobType], [JobDate], [JobTime], [PetType], [Breed], [Weight] FROM [BookingDetails] WHERE ([Groomer] = @Groomer)">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="TXTGROOMER" Name="Groomer" PropertyName="Text" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
     </tr>
    </table>
 <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
     <tr>
-            <td style="width:117px;">Customer ID</td>
+            <td style="width:117px;">Customer IDustomer ID</td>
             <td class="auto-style6" style="width: 156px">
             <asp:TextBox ID="TXTCUSTID" runat="server" Width="140px"></asp:TextBox> </td>
             <td class="auto-style6" style="width: 123px">
@@ -93,7 +75,7 @@
             </td>
                 
     </tr>
-    
+    <tr>
             <td class="auto-style6" style="width: 156px">
                 &nbsp;</td>
             <td class="auto-style6" style="width: 246px">
