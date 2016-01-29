@@ -16,7 +16,7 @@ public partial class MemberHistory : System.Web.UI.Page
         string MEMBERHISTORY = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(MEMBERHISTORY);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTemp where CustomerID = 'CustomerID'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTransaction where CustomerID ='" + Session["CustomerID"].ToString() +"'", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

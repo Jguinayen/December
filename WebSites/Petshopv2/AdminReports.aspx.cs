@@ -16,7 +16,7 @@ public partial class AdminReports : System.Web.UI.Page
         string ADMINBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(ADMINBOOKING);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Upcoming'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'upcoming'", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

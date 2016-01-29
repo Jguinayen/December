@@ -16,7 +16,7 @@ public partial class MemberUpcoming : System.Web.UI.Page
         string UPCOMINGBOOK = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(UPCOMINGBOOK);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Upcoming'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status='Upcoming' And CustomerID='" + Session["CustomerID"].ToString() +"'", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

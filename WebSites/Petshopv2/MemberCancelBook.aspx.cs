@@ -16,7 +16,7 @@ public partial class MemberCancelBook : System.Web.UI.Page
         string MEMCANCELBOOK = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(MEMCANCELBOOK);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Cancelled'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Cancelled' and CustomerID='" + Session["CustomerID"].ToString() + "'", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

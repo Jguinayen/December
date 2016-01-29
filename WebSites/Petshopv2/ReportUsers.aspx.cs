@@ -34,14 +34,17 @@ public partial class ReportUsers : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.ClearContent();
-        Response.AppendHeader("content-disposition", "attachment; filename=UsersDB.xls");
+        Response.AppendHeader("content-disposition", "attachment; filename=UserDB.xls");
         Response.ContentType = "application/excel";
 
         System.IO.StringWriter sw = new System.IO.StringWriter();
         HtmlTextWriter htw = new HtmlTextWriter(sw);
-        GridViewUser.RenderControl(htw);
+        //GridViewUser.RenderControl(htw);
         Response.Write(sw.ToString());
         Response.End();
+
+        //StringWriter stringWriter = new StringWriter();
+        //HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
 
         GridViewUser.HeaderRow.Style.Add("background-color", "#FFFFFF");
 

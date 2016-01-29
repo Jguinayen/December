@@ -16,7 +16,7 @@ public partial class ReportCustomers : System.Web.UI.Page
         string REPORTCUSTOMERS = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(REPORTCUSTOMERS);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from AdminUsers where UserType = 'Member'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from CustomerDetails", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

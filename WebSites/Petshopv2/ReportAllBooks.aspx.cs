@@ -16,7 +16,7 @@ public partial class ReportAllBooks : System.Web.UI.Page
         string REPORTALLBOOKS = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(REPORTALLBOOKS);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Upcoming'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);
@@ -34,7 +34,7 @@ public partial class ReportAllBooks : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.ClearContent();
-        Response.AppendHeader("content-disposition", "attachment; filename=InvoicesDB.xls");
+        Response.AppendHeader("content-disposition", "attachment; filename=ReportAllBooks.xls");
         Response.ContentType = "application/excel";
 
         System.IO.StringWriter sw = new System.IO.StringWriter();
