@@ -104,6 +104,7 @@ public partial class GroomerBookPet : System.Web.UI.Page
     private string connstr =
             System.Web.Configuration.WebConfigurationManager.ConnectionStrings
             ["ConnectionString"].ConnectionString;
+    
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
         string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");

@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="ReportInvoices.aspx.cs" Inherits="ReportInvoices" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ChildMaster-Admin.master" AutoEventWireup="true" CodeFile="ReportAllBooks.aspx.cs" Inherits="ReportAllBooks" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
-     <p id="pagetitle">Reports - Invoices</p>
+     <p id="pagetitle">Reports - All Bookings</p>
 
  <%-- REPORTS MENU --%>
 
@@ -11,8 +11,8 @@
 
         <asp:Button ID="Button1" runat="server" Text="Export to Excel" OnClick="Button1_Click" />
         <br /><br />
-    
-        <asp:GridView ID="GridViewInvoice" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+        <asp:GridView ID="GridViewAllBooks" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -27,9 +27,6 @@
         </asp:GridView>
 
     </div>
-
-
-                
 
                 <%-- END REPORTS MENU --%>
 </asp:Content>

@@ -16,13 +16,19 @@ public partial class AdminReports : System.Web.UI.Page
         string ADMINBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(ADMINBOOKING);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from BookingDetails where Status = 'Upcoming'", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);
 
-        GridView1.DataSource = ds1;
-        GridView1.DataBind();
+        GridViewUpcoming.DataSource = ds1;
+        GridViewUpcoming.DataBind();
+    }
+
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        /*Tell the compiler that the control is rendered
+         * explicitly by overriding the VerifyRenderingInServerForm event.*/
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -31,17 +37,23 @@ public partial class AdminReports : System.Web.UI.Page
         Response.AppendHeader("content-disposition", "attachment; filename=UpcomingBooks.xls");
         Response.ContentType = "application/excel";
 
-        StringWriter stringWriter = new StringWriter();
-        HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
+        System.IO.StringWriter sw = new System.IO.StringWriter();
+        HtmlTextWriter htw = new HtmlTextWriter(sw);
+        GridViewUpcoming.RenderControl(htw);
+        Response.Write(sw.ToString());
+        Response.End();
 
-        GridView1.HeaderRow.Style.Add("background-color", "#FFFFFF");
+        //StringWriter stringWriter = new StringWriter();
+        //HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
 
-        foreach (TableCell tableCell in GridView1.HeaderRow.Cells)
+        GridViewUpcoming.HeaderRow.Style.Add("background-color", "#FFFFFF");
+
+        foreach (TableCell tableCell in GridViewUpcoming.HeaderRow.Cells)
         {
             tableCell.Style["background-color"] = "#A55129";
         }
 
-        foreach (GridViewRow gridViewRow in GridView1.Rows)
+        foreach (GridViewRow gridViewRow in GridViewUpcoming.Rows)
         {
             gridViewRow.BackColor = System.Drawing.Color.White;
             foreach (TableCell gridViewRowTableCell in gridViewRow.Cells)

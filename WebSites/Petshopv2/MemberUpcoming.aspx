@@ -15,7 +15,7 @@
         <asp:Button ID="Button1" runat="server" Text="Export to Excel" OnClick="Button1_Click" />
         <br /><br />
     
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+        <asp:GridView ID="GridUpcoming" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

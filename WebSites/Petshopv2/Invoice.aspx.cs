@@ -9,6 +9,13 @@ using System.Web.UI.HtmlControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
+using System.Text;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
+
 
 public partial class Invoice : System.Web.UI.Page
 {
@@ -20,7 +27,7 @@ public partial class Invoice : System.Web.UI.Page
         //TXTBXCUSTID.Text = Session["CustomerID"].ToString();
         string USERDATE = DateTime.Now.ToShortDateString();//will be substituted by Session[Date] after all good and running
         TXTBXINVDATE.Text = USERDATE;
-        // TXTBXCUSTID.Text = Session["CustomerID"].ToString();
+        TXTBXCUSTID.Text = "2222";///Session["CustomerID"].ToString();
         //TXTBXCUSTNAME.Text = Session["UserName"].ToString();
         //if (!this.IsPostBack)
         //{
@@ -62,9 +69,17 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPFGROOM.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            
+            // for counting jobtype Full Groom...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as FGROOMQTY from InvoiceTransaction where JobType = 'Full Groom'",conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYFGROOM.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYFGROOM.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYFGROOM.Text) * Convert.ToDouble(TXTBXPFGROOM.Text);
@@ -134,9 +149,17 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPPLAT.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype Platinum...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as PLATINUMQTY from InvoiceTransaction where JobType = 'Platinum'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYPLAT.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYPLAT.Text = "1";
+            
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYPLAT.Text) * Convert.ToDouble(TXTBXPPLAT.Text);
@@ -204,9 +227,17 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPGOLD.Text = reader["Price"].ToString();
 
                 reader.Close();
+               // conn.Close();
+            }
+
+            // for counting jobtype Gold Groom...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as GGROOMQTY from InvoiceTransaction where JobType = 'Gold Groom'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYGOLD.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYGOLD.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYGOLD.Text) * Convert.ToDouble(TXTBXPGOLD.Text);
@@ -274,9 +305,16 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPMINI.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype Mini Groom...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as MINIGROOMQTY from InvoiceTransaction where JobType = 'Mini Groom'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYMINI.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYMINI.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYMINI.Text) * Convert.ToDouble(TXTBXPMINI.Text);
@@ -341,9 +379,16 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPSHAMPOO.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype Shampoo...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as SHAMPOOQTY from InvoiceTransaction where JobType = 'Shampoo'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYSHAMPOO.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYSHAMPOO.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYSHAMPOO.Text) * Convert.ToDouble(TXTBXPSHAMPOO.Text);
@@ -408,9 +453,16 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPWB.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype Washblow...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as WBQTY from InvoiceTransaction where JobType = 'Washblow'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYWB.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYWB.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYWB.Text) * Convert.ToDouble(TXTBXPWB.Text);
@@ -1215,6 +1267,88 @@ public partial class Invoice : System.Web.UI.Page
     }
     protected void BTNPRINTINVOICE_Click(object sender, EventArgs e)
     {
-        Response.Write("<script>alert('" + "Error! Please Attach Printer!" + "')</script>");
+        //Dummy data for Invoice (Bill).
+        string CompanyName = "Animates NZ Holdings";
+        int CustomerID = Convert.ToInt32(TXTBXCUSTID.Text);
+            //Session["CustomerID"].ToString();
+        DataTable dt = new DataTable();
+        dt.Columns.AddRange(new DataColumn[5] {
+                            new DataColumn("JobID", typeof(string)),
+                            new DataColumn("JobType", typeof(string)),
+                            new DataColumn("Price", typeof(int)),
+                            new DataColumn("Quantity", typeof(int)),
+                            new DataColumn("Total", typeof(int))});
+        dt.Rows.Add(101, "Sun Glasses", 200, 5, 1000);
+        dt.Rows.Add(102, "Jeans", 400, 2, 800);
+        dt.Rows.Add(103, "Trousers", 300, 3, 900);
+        dt.Rows.Add(104, "Shirts", 550, 2, 1100);
+
+        using (StringWriter sw = new StringWriter())
+        {
+            using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+            {
+                StringBuilder sb = new StringBuilder();
+
+                //Generate Invoice (Bill) Header.
+                sb.Append("<table width='100%' cellspacing='0' cellpadding='2'>");
+                sb.Append("<tr><td align='center' style='background-color: #18B5F0' colspan = '2'><b>Invoice Sheet</b></td></tr>");
+                sb.Append("<tr><td colspan = '2'></td></tr>");
+                sb.Append("<tr><td><b>CustomerID: </b>");
+                sb.Append(CustomerID);
+                sb.Append("</td><td align = 'right'><b>Date: </b>");
+                sb.Append(DateTime.Now);
+                sb.Append(" </td></tr>");
+                sb.Append("<tr><td colspan = '2'><b>Company Name: </b>");
+                sb.Append(CompanyName);
+                sb.Append("</td></tr>");
+                sb.Append("</table>");
+                sb.Append("<br />");
+
+                //Generate Invoice (Bill) Items Grid.
+
+                //sb.Append("<table border = '1'>");
+                //sb.Append("<tr>");
+                //foreach (DataColumn column in dt.Columns)
+                //{
+                //    sb.Append("<th style = 'background-color: #D20B0C;color:#ffffff'>");
+                //    sb.Append(column.ColumnName);
+                //    sb.Append("</th>");
+                //}
+                //sb.Append("</tr>");
+                //foreach (DataRow row in dt.Rows)
+                //{
+                //    sb.Append("<tr>");
+                //    foreach (DataColumn column in dt.Columns)
+                //    {
+                //        sb.Append("<td>");
+                //        sb.Append(row[column]);
+                //        sb.Append("</td>");
+                //    }
+                //    sb.Append("</tr>");
+                //}
+                //sb.Append("<tr><td align = 'right' colspan = '");
+                //sb.Append(dt.Columns.Count - 1);
+                //sb.Append("'>Total</td>");
+                //sb.Append("<td>");
+                //sb.Append(dt.Compute("sum(Total)", ""));
+                //sb.Append("</td>");
+                //sb.Append("</tr></table>");
+
+                //Export HTML String as PDF.
+                StringReader sr = new StringReader(sb.ToString());
+                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                pdfDoc.Open();
+                htmlparser.Parse(sr);
+                pdfDoc.Close();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment;filename=Invoice_" + CustomerID + ".pdf");
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Write(pdfDoc);
+                Response.End();
+            }
+        }
+        //Response.Write("<script>alert('" + "Error! Please Attach Printer!" + "')</script>");
     }
 }

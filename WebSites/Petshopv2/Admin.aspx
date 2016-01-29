@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
+    <p id="pagetitle">Admin Calendar</p>
 
      <table style="width: 100%; border: 1px solid #000; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr>

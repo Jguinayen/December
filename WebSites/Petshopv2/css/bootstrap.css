@@ -3455,6 +3455,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+    top: 0px;
+    left: 0px;
 }
 .nav > li > a {
   position: relative;
@@ -5418,6 +5420,7 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 100%;
+  height: 460px;
   overflow: hidden;
 }
 .carousel-inner > .item {
