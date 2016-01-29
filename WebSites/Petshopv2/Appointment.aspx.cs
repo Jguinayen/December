@@ -15,29 +15,16 @@ public partial class Appointment : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        //TXTGROOMERID.Text = Session["AdminUserID"].ToString();
-        //TXTGROOMERID.Enabled = false;
-        //TXTGROOMER.Text = Session["UserName"].ToString();
-        //TXTGROOMER.Enabled = false;
-
-        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        SqlConnection conn = new SqlConnection(connStr);
-        SqlCommand cmd;
-
-        cmd = new SqlCommand("Select * from BookingDetails where Groomer='" +TXTGROOMER.Text+ "' ", conn);
-        conn.Open();
-        cmd.ExecuteNonQuery();
-        GRIDVIEWAPPTTODAY.DataBind();
-        conn.Close();
+        
     }
     protected void GRIDVIEWAPPTTODAY_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int rowIndex = GRIDVIEWAPPTTODAY.SelectedIndex;
-        TXTCUSTID.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[0].Text;
-        TXTPETID.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[1].Text;
-        TXTPETNAME.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[2].Text;
-        TXTPETBREED.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[3].Text;
-        //TXTPRECAUTION.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[1].Text;
+        //int rowIndex = GRIDVIEWAPPTTODAY.SelectedIndex;
+        //TXTCUSTID.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[0].Text;
+        //TXTPETID.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[1].Text;
+        //TXTPETNAME.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[2].Text;
+        //TXTPETBREED.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[3].Text;
+        ////TXTPRECAUTION.Text = GRIDVIEWAPPTTODAY.SelectedRow.Cells[1].Text;
     }
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

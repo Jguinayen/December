@@ -16,7 +16,7 @@ public partial class ReportInvoices : System.Web.UI.Page
         string REPORTINVOICES = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(REPORTINVOICES);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from Invoice where Status = 'Invoice'", con);
+        SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTransaction", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

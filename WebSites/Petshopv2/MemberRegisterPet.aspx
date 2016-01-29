@@ -21,9 +21,9 @@
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style15">Pet ID</td>
+                <td class="auto-style15"><%--Pet ID--%></td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="TXTBXPETID" runat="server"></asp:TextBox>
+                    <%--<asp:TextBox ID="TXTBXPETID" runat="server"></asp:TextBox>--%>
                 </td>
                 <td class="auto-style6">Breed</td>
                 <td class="auto-style15">
