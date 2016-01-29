@@ -23,7 +23,6 @@
                         <asp:ListItem>2</asp:ListItem>
                         <asp:ListItem>3</asp:ListItem>
                         <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>5</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style15" style="height: 24px"></td>

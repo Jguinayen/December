@@ -21,7 +21,7 @@
         <asp:Button ID="btnAdminTimePopup03pm" runat="server" Text="03:00 PM" OnClick="btnAdminTimePopup03pm_Click" CssClass="btn btn-success" style="width:100%; margin: 2px 0px 2px 0px;" /><br />
         <asp:Button ID="btnAdminTimePopup04pm" runat="server" Text="04:00 PM" OnClick="btnAdminTimePopup04pm_Click" CssClass="btn btn-success" style="width:100%; margin: 2px 0px 2px 0px;" />
         <br />
-        <asp:TextBox ID="txtAdminTimePopupTimePick" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtAdminTimePopupTimePick" runat="server" Visible="False"></asp:TextBox>
         <br />
 
     </div>

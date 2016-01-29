@@ -15,11 +15,10 @@ public partial class MemberBookAppt : System.Web.UI.Page
     protected DataSet dsHolidays;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Calendar2.Enabled = false;
         if (!IsPostBack)
         {
-
-
+            Calendar2.Enabled = false;
             Calendar2.VisibleDate = DateTime.Today;
             FillHolidayDataset();
 
@@ -29,7 +28,6 @@ public partial class MemberBookAppt : System.Web.UI.Page
             DRPGROOMER.Enabled = false;
             DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
         }
-       
     }
 
     //Genaral Function to populate dropdownlist
@@ -101,21 +99,48 @@ public partial class MemberBookAppt : System.Web.UI.Page
         return dsMonth;
     }
 
-
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
     {
-        string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");
-        Session["DatePick"] = DatePick;
-        Response.Redirect("MemberTimePopup.aspx");
+        //string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");
+        //Session["DatePick"] = DatePick;
+        //Response.Redirect("MemberTimePopup.aspx");
+
+        if (Calendar2.Enabled == true)
+        {
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("Select * from PetDetails where CustomerID='" + Session["CustomerID"] + "'", conn);
+
+            SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
+            DataSet newDataSet = new DataSet();
+            newAdapter.Fill(newDataSet);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
+            {
+                string DatePick = Calendar2.SelectedDate.ToString("MM/dd/yyyy");
+                Session["DatePick"] = DatePick;
+                Response.Redirect("MemberTimePopup.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('" + "Error! You have no registered pets. You need to register a pet first!" + "')</script>");
+                Response.Redirect("MemberRegisterPet.aspx");
+            }
+            conn.Close();
+        }
     }
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-    
+    private SqlConnection conn;
+    private SqlCommand cmd;
+    private SqlDataReader rdr;
 
     //Event to populate DRPGROOMER dropdownlist
     protected void DRPBRANCH_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        Calendar2.Enabled = true;
         DRPGROOMER.Enabled = false;
         DRPGROOMER.Items.Clear();
         DRPGROOMER.Items.Insert(0, new ListItem("Select Groomer", "0"));
@@ -157,6 +182,7 @@ public partial class MemberBookAppt : System.Web.UI.Page
     }
     protected void DRPGROOMER_SelectedIndexChanged(object sender, EventArgs e)
     {
+        Calendar2.Enabled = true;
         string Groomer = (DRPGROOMER.SelectedItem.Text);
         Session["Groomer"] = Groomer;
         FillHolidayDataset();
@@ -166,5 +192,6 @@ public partial class MemberBookAppt : System.Web.UI.Page
         string PetNumber = (DRPPETNUMBER.SelectedItem.Text);
         Session["PetNumber"] = PetNumber;
         FillHolidayDataset();
+        Calendar2.Enabled = true;
     }
 }

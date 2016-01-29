@@ -160,8 +160,6 @@
         <!-- pet2-->
             <asp:PlaceHolder ID="PHOLDER2" runat="server" Visible="False" ViewStateMode="Enabled">
 
-       
-
         <table style="width: 800px;" border="0">
             <tr style="background-color:#ffd800;">
 
@@ -201,7 +199,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
+                    <asp:DropDownList ID="DRPPETNAME2" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True" OnSelectedIndexChanged="DRPPETNAME2_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
@@ -308,7 +306,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
+                    <asp:DropDownList ID="DRPPETNAME3" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True" OnSelectedIndexChanged="DRPPETNAME3_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>
@@ -414,7 +412,7 @@
             <tr style="background-color:#ffe44c;">
                 <td class="auto-style5">Pet Name</td>
                 <td class="auto-style6">
-                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True">
+                    <asp:DropDownList ID="DRPPETNAME4" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetName" DataValueField="PetID" AutoPostBack="True" OnSelectedIndexChanged="DRPPETNAME4_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style7">Weight</td>

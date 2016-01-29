@@ -55,27 +55,35 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
-                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
-                    Session["AdminUserID"] = AdminUserID;
-                    string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
-                    Session["Name"] = Name;
-                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
-                    Session["UserName"] = UserName;
-                    string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
-                    Session["Address"] = Address;
-                    string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
-                    Session["Phone"] = Phone;
-                    string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
-                    Session["Email"] = Email;
-                    string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
-                    Session["UserType"] = UserType;
-                    string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
-                    Session["Branch"] = Branch;
-                    string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
-                    Session["Active"] = Active;
-                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
-                    Session["Password"] = Password;
-                    Response.Redirect("Admin.aspx");
+                    string Activate = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                    if (Activate == "True")
+                    {
+                        string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                        Session["AdminUserID"] = AdminUserID;
+                        string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
+                        Session["Name"] = Name;
+                        string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
+                        Session["UserName"] = UserName;
+                        string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
+                        Session["Address"] = Address;
+                        string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
+                        Session["Phone"] = Phone;
+                        string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
+                        Session["Email"] = Email;
+                        string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
+                        Session["UserType"] = UserType;
+                        string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
+                        Session["Branch"] = Branch;
+                        string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                        Session["Active"] = Active;
+                        string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                        Session["Password"] = Password;
+                        Response.Redirect("Admin.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('" + "Error! Your Account has been deactivated. Please contact Admin!" + "')</script>");
+                    }
                 }
             }
             else if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Groomer")
@@ -92,27 +100,35 @@ public partial class login : System.Web.UI.Page
 
                 if (rdr.HasRows)
                 {
-                    string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
-                    Session["AdminUserID"] = AdminUserID;
-                    string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
-                    Session["Name"] = Name;
-                    string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
-                    Session["UserName"] = UserName;
-                    string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
-                    Session["Address"] = Address;
-                    string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
-                    Session["Phone"] = Phone;
-                    string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
-                    Session["Email"] = Email;
-                    string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
-                    Session["UserType"] = UserType;
-                    string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
-                    Session["Branch"] = Branch;
-                    string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
-                    Session["Active"] = Active;
-                    string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
-                    Session["Password"] = Password;
-                    Response.Redirect("GroomerReport.aspx");
+                    string Activate = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                    if (Activate == "True")
+                    {
+                        string AdminUserID = newDataSet2.Tables[0].Rows[0]["AdminUserID"].ToString();
+                        Session["AdminUserID"] = AdminUserID;
+                        string Name = newDataSet2.Tables[0].Rows[0]["Name"].ToString();
+                        Session["Name"] = Name;
+                        string UserName = newDataSet2.Tables[0].Rows[0]["UserName"].ToString();
+                        Session["UserName"] = UserName;
+                        string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
+                        Session["Address"] = Address;
+                        string Phone = newDataSet2.Tables[0].Rows[0]["Phone"].ToString();
+                        Session["Phone"] = Phone;
+                        string Email = newDataSet2.Tables[0].Rows[0]["Email"].ToString();
+                        Session["Email"] = Email;
+                        string UserType = newDataSet2.Tables[0].Rows[0]["UserType"].ToString();
+                        Session["UserType"] = UserType;
+                        string Branch = newDataSet2.Tables[0].Rows[0]["Branch"].ToString();
+                        Session["Branch"] = Branch;
+                        string Active = newDataSet2.Tables[0].Rows[0]["Active"].ToString();
+                        Session["Active"] = Active;
+                        string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
+                        Session["Password"] = Password;
+                        Response.Redirect("GroomerReport.aspx");
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('" + "Error! Your Account has been deactivated. Please contact Admin!" + "')</script>");
+                    }
                 }
             }
             else if (UEmail == txtLoginEmail.Text & UPass == txtLoginPassword.Text & UType == "Member")

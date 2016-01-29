@@ -27,7 +27,7 @@
                 </td>
                 <td class="auto-style6">Breed</td>
                 <td class="auto-style15">
-                    <asp:DropDownList ID="DRPBREED" runat="server">
+                    <asp:DropDownList ID="DRPBREED" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetBreed" DataValueField="PetType" >
                         <asp:ListItem>-Please Select-</asp:ListItem>
                         <asp:ListItem>labrador</asp:ListItem>
                         <asp:ListItem>Afghan Hound</asp:ListItem>
@@ -71,6 +71,11 @@
                         <asp:ListItem>West Highland White Terrier</asp:ListItem>
                         <asp:ListItem>Yorkshire Terrier</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetType], [PetBreed] FROM [PetTypeBreed] WHERE ([PetType] = @PetType)">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="DRPTYPE" Name="PetType" PropertyName="SelectedValue" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -95,7 +100,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style5">Pet type</td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="DRPTYPE" runat="server" >
+                    <asp:DropDownList ID="DRPTYPE" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPTYPE_SelectedIndexChanged" >
                         <asp:ListItem>Please Select</asp:ListItem>
                         <asp:ListItem>Dog</asp:ListItem>
                         <asp:ListItem>Cat</asp:ListItem>
@@ -105,11 +110,12 @@
                 </td>
                 <td class="auto-style6">Weight</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DRPWEIGHT" runat="server">
-                        <asp:ListItem>-Please Select-</asp:ListItem>
-                        <asp:ListItem>25 to 40</asp:ListItem>
-                        <asp:ListItem>65 to 80 lbs</asp:ListItem>
-                        <asp:ListItem>75 to 95 lbs</asp:ListItem>
+                    <asp:DropDownList ID="DRPWEIGHT" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DRPWEIGHT_SelectedIndexChanged1">
+                        <asp:ListItem Value="Please Select Weight"></asp:ListItem>
+                        <asp:ListItem Value="25-40 kg"></asp:ListItem>
+                        <asp:ListItem Value="40-65 kg"></asp:ListItem>
+                        <asp:ListItem Value="65-80 kg"></asp:ListItem>
+                        <asp:ListItem Value="80-95 kg"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -118,15 +124,19 @@
                 <td class="auto-style1">Others</td>
                 <td class="auto-style4">
                     <asp:TextBox ID="TXTBXOTHERS" runat="server"></asp:TextBox>
+
+                    &nbsp;
+
+                    <asp:Label ID="LBLOTHERS" runat="server" Text="*"></asp:Label>
                 </td>
                 <td class="auto-style6">Size</td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TXTBXSIZE" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TXTBXSIZE" runat="server" AutoPostBack="True"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style1">Notes</td>
+                <td class="auto-style1">Precaution</td>
                 <td class="auto-style4">
                     <asp:TextBox ID="TXTBXPRECAUTION" runat="server" Height="50px" TextMode="MultiLine" Width="280px"></asp:TextBox>
                 </td>

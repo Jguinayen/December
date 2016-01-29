@@ -17,6 +17,7 @@ public partial class MemberRegisterPet : System.Web.UI.Page
 
         TXTBXCID.Text = Session["CustomerID"].ToString();
         TXTBXCID.Enabled = false;
+        DRPBREED.Enabled = false;
     }
 
     private void clear()
@@ -64,4 +65,35 @@ public partial class MemberRegisterPet : System.Web.UI.Page
     {
         Response.Redirect("MemberBookAppt.aspx");
     }
+   
+    
+    protected void DRPWEIGHT_SelectedIndexChanged1(object sender, EventArgs e)
+    {
+        if (DRPWEIGHT.SelectedItem.Text == "25-40 kg")
+        {
+            TXTBXSIZE.Text = "small";
+        }
+        else if (DRPWEIGHT.SelectedItem.Text == "40-65 kg")
+        {
+            TXTBXSIZE.Text = "medium";
+        }
+        else if (DRPWEIGHT.SelectedItem.Text == "65-80 kg")
+        {
+            TXTBXSIZE.Text = "large";
+        }
+        else if (DRPWEIGHT.SelectedItem.Text == "80-95 kg")
+        {
+            TXTBXSIZE.Text = "big large";
+        }
+    }
+    protected void DRPTYPE_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DRPBREED.Enabled = true;
+        if (DRPTYPE.SelectedItem.Text=="Others")
+        {
+            TXTBXOTHERS.Enabled = true;
+            LBLOTHERS.Text = "Please enter other pet type..";
+        }
+    }
+   
 }
