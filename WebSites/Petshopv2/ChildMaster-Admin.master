@@ -46,7 +46,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
      <div class="container">
 
         <!-- TOP ADMIN NAVBAR-->
@@ -66,6 +66,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminReports.aspx">Upcoming Bookings</a></li>
+                <li><a href="ReportAllBooks.aspx">All Bookings</a></li>
                 <li><a href="ReportUsers.aspx">Users</a></li>
                 <li><a href="ReportCustomers.aspx">Customers</a></li>
                 <li><a href="ReportInvoices.aspx">Invoices</a></li>
@@ -80,7 +81,7 @@
             </ul>
          </li>
 
-        <li><a href="Invoice.aspx">Invoice</a></li>
+        <li><a href="AdminInvoice.aspx">Invoice</a></li>
         <%--<li class="divider"></li>--%>
         <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>
@@ -90,15 +91,21 @@
     </div>
   </div>
 </nav>
-     <!-- /TOP MEMBER NAVBAR-->
-
+     <!-- /TOP ADMIN NAVBAR-->
+</div>
+    
+    
          <!------Child ContentPlaceHolder------>
- <div id="2col">
+    <div id="page-wrap">
+ <div id="2col">     
   <asp:ContentPlaceHolder ID="leftcolumn" runat="server">
   </asp:ContentPlaceHolder>
   <asp:ContentPlaceHolder ID="rightcolumn" runat="server">
   </asp:ContentPlaceHolder>
-</div>
+ </div>
+
       <!------end of Child ContentPlaceHolder------>
+        
+     </div>   
 </asp:Content>
 

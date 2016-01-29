@@ -21,7 +21,7 @@
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
                                     
-                                    <h2 class="animation animated-item-1" style="color:#0094ff; display:block; width:300px;">
+                                    <h2 class="animation animated-item-1" style="color:#0094ff; display:block; width:300px; margin-top: 120px;">
                                         <%--<span class="animation animated-item-1" style="font-size:18pt; color:#0094ff;">Welcome to</span>--%>
                                         PETSHOPPE GROOMING!</h2>
                                     <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; margin-top:15px;">Safe and modern grooming facilities.</p>
@@ -36,7 +36,7 @@
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
                                     
-                                    <h2 class="animation animated-item-1" style="color:#ffffff; display:block; width:300px;">
+                                    <h2 class="animation animated-item-1" style="color:#ffffff; display:block; width:300px; margin-top: 120px;" >
                                         <%--<span class="animation animated-item-1" style="font-size:18pt; color:#ffffff;">Welcome to</span>--%>
                                         PETSHOPPE GROOMING!</h2>
                                     <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; margin-top:15px;">Make an Appointment at your local Petshoppe Groomer today.</p>
@@ -49,8 +49,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content centered" style="margin-top:10px;">
-                                    <h2 class="animation animated-item-1" style="color:#aec62c; display:block; width:300px;">
+                                <div class="carousel-content centered" style="margin-top:100px;">
+                                    <h2 class="animation animated-item-1" style="color:#aec62c; display:block; width:300px; margin-top: 120px;">
                                         PETSHOPPE GROOMING!</h2>
                                     <p class="animation animated-item-2" style="color:#ffffff; display:block; width:450px; font-size:12pt; margin-top:15px;">Look good, smell great - keep your pet healthy and happy with regular grooming to enhance your dogs coat.</p>
                                     <br>

@@ -3,35 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
-    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css"/>
- <link rel="stylesheet" href="components/bootstrap2/css/bootstrap-responsive.css"/>
- <link rel="stylesheet" href="css/calendar.css"/>
+  
     <style type="text/css">
-        .auto-style2 {
-            width: 106px;
-        }
-        .auto-style4 {
-            width: 55px;
-            text-align: center;
-        }
-        .auto-style7 {
-            width: 60%;
-            height: 23px;
-        }
-        .auto-style12 {
-            width: 60%;
-            height: 20px;
-        }
-        .auto-style16 {
-            width: 335px;
-        }
-                
-        /*------table style-----*/
+        
+/*------table style-----*/
 
 #invoice {
     font-family: Arial, Helvetica, sans-serif;
@@ -56,56 +31,47 @@
 
         #invoice tr.alt td {
             color: #000000;
-            background-color: #e0e0e0;
+            background-color: #ff6a00; /*#e0e0e0*/
         }
 
 
-/* ---- table style --- */
-
-        .auto-style24 {
-            width: 55px;
-            text-align: center;
-            height: 30px;
-        }
-        .auto-style26 {
-            height: 30px;
-            width: 50px;
-        }
-        .auto-style27 {
-            width: 802px;
-        }
-        .auto-style28 {
-            width: 802px;
-            height: 30px;
-        }
-
-        .auto-style29 {
-            width: 50px;
-        }
-        
-        .auto-style30 {
-            width: 124px;
-        }
-        .auto-style31 {
-            width: 124px;
-            height: 30px;
-        }
-        .auto-style32 {
-            width: 106px;
-            height: 30px;
-        }
-        
-        .auto-style33 {
-            width: 55px;
-        }
-        
-        .auto-style34 {
-            height: 22px;
-        }
+/* ---- end table style --- */
         
         </style>
 
+    <!-- Calendar & Bootstrap Responsive -->
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap.css"/>
+    <link rel="stylesheet" href="components/bootstrap2/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/calendar.css"/>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/dropdown.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="css/main.css">
+    <link href="css/custom.css" rel="stylesheet">
+	
+	<script src="//use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- Custom Fonts & Icons -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/icomoon-social.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	
+	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <!-- Dropdown Menu -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   
+    <!-- Invoice -->
+    <link href="css/invoice-style.css" rel="stylesheet" />
+
+    <!-- Book Pet Calendar Style -->
+    <link href="css/bookpetcalendar.css" rel="stylesheet" />
    
 </asp:Content>
 
@@ -114,7 +80,8 @@
     <br /><br /><br /><br /><br />
     <div class="container">
 
-        <!-- TOP MEMBER NAVBAR-->
+        <!-- TOP ADMIN NAVBAR-->
+
         <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
   <div class="container-fluid">
         <div class="navbar-header">
@@ -130,9 +97,10 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminReports.aspx">Upcoming Bookings</a></li>
-                <li><a href="AdminReports.aspx">Users</a></li>
-                <li><a href="AdminReports.aspx">Customers</a></li>
-                <li><a href="AdminReports.aspx">Invoices</a></li>
+                <li><a href="ReportAllBooks.aspx">All Bookings</a></li>
+                <li><a href="ReportUsers.aspx">Users</a></li>
+                <li><a href="ReportCustomers.aspx">Customers</a></li>
+                <li><a href="ReportInvoices.aspx">Invoices</a></li>
             </ul>
          </li>
         
@@ -154,19 +122,347 @@
     </div>
   </div>
 </nav>
-       <!-- /TOP MEMBER NAVBAR-->
+     <!-- /TOP ADMIN NAVBAR-->
        
-
+        <p id="pagetitle">Invoice</p>
     <table style="width:100%; background-color: #e8dede; padding: 4px 4px 4px 4px;">
-            <tr style="background-color: #e8dede; ">
-                <td class="auto-style12">&nbsp;<h3>&nbsp;Invoice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                    </h3>
+            <tr style="background-color: #e8dede;">
+                <td style="vertical-align:top;">
+
+        <!------ Invoice Table ------>
+        
+                    <table style="width: 90%; margin: 4px 4px 0px 20px; al" class="center-block">
+                        <tr>
+                            <td style="width: 120px;">
+                                Date </td>
+                            <td class="auto-style34"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="115px"></asp:TextBox></td>
+                        </tr>
+                        <tr>
+                            <td><%--Customer Name--%> </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp;<%-- ID #--%>:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
                             </td>
-                <td class="auto-style16" rowspan="2" style="vertical-align:top;">
+                        </tr>
+                        </table>
+                  
+                    <br />
+
+        <!------ Invoice Table ------>
+                    
+                    <table id="invoice" style="width: 90%; table-layout:fixed;" class="center-block">
+                        <tr>
+                            <th style="width: 10%;">Delete</th>
+                            <th style="width: 40%;">Job Type</th>
+                            <th style="width: 15%;">Qty</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 15%;">Total</th>
+                        </tr>
+                        <tr class="alt">
+                            <td>
+                                GROOM</td>
+                            <td></td>
+                            <td>
+                                </td>
+                            <td>
+                                </td>
+                            <td>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKFULLGROOM" runat="server" OnCheckedChanged="CHKFULLGROOM_CheckedChanged" AutoPostBack="True"  />
+                            </td>
+                            <td>Standard Full groom</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYFGROOM" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPFGROOM" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td class="auto-style26">
+                                <asp:TextBox ID="TXTBXTFGROOM" runat="server" Width="60px" ></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="calltoaction-wrapper">
+                                <asp:CheckBox ID="CHKPLATINUM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPLATINUM_CheckedChanged" />
+                            </td>
+                            <td>Platinum</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYPLAT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPPLAT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTPLAT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKGOLD" runat="server" AutoPostBack="True" OnCheckedChanged="CHKGOLD_CheckedChanged" />
+                            </td>
+                            <td>Gold</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYGOLD" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPGOLD" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTGOLD" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKMINI" runat="server" AutoPostBack="True" OnCheckedChanged="CHKMINI_CheckedChanged"  />
+                            </td>
+                            <td>Mini</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYMINI" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPMINI" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTMINI" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr class="alt">
+                            <td>
+                                SHAMPOO</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKSHAMPOO" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHAMPOO_CheckedChanged" />
+                            </td>
+                            <td>&nbsp;Standard Shampoo</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYSHAMPOO" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPSHAMPOO" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTSHAMPOO" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKWASHBLOW" runat="server" AutoPostBack="True" OnCheckedChanged="CHKWASHBLOW_CheckedChanged" />
+                            </td>
+                            <td>Wash &amp; Blow Dry</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYWB" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPWB" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTWB" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKCALMING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCALMING_CheckedChanged" />
+                            </td>
+                            <td>Calming Canine Shampoo Treatment</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYCALMING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPCALMING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTCALMING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKCITRUS" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCITRUS_CheckedChanged" />
+                            </td>
+                            <td>Citrus Sensation Shampoo Treatment</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYCITRUS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPCITRUS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTCITRUS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKSMOOTHIE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSMOOTHIE_CheckedChanged" />
+                            </td>
+                            <td>Super Smoothie</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYSMOOTHIE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPSMOOTHIE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTSMOOTHIE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKFLEARELIEF" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFLEARELIEF_CheckedChanged" />
+                            </td>
+                            <td>Flea Relief</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYFLEA" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPFLEA" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTFLEA" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKKISSABLE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKKISSABLE_CheckedChanged" />
+                            </td>
+                            <td>Kissable Dog</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYKISS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPKISS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTKISS" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+        
+
+                        <tr class="alt">
+                            <td>
+                                OTHERS</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKDYE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKDYE_CheckedChanged" />
+                            </td>
+                            <td>Dye</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYDYE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPDYE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTDYE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKCUT" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCUT_CheckedChanged" />
+                            </td>
+                            <td>Cut</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYCUT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPCUT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTCUT" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKNAILTRIM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKNAILTRIM_CheckedChanged" />
+                            </td>
+                            <td>Nail Trim Only</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYNAILTRIM" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPNAILTRIM" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTNAILTRIM" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKPEDICURE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPEDICURE_CheckedChanged" />
+                            </td>
+                            <td>Perfect Pedicure</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYPEDICURE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPPEDICURE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTPEDICURE" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKFACIAL" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFACIAL_CheckedChanged" />
+                            </td>
+                            <td>Facial</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYFACIAL" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPFACIAL" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTFACIAL" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:CheckBox ID="CHKSHEDDING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHEDDING_CheckedChanged" />
+                            </td>
+                            <td>De-Shedding</td>
+                            <td>
+                                <asp:TextBox ID="TXTBXQTYSHEDDING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXPSHEDDING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TXTBXTSHEDDING" runat="server" Width="60px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr style="height:50px" class="alt">
+                            <td colspan="5" class="text-center">
+                                <asp:Button ID="BTNUPDATEINVOICE" runat="server" Text="Preview Invoice" OnClick="BTNUPDATEINVOICE_Click" />
+                                &nbsp;</td>
+                        </tr>
+                        </table>
+                    <br />
+                    
+                    
+                </td>
+
+                <td class="auto-style16" style="vertical-align:top;">
 
                      <!----------RECEIPT PREVIEW--------------->
                     <div id="centertable">
-                        <h5>INVOICE PREVIEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h5 class="text-center">INVOICE PREVIEW
                             </h5>
                     <table class="centerbutton" style="background-color: aliceblue; width: 95%; border: solid 1px black">
                         
@@ -189,9 +485,9 @@
                             
                         </tr>
                         <tr>
-                            <td>
-                                <div class="center-block">
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:98%; margin-left: 0px 0px 0px 6px;">
+                            <td style="align-items:center;">
+                                
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;">
                                         <Columns>
                                             <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                                             <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />
@@ -200,7 +496,7 @@
                                         </Columns>
                                     </asp:GridView>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Qty], [JobType], [UnitPrice], [TotalPrice] FROM [InvoiceTemp]"></asp:SqlDataSource>
-                                </div>
+                                
                            
                                  </td>
                             
@@ -217,355 +513,14 @@
                     </table>
 
                     <br />
-                    <asp:Button ID="BTNPRINTINVOICE" runat="server" Text="Print Invoice" OnClick="BTNPRINTINVOICE_Click" />
+                    <asp:Button ID="BTNPRINTINVOICE" CssClass="center-block" runat="server" Text="Print Invoice" OnClick="BTNPRINTINVOICE_Click" />
                     </div>
                     <br />
              <!----------/RECEIPT PREVIEW--------------->
 
                 </td>
             </tr>
-            <tr style="background-color: #e8dede;">
-                <td class="auto-style7" style="vertical-align:top;">
-
-        <!------ Invoice Table ------>
-        
-                    <table style="width: 90%;" class="center-block">
-                        <tr>
-                            <td class="auto-style34">
-                                Date</td>
-                            <td class="auto-style34"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="105px"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                            <td><%--Customer Name--%> </td>
-                            <td>
-                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp;<%-- ID #--%>:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td></td>
-                        </tr>
-                        
-                    </table>
-                    
-
-        <!------ Invoice Table ------>
-                    
-                    <table id="invoice" style="width: 90%;" class="center-block">
-                        <tr>
-                            <th style="text-align:center;" class="auto-style33">Delete</th>
-                            <th class="auto-style27">Job Type</th>
-                            <th class="auto-style2">Qty</th>
-                            <th class="auto-style30">Price</th>
-                            <th class="auto-style29">Total</th>
-                        </tr>
-                        <tr>
-                            <td class="auto-style24">
-                                GROOM</td>
-                            <td class="auto-style28"></td>
-                            <td class="auto-style32">
-                                </td>
-                            <td class="auto-style31">
-                                </td>
-                            <td class="auto-style26">
-                                </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style24">
-                                <asp:CheckBox ID="CHKFULLGROOM" runat="server" OnCheckedChanged="CHKFULLGROOM_CheckedChanged" AutoPostBack="True"  />
-                            </td>
-                            <td class="auto-style28">Standard Full groom</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYFGROOM" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPFGROOM" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26">
-                                <asp:TextBox ID="TXTBXTFGROOM" runat="server" Width="40px" ></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKPLATINUM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPLATINUM_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Platinum</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYPLAT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPPLAT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTPLAT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKGOLD" runat="server" AutoPostBack="True" OnCheckedChanged="CHKGOLD_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Gold</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYGOLD" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPGOLD" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTGOLD" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKMINI" runat="server" AutoPostBack="True" OnCheckedChanged="CHKMINI_CheckedChanged"  />
-                            </td>
-                            <td class="auto-style27">Mini</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYMINI" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPMINI" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTMINI" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                SHAMPOO</td>
-                            <td class="auto-style27">&nbsp;</td>
-                            <td class="auto-style32">
-                                &nbsp;</td>
-                            <td class="auto-style31">
-                                &nbsp;</td>
-                            <td class="auto-style26" >
-                                &nbsp;</td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKSHAMPOO" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHAMPOO_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">&nbsp;Standard Shampoo</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYSHAMPOO" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPSHAMPOO" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTSHAMPOO" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKWASHBLOW" runat="server" AutoPostBack="True" OnCheckedChanged="CHKWASHBLOW_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Wash &amp; Blow Dry</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYWB" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPWB" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTWB" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCALMING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCALMING_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Calming Canine Shampoo Treatment</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYCALMING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPCALMING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTCALMING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCITRUS" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCITRUS_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Citrus Sensation Shampoo Treatment</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYCITRUS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPCITRUS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTCITRUS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKSMOOTHIE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSMOOTHIE_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Super Smoothie</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYSMOOTHIE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPSMOOTHIE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTSMOOTHIE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKFLEARELIEF" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFLEARELIEF_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Flea Relief</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYFLEA" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPFLEA" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTFLEA" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style24">
-                                <asp:CheckBox ID="CHKKISSABLE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKKISSABLE_CheckedChanged" />
-                            </td>
-                            <td class="auto-style28">Kissable Dog</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYKISS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPKISS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTKISS" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-        
-
-                        <tr>
-                            <td class="auto-style4">
-                                OTHERS</td>
-                            <td class="auto-style27">&nbsp;</td>
-                            <td class="auto-style32">
-                                &nbsp;</td>
-                            <td class="auto-style31">
-                                &nbsp;</td>
-                            <td class="auto-style26">
-                                &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKDYE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKDYE_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Dye</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYDYE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPDYE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26">
-                                <asp:TextBox ID="TXTBXTDYE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr class="alt">
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKCUT" runat="server" AutoPostBack="True" OnCheckedChanged="CHKCUT_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Cut</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYCUT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPCUT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTCUT" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKNAILTRIM" runat="server" AutoPostBack="True" OnCheckedChanged="CHKNAILTRIM_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Nail Trim Only</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYNAILTRIM" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPNAILTRIM" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTNAILTRIM" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKPEDICURE" runat="server" AutoPostBack="True" OnCheckedChanged="CHKPEDICURE_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Perfect Pedicure</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYPEDICURE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPPEDICURE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTPEDICURE" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style4">
-                                <asp:CheckBox ID="CHKFACIAL" runat="server" AutoPostBack="True" OnCheckedChanged="CHKFACIAL_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">Facial</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYFACIAL" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPFACIAL" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26" >
-                                <asp:TextBox ID="TXTBXTFACIAL" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style4" >
-                                <asp:CheckBox ID="CHKSHEDDING" runat="server" AutoPostBack="True" OnCheckedChanged="CHKSHEDDING_CheckedChanged" />
-                            </td>
-                            <td class="auto-style27">De-Shedding</td>
-                            <td class="auto-style32">
-                                <asp:TextBox ID="TXTBXQTYSHEDDING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style31">
-                                <asp:TextBox ID="TXTBXPSHEDDING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                            <td class="auto-style26">
-                                <asp:TextBox ID="TXTBXTSHEDDING" runat="server" Width="40px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr style="height:50px" class="alt">
-                            <td class="auto-style21;" colspan="2">
-                                <asp:Button ID="BTNUPDATEINVOICE" runat="server" Text="Preview Invoice" OnClick="BTNUPDATEINVOICE_Click" />
-                                &nbsp;</td>
-                            <td class="auto-style2">
-                                &nbsp;</td>
-                            <td class="auto-style30">
-                                &nbsp;</td>
-                            <td class="auto-style29" >
-                                </td>
-                        </tr>
-                        </table>
-                    <br />
-                    
-                    
-                </td>
-            </tr>
+           
               
             </table>
 

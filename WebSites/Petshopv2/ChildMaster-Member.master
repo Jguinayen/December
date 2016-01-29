@@ -5,7 +5,7 @@
 </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style>
+ <style>
 
             #daytable  td {
                 text-decoration: none;
