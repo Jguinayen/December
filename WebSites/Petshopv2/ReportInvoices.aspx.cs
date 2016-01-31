@@ -19,6 +19,10 @@ public partial class ReportInvoices : System.Web.UI.Page
 
         SqlDataAdapter da = new SqlDataAdapter("Select * from Invoice", con);
 
+<<<<<<< HEAD
+=======
+        //SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTransaction", con);
+>>>>>>> 277371e8cb47568da2b2b150843d196862c1c7f3
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);

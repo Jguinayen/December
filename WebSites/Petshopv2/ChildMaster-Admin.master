@@ -26,11 +26,11 @@
 	<script src="//use.edgefonts.net/bebas-neue.js"></script>
 
     <!-- Custom Fonts & Icons -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+   <%-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/icomoon-social.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">--%>
 	
-	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Dropdown Menu -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -43,6 +43,8 @@
     <!-- Book Pet Calendar Style -->
     <link href="css/bookpetcalendar.css" rel="stylesheet" />
 
+    <link href="css/bootstrap.css" rel="stylesheet">
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -51,15 +53,14 @@
 
         <!-- TOP ADMIN NAVBAR-->
 
-        <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
+        <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 1px 0px 0px 0px;">
   <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hello <%:Session["UserName"]%></a>
-        </div>
+          <a class="navbar-brand2" href="Admin.aspx" style="background-color: #000; margin-top:0px; padding-top: 25px;">Hello <%:Session["UserName"]%></a>
+    </div>
 
-   
     <div>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav2">
         <li><a href="Admin.aspx">Calendar</a></li>
         <li><a href="AdminUserAccts.aspx">User Accounts</a></li>
         <li class="dropdown">
