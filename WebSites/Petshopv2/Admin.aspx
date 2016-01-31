@@ -14,27 +14,30 @@
             </tr>
             <tr>
                 <td class="auto-style9" style="width: 91px; height: 36px;">
+                    &nbsp;&nbsp;
                     <asp:Label ID="lblAdminCalName" runat="server" Text="Name"></asp:Label>
                    
                 </td>
                 <td class="auto-style9" style="width: 887px; height: 36px;">
-                    <asp:TextBox ID="txtAdminCalName" runat="server" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminCalName" runat="server" Width="50%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td style="width: 91px; height: 20px;">
+                    &nbsp;&nbsp;
                     <asp:Label ID="lblAdminCalBlockDate" runat="server" Text="Blocked Date"></asp:Label>
                 </td>
                 <td style="width: 887px; height: 20px;">
-                    <asp:TextBox ID="txtAdminCalBlockDate" runat="server" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminCalBlockDate" runat="server" Width="50%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td style="width: 91px; height: 36px;">
+                    &nbsp;&nbsp;
                     <asp:Label ID="lblAdminCalNotes" runat="server" Text="Notes"></asp:Label>
                 </td>
                 <td style="width: 887px; height: 36px;">
-                    <asp:TextBox ID="txtAdminCalNotes" runat="server" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txtAdminCalNotes" runat="server" Width="60%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -75,7 +78,7 @@
 
     
     <br />
-    <asp:Calendar ID="Calendar1" runat="server" BackColor="#cccccc" BorderColor="white" BorderWidth="0" BorderStyle="solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth" Width="100%" DayNameFormat="Full" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged" ShowGridLines="True">
+    <asp:Calendar ID="Calendar1" runat="server" BackColor="#cccccc" BorderColor="black" BorderWidth="0" BorderStyle="solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth" Width="100%" DayNameFormat="Full" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged" ShowGridLines="True">
         <DayHeaderStyle Font-Bold="True" Font-Size="10pt" ForeColor="#333333" Height="5pt" />
         <DayStyle BackColor="#ffffff" />
         <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="white" />

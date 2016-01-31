@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
-    <%---------------- CALENDAR --------------------%>
+   
 
      <p id="pagetitle">Book an Appointment</p>
     
     
-     <%---------------- END OF CALENDAR --------------------%>
+    
 
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
            
@@ -65,7 +65,7 @@
         <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="White" />
         <OtherMonthDayStyle ForeColor="#cccccc" />
         <SelectedDayStyle BackColor="#cccccc" ForeColor="White" />
-        <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="5pt" />
+        <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="False" Font-Size="14pt" ForeColor="White" Height="20pt" Font-Names="Arial" />
         <TodayDayStyle BackColor="#cccccc" ForeColor="White" Font-Bold="true" />
     </asp:Calendar>
         

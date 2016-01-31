@@ -59,7 +59,6 @@
           <a class="navbar-brand2" href="Admin.aspx" style="background-color: #000; margin-top:0px; padding-top: 25px;">Hello <%:Session["UserName"]%></a>
     </div>
 
-   
     <div>
       <ul class="nav navbar-nav2">
         <li><a href="Admin.aspx">Calendar</a></li>

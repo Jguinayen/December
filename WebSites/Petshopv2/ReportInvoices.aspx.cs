@@ -16,11 +16,10 @@ public partial class ReportInvoices : System.Web.UI.Page
         string REPORTINVOICES = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(REPORTINVOICES);
-<<<<<<< HEAD
+
         SqlDataAdapter da = new SqlDataAdapter("Select * from Invoice", con);
-=======
-        SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTransaction", con);
->>>>>>> cacf67ea4115bf5df82bd48630cbd4b68caf1a44
+
+        //SqlDataAdapter da = new SqlDataAdapter("Select * from InvoiceTransaction", con);
 
         DataSet ds1 = new DataSet();
         da.Fill(ds1);
