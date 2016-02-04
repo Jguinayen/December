@@ -123,7 +123,7 @@ public partial class login : System.Web.UI.Page
                         Session["Active"] = Active;
                         string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
                         Session["Password"] = Password;
-                        Response.Redirect("GroomerReport.aspx");
+                        Response.Redirect("GroomerAppointment.aspx");
                     }
                     else
                     {

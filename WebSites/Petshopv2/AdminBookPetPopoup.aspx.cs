@@ -12,7 +12,7 @@ public partial class AdminBookPetPopoup : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack != null)
+        if (!IsPostBack)
         {
            
             TXTBXJOBDATE.Text = Session["DatePick"].ToString();

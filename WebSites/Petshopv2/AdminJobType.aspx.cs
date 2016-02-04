@@ -6,18 +6,20 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 
-public partial class JobType : System.Web.UI.Page
+public partial class AdminJobType : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
+
     private string connstr =
-          System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-          ["petshoppeConnstr"].ConnectionString;
+           System.Web.Configuration.WebConfigurationManager.ConnectionStrings
+           ["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
 
+   
     protected void BTNJTYPE_Click(object sender, EventArgs e)
     {
         conn = new SqlConnection(connstr);

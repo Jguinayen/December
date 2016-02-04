@@ -8,11 +8,12 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
+
 public partial class GroomerBookPetPopup : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack != null)
+        if (!IsPostBack)
         {
 
             TXTBXJOBDATE.Text = Session["DatePick"].ToString();

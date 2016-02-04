@@ -69,7 +69,7 @@
                         <li><a href="GroomerAcct.aspx">Change Password</a></li>
                     </ul>
                </li>
-              <li><a href="GroomerInvoice.aspx">Invoice</a></li>
+              <li><a href="Invoice.aspx">Invoice</a></li>
               <li><a href="GroomerBookPet.aspx">Book an Appointment</a></li>
             </ul>
        </div>
