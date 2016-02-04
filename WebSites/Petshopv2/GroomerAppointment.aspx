@@ -20,11 +20,12 @@
                 <asp:TextBox ID="TXTDATE" runat="server"></asp:TextBox>
             </td>          
     </tr>
+    
      </table>
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
     <tr>
             <td style="width:117px;">
-                <asp:GridView ID="GRIDAPPOINTMENT" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GRIDAPPOINTMENT_SelectedIndexChanged">
+                <asp:GridView ID="GRIDAPPOINTMENT" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GRIDAPPOINTMENT_SelectedIndexChanged" Width="256%" BorderColor="Black" BorderStyle="Solid" CellPadding="4" CellSpacing="4" Font-Bold="True">
                     <Columns>
                         <asp:BoundField HeaderText="CustomerID" DataField="CustomerID" HtmlEncode="False" />
                         <asp:BoundField HeaderText="PetID" DataField="PetID" />
@@ -37,12 +38,14 @@
                         <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                     </Columns>
                 </asp:GridView>
+                <br />
+                <asp:Label ID="LBLMESSAGE" runat="server" Text="Label" Visible="False"></asp:Label>
             </td>
     </tr>
     </table>
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
     <tr>
-            <td style="width:117px;">Customer IDustomer ID</td>
+            <td style="width:117px;">Customer ID</td>
             <td class="auto-style6" style="width: 156px">
             <asp:TextBox ID="TXTCUSTID" runat="server" Width="140px"></asp:TextBox> </td>
             <td class="auto-style6" style="width: 123px">
@@ -50,7 +53,7 @@
             <td class="auto-style6">
                 <asp:TextBox ID="TXTJDATE" runat="server"></asp:TextBox>
             </td>
-            <td class="auto-style6">
+            <td class="auto-style6" style="width: 90px">
                 JobType:</td>
             <td class="auto-style6">
                 <asp:TextBox ID="TXTJOBTYPE" runat="server"></asp:TextBox>
@@ -58,55 +61,72 @@
                 
     </tr>
     <tr>
-            <td style="width:117px;">Pet ID</td>
-            <td class="auto-style6" style="width: 156px">
+            <td style="width:117px; ">Pet ID</td>
+            <td class="auto-style6" style="width: 156px; ">
             <asp:TextBox ID="TXTPETID" runat="server" Width="140px"></asp:TextBox> </td>
-            <td class="auto-style6" style="width: 123px">
+            <td class="auto-style6" style="width: 123px; ">
                 Pet Name:</td>
-            <td class="auto-style6">
+            <td >
                 
                 <asp:TextBox ID="TXTPETNAME" runat="server"></asp:TextBox>
                 
             </td>
-            <td class="auto-style6">
+            <td style=" width: 90px;">
                 Pet Breed:</td>
-            <td class="auto-style6">
+            <td >
                 <asp:TextBox ID="TXTPETBREED" runat="server"></asp:TextBox>
             </td>
+    </tr>
+  
+    
+    <tr>
+            <td style="width:117px;">Pet Weight</td>
+            <td class="auto-style6" style="width: 156px">
+                <asp:TextBox ID="TXTWEIGHT" runat="server" Width="139px"></asp:TextBox>
+            </td>
+            <td class="auto-style6" style="width: 123px">
+                Pet Type:</td>
+            <td>
+                
+                <asp:TextBox ID="TXTPTYPE" runat="server"></asp:TextBox>
+                
+            </td>
+            <td style="width: 90px">
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
     </tr>
   
     
     </table>
     <table style="background-color: #e8dede; width: 100%; border-spacing: 8px 8px; border-collapse:separate;">
     <tr>
-            <td style="width:117px;">Pet Weight</td>
-            <td class="auto-style6" style="width: 156px">
-                <asp:TextBox ID="TXTWEIGHT" runat="server"></asp:TextBox>
-            </td>
-            <td class="auto-style6" style="width: 246px">
-                Pet Type:</td>
-            <td class="auto-style6">
-                <asp:TextBox ID="TXTPTYPE" runat="server"></asp:TextBox>
-            </td>
-                
-    </tr>
-    <tr>
-            <td style="width:117px;">Precaution:</td>
-            <td class="auto-style6" style="width: 156px">
+            <td style="width:86px;">Precaution:</td>
+            <td class="auto-style6" style="width: 295px">
             <asp:TextBox ID="TXTPRECAUTION" runat="server" Width="232px" Height="49px" TextMode="MultiLine"></asp:TextBox> </td>
-            <td class="auto-style6" style="width: 246px">
-                <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Served" />
+            <td class="auto-style6" style="width: 181px">
+                <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Served" Height="39px" Width="121px" />
             </td>
-            <td class="auto-style6">
+            <td class="auto-style6" style="width: 246px">
                 <asp:Label ID="LBLMESS" runat="server" Text="Label"></asp:Label>
             </td>
+            <td class="auto-style6" style="width: 246px">
+                &nbsp;</td>
+            <td class="auto-style6">
+                &nbsp;</td>
                 
     </tr>
     <tr>
-            <td class="auto-style6" style="width: 156px">
+            <td class="auto-style6" style="width: 86px">
                 &nbsp;</td>
-            <td class="auto-style6" style="width: 246px">
+            <td class="auto-style6" style="width: 295px">
                 &nbsp;</td>
+            <td class="auto-style6" style="width: 181px">
+                &nbsp;</td>
+                
+            <td class="auto-style6">
+                &nbsp;</td>
+                
             <td class="auto-style6">
                 &nbsp;</td>
                 

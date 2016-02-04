@@ -88,12 +88,7 @@
     </header><!--/header-->
 
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-
-
-
-
-        </asp:ContentPlaceHolder>
+       </asp:ContentPlaceHolder>
 
     </div>
     </form>

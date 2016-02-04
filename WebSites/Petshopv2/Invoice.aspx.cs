@@ -15,46 +15,32 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 
-
-
 public partial class Invoice : System.Web.UI.Page
 {
+    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+    private SqlConnection conn;
+    private SqlCommand cmd;
+    private SqlDataReader rdr;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
-        //TXTBXCUSTNAME.Visible = false;
-        //TXTBXCUSTID.Visible = false;
-        TXTBXCUSTNAME.Text = "Johana";//Session["UserName"].ToString();
-        TXTBXCUSTID.Text = "2222";//Session["CustomerID"].ToString();
         string USERDATE = DateTime.Now.ToShortDateString();//will be substituted by Session[Date] after all good and running
         TXTBXINVDATE.Text = USERDATE;
-        TXTBXCUSTID.Text = "2222";///Session["CustomerID"].ToString();
-        //TXTBXCUSTNAME.Text = Session["UserName"].ToString();
-        //if (!this.IsPostBack)
-        //{
-        //    SqlDataAdapter adapter = new SqlDataAdapter();
-        //    DataSet ds = new DataSet();
-        //    string sql = null;
-        //    string connetionString = "Data Source=.;Initial Catalog=pubs;User ID=sa;Password=*****";
-        //    sql = "select stor_id,stor_name,state from stores";
-        //    SqlConnection connection = new SqlConnection(connetionString);
-        //    connection.Open();
-        //    SqlCommand command = new SqlCommand(sql, connection);
-        //    adapter.SelectCommand = command;
-        //    adapter.Fill(ds);
-        //    adapter.Dispose();
-        //    command.Dispose();
-        //    connection.Close();
-        //    //GridView1.DataSource = ds.Tables[0];
-        //    //GridView1.DataBind();
-        //}
+       
     }
-
-    //checkboxes........
+        
+//----------------------------------------checkboxes---------------------------------------------
     //Full Groom.....
     protected void CHKFULLGROOM_CheckedChanged(object sender, EventArgs e)
     {
+        CALCULATEFGROOMCHARGE();
+    }
+
+    private void CALCULATEFGROOMCHARGE()
+    {
         if (CHKFULLGROOM.Checked == true)
         {
+            //query price for fullgroom
             string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlCommand cmd;
             string str;
@@ -71,9 +57,9 @@ public partial class Invoice : System.Web.UI.Page
                 reader.Close();
                 //conn.Close();
             }
-            
+
             // for counting jobtype Full Groom...
-            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as FGROOMQTY from InvoiceTransaction where JobType = 'Full Groom'",conn);
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as FGROOMQTY from InvoiceTransaction where JobType = 'Full Groom' and CustomerID = '" + LBLCUSTID.Text + "' ", conn);
             object count = cmd2.ExecuteScalar();
             if (count != null)
             {
@@ -87,7 +73,7 @@ public partial class Invoice : System.Web.UI.Page
 
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", TXTBXQTYFGROOM.Text);
             cmd.Parameters.AddWithValue("@Jobtype", "Full Groom");
             cmd.Parameters.AddWithValue("@Unitprice", TXTBXPFGROOM.Text);
@@ -111,7 +97,7 @@ public partial class Invoice : System.Web.UI.Page
             //cmd = new SqlCommand("Delete from InvoiceTemp where JobType='Full Groom' in (Select Status from InvoiceTemp='false') ", conn);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Full Groom' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", TXTBXQTYFGROOM.Text);
             cmd.Parameters.AddWithValue("@Jobtype", "Full Groom");
             cmd.Parameters.AddWithValue("@Unitprice", TXTBXPFGROOM.Text);
@@ -131,6 +117,11 @@ public partial class Invoice : System.Web.UI.Page
     }
     //Platinum.....
     protected void CHKPLATINUM_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEPLATINUMCHARGE();
+    }
+
+    private void CALCULATEPLATINUMCHARGE()
     {
         if (CHKPLATINUM.Checked == true)
         {
@@ -159,7 +150,7 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXQTYPLAT.Text = count.ToString();
                 conn.Close();
             }
-            
+
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYPLAT.Text) * Convert.ToDouble(TXTBXPPLAT.Text);
@@ -167,7 +158,7 @@ public partial class Invoice : System.Web.UI.Page
 
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYPLAT.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Platinum");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPPLAT.Text));
@@ -188,7 +179,7 @@ public partial class Invoice : System.Web.UI.Page
 
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Platinum' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", TXTBXQTYPLAT.Text);
             cmd.Parameters.AddWithValue("@Jobtype", "Platinum");
             cmd.Parameters.AddWithValue("@Unitprice", TXTBXPPLAT.Text);
@@ -210,6 +201,11 @@ public partial class Invoice : System.Web.UI.Page
     //Gold
     protected void CHKGOLD_CheckedChanged(object sender, EventArgs e)
     {
+        CALCULATEGOLDGROOMCHARGE();
+    }
+
+    private void CALCULATEGOLDGROOMCHARGE()
+    {
         if (CHKGOLD.Checked == true)
         {
             string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -227,7 +223,7 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPGOLD.Text = reader["Price"].ToString();
 
                 reader.Close();
-               // conn.Close();
+                // conn.Close();
             }
 
             // for counting jobtype Gold Groom...
@@ -245,7 +241,7 @@ public partial class Invoice : System.Web.UI.Page
 
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYGOLD.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Gold");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPGOLD.Text));
@@ -266,7 +262,7 @@ public partial class Invoice : System.Web.UI.Page
 
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Gold' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", TXTBXQTYGOLD.Text);
             cmd.Parameters.AddWithValue("@Jobtype", "Gold");
             cmd.Parameters.AddWithValue("@Unitprice", TXTBXPGOLD.Text);
@@ -287,6 +283,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKMINI_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEMINIGROOMCHARGE();
+    }
+
+    private void CALCULATEMINIGROOMCHARGE()
     {
         if (CHKMINI.Checked == true)
         {
@@ -323,7 +324,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYMINI.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Mini Groom");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPMINI.Text));
@@ -343,7 +344,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Mini Groom' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYMINI.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Mini Groom");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPMINI.Text));
@@ -361,6 +362,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKSHAMPOO_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATESHAMPOOCHARGE();
+    }
+
+    private void CALCULATESHAMPOOCHARGE()
     {
         if (CHKSHAMPOO.Checked == true)
         {
@@ -397,7 +403,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSHAMPOO.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Shampoo");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSHAMPOO.Text));
@@ -417,7 +423,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Shampoo' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSHAMPOO.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Shampoo");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSHAMPOO.Text));
@@ -435,6 +441,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKWASHBLOW_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEWASHBLOWCHARGE();
+    }
+
+    private void CALCULATEWASHBLOWCHARGE()
     {
         if (CHKWASHBLOW.Checked == true)
         {
@@ -456,7 +467,7 @@ public partial class Invoice : System.Web.UI.Page
                 //conn.Close();
             }
             // for counting jobtype Washblow...
-            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as WBQTY from InvoiceTransaction where JobType = 'Wash Blow'", conn);
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as WBQTY from InvoiceTransaction where JobType = 'Washblow'", conn);
             object count = cmd2.ExecuteScalar();
             if (count != null)
             {
@@ -471,7 +482,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYWB.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Washblow");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPWB.Text));
@@ -484,7 +495,7 @@ public partial class Invoice : System.Web.UI.Page
             conn.Close();
 
         }
-        else if (CHKSHAMPOO.Checked == false)
+        else if (CHKWASHBLOW.Checked == false)
         {
             //delete from InvoiceTemp
             string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -492,7 +503,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Washblow' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYWB.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Shampoo");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPWB.Text));
@@ -511,6 +522,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKCALMING_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATECALMINGCHARGE();
+    }
+
+    private void CALCULATECALMINGCHARGE()
     {
         if (CHKCALMING.Checked == true)
         {
@@ -531,7 +547,7 @@ public partial class Invoice : System.Web.UI.Page
                 reader.Close();
                 //conn.Close();
             }
-            // for counting jobtype Mini Groom...
+            // for counting jobtype Calming...
             SqlCommand cmd2 = new SqlCommand("select Count(JobType) as CALMINGQTY from InvoiceTransaction where JobType = 'Calming'", conn);
             object count = cmd2.ExecuteScalar();
             if (count != null)
@@ -547,7 +563,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCALMING.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Calming");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCALMING.Text));
@@ -568,7 +584,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Calming' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCALMING.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Calming");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCALMING.Text));
@@ -587,6 +603,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKCITRUS_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATECITRUSCHARGE();
+    }
+
+    private void CALCULATECITRUSCHARGE()
     {
         if (CHKCITRUS.Checked == true)
         {
@@ -616,7 +637,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCITRUS.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Citrus");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCITRUS.Text));
@@ -636,7 +657,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Citrus' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCITRUS.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Citrus");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCITRUS.Text));
@@ -657,6 +678,11 @@ public partial class Invoice : System.Web.UI.Page
 
     protected void CHKSMOOTHIE_CheckedChanged(object sender, EventArgs e)
     {
+        CALCULATESMOOTHIECHARGE();
+    }
+
+    private void CALCULATESMOOTHIECHARGE()
+    {
         if (CHKSMOOTHIE.Checked == true)
         {
             string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -674,9 +700,16 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPSMOOTHIE.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype Smoothie...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as SMOOTHIEQTY from InvoiceTransaction where JobType = 'Smoothie'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYSMOOTHIE.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYSMOOTHIE.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYSMOOTHIE.Text) * Convert.ToDouble(TXTBXPSMOOTHIE.Text);
@@ -685,7 +718,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSMOOTHIE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Smoothie");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSMOOTHIE.Text));
@@ -705,7 +738,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Smoothie' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSMOOTHIE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Smoothie");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSMOOTHIE.Text));
@@ -725,6 +758,11 @@ public partial class Invoice : System.Web.UI.Page
     }
 
     protected void CHKFLEARELIEF_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEFLEARELIEFCHARGE();
+    }
+
+    private void CALCULATEFLEARELIEFCHARGE()
     {
         if (CHKFLEARELIEF.Checked == true)
         {
@@ -754,7 +792,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYFLEA.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "FleaRelief");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPFLEA.Text));
@@ -774,7 +812,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='FleaRelief' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYFLEA.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "FleaRelief");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPFLEA.Text));
@@ -792,6 +830,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKKISSABLE_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEKISSCHARGE();
+    }
+
+    private void CALCULATEKISSCHARGE()
     {
         if (CHKKISSABLE.Checked == true)
         {
@@ -821,7 +864,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYKISS.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Kissable");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPKISS.Text));
@@ -841,7 +884,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Kissable' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYKISS.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Kissable");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPKISS.Text));
@@ -859,6 +902,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKDYE_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEDYECHARGE();
+    }
+
+    private void CALCULATEDYECHARGE()
     {
         if (CHKDYE.Checked == true)
         {
@@ -888,7 +936,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYDYE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Dye");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPDYE.Text));
@@ -908,7 +956,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Dye' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYDYE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Dye");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPDYE.Text));
@@ -926,6 +974,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKCUT_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATECUTCHARGE();
+    }
+
+    private void CALCULATECUTCHARGE()
     {
         if (CHKCUT.Checked == true)
         {
@@ -955,7 +1008,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCUT.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Cut");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCUT.Text));
@@ -975,7 +1028,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Cut' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYCUT.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Cut");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPCUT.Text));
@@ -994,6 +1047,11 @@ public partial class Invoice : System.Web.UI.Page
     }
     protected void CHKNAILTRIM_CheckedChanged(object sender, EventArgs e)
     {
+        CALCULATENAILTRIMCHARGE();
+    }
+
+    private void CALCULATENAILTRIMCHARGE()
+    {
         if (CHKNAILTRIM.Checked == true)
         {
             string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -1002,7 +1060,7 @@ public partial class Invoice : System.Web.UI.Page
 
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
-            str = "select Price from JobTypeTable where JobType = 'NailTrim' ";
+            str = "select Price from JobTypeTable where JobType = 'Nail Trim' ";
             cmd = new SqlCommand(str, conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -1011,9 +1069,16 @@ public partial class Invoice : System.Web.UI.Page
                 TXTBXPNAILTRIM.Text = reader["Price"].ToString();
 
                 reader.Close();
+                //conn.Close();
+            }
+            // for counting jobtype NailTrim...
+            SqlCommand cmd2 = new SqlCommand("select Count(JobType) as NTRIMQTY from InvoiceTransaction where JobType = 'Nail Trim'", conn);
+            object count = cmd2.ExecuteScalar();
+            if (count != null)
+            {
+                TXTBXQTYNAILTRIM.Text = count.ToString();
                 conn.Close();
             }
-            TXTBXQTYNAILTRIM.Text = "1";
 
             double TOTAL;
             TOTAL = Convert.ToDouble(TXTBXQTYNAILTRIM.Text) * Convert.ToDouble(TXTBXPNAILTRIM.Text);
@@ -1022,7 +1087,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYNAILTRIM.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "NailTrim");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPNAILTRIM.Text));
@@ -1042,7 +1107,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='NailTrim' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYNAILTRIM.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "NailTrim");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPNAILTRIM.Text));
@@ -1060,6 +1125,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKPEDICURE_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEPEDICURECHARGE();
+    }
+
+    private void CALCULATEPEDICURECHARGE()
     {
         if (CHKPEDICURE.Checked == true)
         {
@@ -1089,7 +1159,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYPEDICURE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Pedicure");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPPEDICURE.Text));
@@ -1109,7 +1179,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Pedicure' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYPEDICURE.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "NailTrim");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPPEDICURE.Text));
@@ -1127,6 +1197,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKFACIAL_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATEFACIALCHARGE();
+    }
+
+    private void CALCULATEFACIALCHARGE()
     {
         if (CHKFACIAL.Checked == true)
         {
@@ -1156,7 +1231,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYFACIAL.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Facial");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPFACIAL.Text));
@@ -1176,7 +1251,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Facial' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYFACIAL.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Facial");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPFACIAL.Text));
@@ -1194,6 +1269,11 @@ public partial class Invoice : System.Web.UI.Page
         }
     }
     protected void CHKSHEDDING_CheckedChanged(object sender, EventArgs e)
+    {
+        CALCULATESHEDDINGCHARGE();
+    }
+
+    private void CALCULATESHEDDINGCHARGE()
     {
         if (CHKSHEDDING.Checked == true)
         {
@@ -1223,7 +1303,7 @@ public partial class Invoice : System.Web.UI.Page
             //save to InvoiceTemp
             cmd = new SqlCommand("Insert into InvoiceTemp(CustomerID, Qty, JobType, UnitPrice, TotalPrice, InvDate, Status) values(@CustomerID, @Qty, @JobType, @UnitPrice, @TotalPrice, @InvDate, @Status)", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSHEDDING.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Shedding");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSHEDDING.Text));
@@ -1243,7 +1323,7 @@ public partial class Invoice : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(connStr);
             cmd = new SqlCommand("Update InvoiceTemp set CustomerID=@CustomerID, Qty=@Qty, UnitPrice=@UnitPrice, TotalPrice=@TotalPrice, InvDate=@InvDate, Status=@Status where JobType='Shedding' ", conn);
 
-            cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTID.Text);
+            cmd.Parameters.AddWithValue("@CustomerID", LBLCUSTID.Text);
             cmd.Parameters.AddWithValue("@Qty", Convert.ToDouble(TXTBXQTYSHEDDING.Text));
             cmd.Parameters.AddWithValue("@Jobtype", "Shedding");
             cmd.Parameters.AddWithValue("@UnitPrice", Convert.ToDouble(TXTBXPSHEDDING.Text));
@@ -1270,93 +1350,442 @@ public partial class Invoice : System.Web.UI.Page
         cmd = new SqlCommand("Delete  from InvoiceTemp where Qty ='0' and Status ='false' ", conn);
         conn.Open();
         cmd.ExecuteNonQuery();
-        GridView1.DataBind();
+        GRDINVOICE.DataBind();
         conn.Close();
+
     }
-    protected void BTNPRINTINVOICE_Click(object sender, EventArgs e)
+
+    public override void VerifyRenderingInServerForm(Control control)
     {
-        //Dummy data for Invoice (Bill).
-        string CompanyName = "Animates NZ Holdings";
-        int CustomerID = Convert.ToInt32(TXTBXCUSTID.Text);
-            //Session["CustomerID"].ToString();
-        DataTable dt = new DataTable();
-        dt.Columns.AddRange(new DataColumn[5] {
-                            new DataColumn("JobID", typeof(string)),
-                            new DataColumn("JobType", typeof(string)),
-                            new DataColumn("Price", typeof(int)),
-                            new DataColumn("Quantity", typeof(int)),
-                            new DataColumn("Total", typeof(int))});
-        dt.Rows.Add(6, "Full Groom", 50, 1, 50);
-        dt.Rows.Add(14, "Shampoo", 25, 2, 50);
-        dt.Rows.Add(15, "WashBlow", 15, 1, 15);
-        //dt.Rows.Add(104, "Shirts", 550, 2, 1100);
+        /*Tell the compiler that the control is rendered
+         * explicitly by overriding the VerifyRenderingInServerForm event.*/
+    }
 
-        using (StringWriter sw = new StringWriter())
-        {
-            using (HtmlTextWriter hw = new HtmlTextWriter(sw))
-            {
-                StringBuilder sb = new StringBuilder();
+    protected void BTNPRINTINVOICE_Click(object sender, EventArgs e)
+    {       
+       GRDINVOICE.PagerSettings.Visible = false;
+    GRDINVOICE.DataBind();
+    StringWriter sw = new StringWriter();
+    HtmlTextWriter hw = new HtmlTextWriter(sw);
+    GRDINVOICE.RenderControl(hw);
+    string gridHTML = sw.ToString().Replace("\"", "'")
+        .Replace(System.Environment.NewLine, "");
+    StringBuilder sb = new StringBuilder();
+    sb.Append("<script type = 'text/javascript'>");
+    sb.Append("window.onload = new function(){");
+    sb.Append("var printWin = window.open('', '', 'left=0");
+    sb.Append(",top=0,width=1000,height=600,status=0');");
+    sb.Append("printWin.document.write(\"");
+    sb.Append(gridHTML);
+    sb.Append("\");");
+    sb.Append("printWin.document.close();");
+    sb.Append("printWin.focus();");
+    sb.Append("printWin.print();");
+    sb.Append("printWin.close();};");
+    sb.Append("</script>"); 
+    ClientScript.RegisterStartupScript(this.GetType(), "GridPrint", sb.ToString());
+    GRDINVOICE.PagerSettings.Visible = true;
+    GRDINVOICE.DataBind();
 
-                //Generate Invoice (Bill) Header.
-                sb.Append("<table width='100%' cellspacing='0' cellpadding='2'>");
-                sb.Append("<tr><td align='center' style='background-color: #18B5F0' colspan = '2'><b>Invoice Sheet</b></td></tr>");
-                sb.Append("<tr><td colspan = '2'></td></tr>");
-                sb.Append("<tr><td><b>CustomerID: </b>");
-                sb.Append(CustomerID);
-                sb.Append("</td><td align = 'right'><b>Date: </b>");
-                sb.Append(DateTime.Now);
-                sb.Append(" </td></tr>");
-                sb.Append("<tr><td colspan = '2'><b>Company Name: </b>");
-                sb.Append(CompanyName);
-                sb.Append("</td></tr>");
-                sb.Append("</table>");
-                sb.Append("<br />");
-
-                //Generate Invoice (Bill) Items Grid.
-
-                sb.Append("<table border = '1'>");
-                sb.Append("<tr>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    sb.Append("<th style = 'background-color: #D20B0C;color:#ffffff'>");
-                    sb.Append(column.ColumnName);
-                    sb.Append("</th>");
-                }
-                sb.Append("</tr>");
-                foreach (DataRow row in dt.Rows)
-                {
-                    sb.Append("<tr>");
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        sb.Append("<td>");
-                        sb.Append(row[column]);
-                        sb.Append("</td>");
-                    }
-                    sb.Append("</tr>");
-                }
-                sb.Append("<tr><td align = 'right' colspan = '");
-                sb.Append(dt.Columns.Count - 1);
-                sb.Append("'>Total</td>");
-                sb.Append("<td>");
-                sb.Append(dt.Compute("sum(Total)", ""));
-                sb.Append("</td>");
-                sb.Append("</tr></table>");
-
-                //Export HTML String as PDF.
-                StringReader sr = new StringReader(sb.ToString());
-                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-                pdfDoc.Open();
-                htmlparser.Parse(sr);
-                pdfDoc.Close();
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=Invoice_" + CustomerID + ".pdf");
-                Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                Response.Write(pdfDoc);
-                Response.End();
-            }
-        }
         //Response.Write("<script>alert('" + "Error! Please Attach Printer!" + "')</script>");
     }
+    protected void TXTBXCUSTOMERNAME_TextChanged(object sender, EventArgs e)
+    {
+        //query customer id based on value entered in customer name textbox
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlCommand cmd;
+        string str;
+
+        SqlConnection conn = new SqlConnection(connStr);
+        conn.Open();
+        str = "select CustomerID from CustomerDetails where UserName = '"+TXTBXCUSTOMERNAME.Text+"' ";
+        cmd = new SqlCommand(str, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            //display queried customer id 
+            LBLCUSTID.Text = reader["CustomerID"].ToString();
+            reader.Close();
+
+            //query records of the customer
+            string str2;
+            SqlCommand cmd2;
+            str2 = "select * from InvoiceTransaction where CustomerID='"+LBLCUSTID.Text+"' ";
+            cmd2 = new SqlCommand(str2, conn);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+
+            if (reader2.Read())
+            {
+                QUERYFGROOM();
+                QUERYPLATINUM();
+                QUERYGOLD();
+                QUERYMINI();
+                QUERYSHAMPOO();
+                QUERYWASHBLOW();
+                QUERYCALMING();
+                QUERYCITRUS();
+                QUERYSMOOTHIE();
+                QUERYFLEARELIEF();
+                QUERYKISSABLE();
+                QUERYDYE();
+                QUERYCUT();
+                QUERYNAILTRIM();
+                QUERYPEDICURE();
+                QUERYFACIAL();
+                QUERYSHEDDING();
+            }
+
+            conn.Close();
+        }
+        else
+        {
+            LBLMESS.Visible = true;
+            LBLMESS.Text = "Nothing to invoice for this customer!";
+        }
+
+    }
+
+//---------------------methods for jobtype------------------------------------    
+
+    private void QUERYFGROOM()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+        
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Full Groom' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKFULLGROOM.Checked = true;
+            CALCULATEFGROOMCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYPLATINUM()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Platinum' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKPLATINUM.Checked = true;
+            CALCULATEPLATINUMCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYGOLD()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Gold Groom' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKGOLD.Checked = true;
+            CALCULATEGOLDGROOMCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYMINI()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Mini Groom' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKMINI.Checked = true;
+            CALCULATEMINIGROOMCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYSHAMPOO()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Shampoo' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKSHAMPOO.Checked = true;
+            CALCULATESHAMPOOCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYWASHBLOW()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Washblow' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKWASHBLOW.Checked = true;
+            CALCULATEWASHBLOWCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYCALMING()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Calming' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKCALMING.Checked = true;
+            CALCULATECALMINGCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYCITRUS()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Citrus' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKCITRUS.Checked = true;
+            CALCULATECITRUSCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYSMOOTHIE()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Smoothie' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKSMOOTHIE.Checked = true;
+            CALCULATESMOOTHIECHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYFLEARELIEF()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='FleaRelief' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKFLEARELIEF.Checked = true;
+            CALCULATEFLEARELIEFCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYKISSABLE()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Kissable' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKKISSABLE.Checked = true;
+            CALCULATEKISSCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYDYE()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Dye' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKDYE.Checked = true;
+            CALCULATEDYECHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYCUT()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Cut' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKCUT.Checked = true;
+            CALCULATECUTCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYNAILTRIM()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Nail Trim' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKNAILTRIM.Checked = true;
+            CALCULATENAILTRIMCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYPEDICURE()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Pedicure' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKPEDICURE.Checked = true;
+            CALCULATEPEDICURECHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYFACIAL()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Facial' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKFACIAL.Checked = true;
+            CALCULATEFACIALCHARGE();
+        }
+        conn.Close();
+    }
+
+    private void QUERYSHEDDING()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connStr);
+
+        string strquery;
+        SqlCommand cmd;
+        conn.Open();
+        strquery = "select JobType from InvoiceTransaction where Jobtype='Shedding' ";
+        cmd = new SqlCommand(strquery, conn);
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.Read())
+        {
+            CHKSHEDDING.Checked = true;
+            CALCULATESHEDDINGCHARGE();
+        }
+        conn.Close();
+    }
+
 }

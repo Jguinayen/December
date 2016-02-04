@@ -37,6 +37,10 @@
 
 /* ---- end table style --- */
         
+        .auto-style1 {
+            width: 264px;
+        }
+        
         </style>
 
     <!-- Calendar & Bootstrap Responsive -->
@@ -85,7 +89,7 @@
         <nav class="navbar navbar-inverse" style="background-color: #333333; padding: 0px 0px 0px 0px;">
   <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hello <%:Session["UserName"]%></a>
+          <a class="navbar-brand" href="Admin.aspx" style="background-color: #000; padding-top: 15px;">Hello <%-- ID #--%></a>
         </div>
 
    
@@ -113,11 +117,11 @@
          </li>
 
         <li><a href="Invoice.aspx">Invoice</a></li>
-        <%--<li class="divider"></li>--%>
+            <%--Customer Name--%>
         <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-       <%--<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>--%>
+          <%-- ID #--%>
       </ul>
     </div>
   </div>
@@ -131,17 +135,34 @@
 
         <!------ Invoice Table ------>
         
-                    <table style="width: 90%; margin: 4px 4px 0px 20px; al" class="center-block">
+                    <table style="width: 90%; margin: 4px 4px 0px 20px; " class="center-block">
                         <tr>
                             <td style="width: 120px;">
                                 Date </td>
-                            <td class="auto-style34"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="115px"></asp:TextBox></td>
+                            <td class="auto-style1"><asp:TextBox ID="TXTBXINVDATE" runat="server" Width="115px"></asp:TextBox></td>
+                            <td class="auto-style34">&nbsp;</td>
+                            <td class="auto-style34">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td><%--Customer Name--%> </td>
-                            <td>
-                                <asp:TextBox ID="TXTBXCUSTNAME" runat="server"></asp:TextBox>&nbsp;&nbsp;<%-- ID #--%>:<asp:TextBox ID="TXTBXCUSTID" runat="server"  Width="100px"></asp:TextBox>
+                            <td><%--Customer Name--%> Customer:</td>
+                            <td class="auto-style1">
+                                &nbsp;&nbsp;<%-- ID #--%><asp:TextBox ID="TXTBXCUSTOMERNAME" runat="server" AutoPostBack="True" OnTextChanged="TXTBXCUSTOMERNAME_TextChanged"></asp:TextBox>
                             </td>
+                            <td>
+                                Customer ID:</td>
+                            <td>
+                                <asp:Label ID="LBLCUSTID" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="auto-style1">
+                                <asp:Label ID="LBLMESS" runat="server" Visible="False"></asp:Label>
+                            </td>
+                            <td>
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
                         </tr>
                         </table>
                   
@@ -487,7 +508,7 @@
                         <tr>
                             <td style="align-items:center;">
                                 
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;">
+                                    <asp:GridView ID="GRDINVOICE" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;">
                                         <Columns>
                                             <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                                             <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />

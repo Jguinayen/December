@@ -26,9 +26,15 @@
 
     <!-- Custom Fonts & Icons -->
    <%-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/icomoon-social.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">--%>
  
+=======
+	<link rel="stylesheet" href="css/icomoon-social.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">--%>
+	
+>>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
     <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Dropdown Menu -->
@@ -56,9 +62,12 @@
   <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand2" href="Admin.aspx" style="background-color: #000; margin-top:0px; padding-top: 25px;">Hello <%:Session["UserName"]%></a>
+<<<<<<< HEAD
         </div>
+=======
+    </div>
+>>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
 
-   
     <div>
       <ul class="nav navbar-nav2">
         <li><a href="Admin.aspx">Calendar</a></li>

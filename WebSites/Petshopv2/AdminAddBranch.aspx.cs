@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 
-public partial class Branch : System.Web.UI.Page
+public partial class AdminAddBranch : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,7 +15,7 @@ public partial class Branch : System.Web.UI.Page
 
     private string connstr =
            System.Web.Configuration.WebConfigurationManager.ConnectionStrings
-           ["petshoppeConnstr"].ConnectionString;
+           ["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
 
@@ -28,6 +28,7 @@ public partial class Branch : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@BranchName", TXTBRANCH.Text);
 
+<<<<<<< HEAD:WebSites/Petshopv2/Branch.aspx.cs
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -36,5 +37,13 @@ public partial class Branch : System.Web.UI.Page
         {
             Exception ex2 = ex;
         }
+=======
+        conn.Open();
+        if (cmd.ExecuteNonQuery()==1)
+        {
+            LBLMESS.Text = " Branch Successfully Added!";
+        }
+        conn.Close();
+>>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64:WebSites/Petshopv2/AdminAddBranch.aspx.cs
     }
 }

@@ -13,12 +13,21 @@
         <asp:Button ID="Button1" runat="server" Text="Export to Excel" OnClick="Button1_Click" />
         <br /><br />
     
+<<<<<<< HEAD
         <asp:GridView ID="GroomerUpcoming" runat="server" CellPadding="4" ForeColor="#333333" GridLines="Both" Width="100%" BorderWidth="2" CellSpacing="2" BorderColor="#ffffff">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Size="Small" Font-Bold="True" ForeColor="White" Height="30px" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFFBD6" Font-Size="Small" ForeColor="#333333" Height="30px" />
+=======
+        <asp:GridView ID="GroomerUpcoming" runat="server" CellPadding="4" ForeColor="#333333" GridLines="BOTH" Width="100%" BorderWidth="2" CellSpacing="2" BorderColor="#ffffff">
+            <AlternatingRowStyle BackColor="White" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" Height="30px" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" Height="30px" />
+>>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
             <sortedascendingcellstyle backcolor="#FDF5AC" />
             <sortedascendingheaderstyle backcolor="#4D0000" />
