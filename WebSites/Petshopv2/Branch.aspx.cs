@@ -21,13 +21,20 @@ public partial class Branch : System.Web.UI.Page
 
     protected void BTNSAVEBRANCH_Click(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("Insert into Branch (BranchName) values (@BranchName)", conn);
+        try
+        {
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("Insert into Branch (BranchName) values (@BranchName)", conn);
 
-        cmd.Parameters.AddWithValue("@BranchName", TXTBRANCH.Text);
+            cmd.Parameters.AddWithValue("@BranchName", TXTBRANCH.Text);
 
-        conn.Open();
-        cmd.ExecuteNonQuery();
-        conn.Close();
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
     }
 }

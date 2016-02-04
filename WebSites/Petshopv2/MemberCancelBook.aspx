@@ -11,10 +11,10 @@
         <asp:Button ID="Button1" runat="server" Text="Export to Excel" OnClick="Button1_Click" />
         <br /><br />
     
-        <asp:GridView ID="GridViewCancel" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
+        <asp:GridView ID="GridViewCancel" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="Both" Width="100%" BorderWidth="2" CellSpacing="2" BorderColor="#ffffff">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" Height="30px" />
             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
             <RowStyle BackColor="#FFFBD6" ForeColor="#333333" Height="30px" />
             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />

@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage-1.master.cs" Inherits="MasterPage_1" %>
-
+<IFRAME ID="KeepAliveFrame" src="KeepSessionAlive.aspx" frameBorder="0" width="0" height="0" runat="server"></IFRAME>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -101,59 +101,84 @@
  
 
      <!-- Footer -->
-	    <div class="footer">
-	    	<div class="container">
-			
-		    	<div class="row">
-				
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>Contact Us</h3>
-		    			<%--<p class="contact-us-details">--%>
+     <div class="footer">
+      <div class="container">
+   
+       <div class="row">
+    
+        <div class="col-footer col-md-2 col-xs-6" style="width: 20%;">
+         <h4>SHOP NOW</h4>
                         <p>
-	        				<b>Address:</b> 20 Hobson Street. Auckland CBD, Auckland, New Zealand<br/>
-	        				<b>Phone:</b> +64 123 45678910<br/>
-	        				<b>Fax:</b> +64 123 45678910<br/>
-	        				<b>Email:</b> <a href="mailto:info@petshoppe.com">info@petshoppe.com</a>
-	        			</p>
-		    		</div>				
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>Services</h3>
-						<p>
+         Dog<br />
+Cat<br />
+Fish<br />
+Reptile<br />
+Small Pet<br />
+Bird<br />
+Chicken
+</p>
+        </div> 
+                    <div class="col-footer col-md-2 col-xs-6" style="width: 20%;">
+         <h4>SERVICES</h4>
+      <p>
+Contact Us<br />
+Delivery Information<br />
+Security Policy<br />
+Privacy Policy<br />
+Returns Policy<br />
+FAQs</p>
+        </div>    
+        <div class="col-footer col-md-2 col-xs-6" style="width: 20%;">
+         <h4>SHOPPING ONLINE</h4>
+      <p>
 Vet Care<br />
 Puppy School<br />
 Pet Grooming<br />
 DIY Dog Wash<br />
 Pet Adoption<br />
 Pet Insurance</p>
-		    			<div>
-		    				<img src="img/icons/facebook.png" width="32" alt="Facebook"/>
-		    				<img src="img/icons/twitter.png" width="32" alt="Twitter"/>
-		    				<img src="img/icons/linkedin.png" width="32" alt="LinkedIn"/>
-							<img src="img/icons/rss.png" width="32" alt="RSS Feed"/>
-						</div>
-		    		</div>
-		    		<div class="col-footer col-md-4 col-xs-6">
-		    			<h3>About Petshoppe</h3>
-		    				<p>Petshoppe sells one of the biggest ranges of pet food in NZ, as well as a huge range of veterinary products and pet accessories. It's everything for pets!</p>
-		    		</div>
-
-		    	</div>
-		    	<div class="row">
-		    		<div class="col-md-12">
-		    			<div class="footer-copyright">&copy; 2014 <a href="#"> Petshoppe 2015. BloodyBrainTechnology.com</a>.</div>
-		    		</div>
-		    	</div>
-		    </div>
-	    </div>
+         
+        </div>
+                    <div class="col-footer col-md-2 col-xs-6" style="width: 20%;">
+         <h4>ABOUT US</h4>
+      <p>
+Contact Us<br />
+Delivery Information<br />
+Security Policy<br />
+Privacy Policy<br />
+Returns Policy<br />
+FAQs</p>
+                        
+         
+        </div>
+                    
+        <div class="col-footer col-md-2 col-xs-6" style="width: 20%;">
+         <br /><br />
+          <p>Petshoppe sells one of the biggest ranges of pet food in NZ, as well as a huge range of veterinary products and pet accessories. It's everything for pets!</p>
+        <div>
+          <img src="img/icons/facebook.png" width="32" alt="Facebook"/>
+          <img src="img/icons/twitter.png" width="32" alt="Twitter"/>
+          
+      </div>
+                    </div>
+                    
+       </div>
+       <div class="row">
+        <div class="col-md-12">
+         <div class="footer-copyright">&copy; Petshoppe 2016</div>
+        </div>
+       </div>
+      </div>
+     </div>
 
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="js/bootstrap.min.js"></script>
-		
-		<!-- Scrolling Nav JavaScript -->
-		<script src="js/jquery.easing.min.js"></script>
-		<script src="js/scrolling-nav.js"></script>
+  
+  <!-- Scrolling Nav JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/scrolling-nav.js"></script>
     
 </body>
 </html>

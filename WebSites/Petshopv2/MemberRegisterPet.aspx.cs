@@ -52,11 +52,14 @@ public partial class MemberRegisterPet : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@Size", TXTBXSIZE.Text);
         cmd.Parameters.AddWithValue("@RegistrationDate", Convert.ToDateTime(DateTime.Today.ToShortDateString()));
         cmd.Parameters.AddWithValue("@Precaution", TXTBXPRECAUTION.Text);
-
+        
         conn.Open();
         if (cmd.ExecuteNonQuery() == 1)
         {
             LBLMSG.Text = "SUCCESSFULLY REGISTERED!";
+            Response.Write("<script>alert('" + "Pet successfully registered! You can now Book" + "')</script>");
+            //Response.Redirect("MemberBookAppt.aspx");
+            
             clear();
         }
         conn.Close();

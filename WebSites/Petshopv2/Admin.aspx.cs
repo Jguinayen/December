@@ -84,52 +84,75 @@ public partial class Admin : System.Web.UI.Page
     public static List<DateTime> list = new List<DateTime>();
     protected void Calendar1_SelectionChanged(object sender, EventArgs e)
     {
-        if (Session["SelectedDates"] != null)
+        try
         {
-            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-            foreach (DateTime dt in newList)
+            if (Session["SelectedDates"] != null)
             {
-                Calendar1.SelectedDates.Add(dt);
+                List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+                foreach (DateTime dt in newList)
+                {
+                    Calendar1.SelectedDates.Add(dt);
 
+                }
+                list.Clear();
             }
-            list.Clear();
         }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
     
     protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
     {
-        if (e.Day.IsSelected == true)
+        try
         {
-            list.Add(e.Day.Date);
-        }
-        Session["SelectedDates"] = list;
-        FillHolidayDataset();
-
-        if (e.Day.IsOtherMonth || e.Day.Date < (System.DateTime.Now.AddDays(-1)))
-        {
-            e.Day.IsSelectable = false;
-            e.Cell.ToolTip = "Not Available";
-        }
-        DateTime nextDate;
-        if (dsHolidays != null)
-        {
-            foreach (DataRow dr in dsHolidays.Tables[0].Rows)
+            if (e.Day.IsSelected == true)
             {
-                nextDate = (DateTime)dr["Holidays_Dayoff"];
-                if (nextDate == e.Day.Date)
+                list.Add(e.Day.Date);
+            }
+            Session["SelectedDates"] = list;
+            FillHolidayDataset();
+
+            if (e.Day.IsOtherMonth || e.Day.Date < (System.DateTime.Now.AddDays(-1)))
+            {
+                e.Day.IsSelectable = false;
+                e.Cell.ToolTip = "Not Available";
+            }
+            DateTime nextDate;
+            if (dsHolidays != null)
+            {
+                foreach (DataRow dr in dsHolidays.Tables[0].Rows)
                 {
-                    e.Day.IsSelectable = false;
-                    e.Cell.BackColor = System.Drawing.Color.Red;
-                    e.Cell.ForeColor = System.Drawing.Color.White;
-                    e.Cell.ToolTip = "Not Available";
-                    e.Cell.Controls.Add(new LiteralControl("<br/>Holiday / Day Off <br/>"));// + TextBox1.text));
+                    nextDate = (DateTime)dr["Holidays_Dayoff"];
+                    if (nextDate == e.Day.Date)
+                    {
+                        e.Day.IsSelectable = false;
+                        e.Cell.BackColor = System.Drawing.Color.Red;
+                        e.Cell.ForeColor = System.Drawing.Color.White;
+                        e.Cell.ToolTip = "Not Available";
+                        e.Cell.Controls.Add(new LiteralControl("<br/>Holiday / Day Off <br/>"));// + TextBox1.text));
+                    }
                 }
             }
         }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
     protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
     {
-        FillHolidayDataset();
+        try
+        {
+            FillHolidayDataset();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
     }
 
     private string connstr =
@@ -141,97 +164,117 @@ public partial class Admin : System.Web.UI.Page
 
     protected void btnAdminCalBlockDates_Click(object sender, EventArgs e)
     {
-        if (Session["SelectedDates"] != null)
+        try
         {
-            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-             foreach (DateTime dt in newList)
+            if (Session["SelectedDates"] != null)
             {
-                conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("Insert into AdminCalendar (Name, Holidays_Dayoff, Notes) values (@Name, @Holidays_Dayoff, @Notes)", conn);
-
-                cmd.Parameters.AddWithValue("@Name", txtAdminCalName.Text);
-                cmd.Parameters.AddWithValue("@Holidays_Dayoff", dt);
-                cmd.Parameters.AddWithValue("@Notes", txtAdminCalNotes.Text);
-
-                conn.Open();
-
-                if (cmd.ExecuteNonQuery() == 1)
+                List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+                foreach (DateTime dt in newList)
                 {
-                    FillHolidayDataset();
-                    Calendar1.SelectedDates.Clear();
-                    //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
-                    Session.RemoveAll();
-                    //string display = "Pop-up!";
-                    //ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + display + "');", true);
+                    conn = new SqlConnection(connstr);
+                    cmd = new SqlCommand("Insert into AdminCalendar (Name, Holidays_Dayoff, Notes) values (@Name, @Holidays_Dayoff, @Notes)", conn);
+
+                    cmd.Parameters.AddWithValue("@Name", txtAdminCalName.Text);
+                    cmd.Parameters.AddWithValue("@Holidays_Dayoff", dt);
+                    cmd.Parameters.AddWithValue("@Notes", txtAdminCalNotes.Text);
+
+                    conn.Open();
+
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        FillHolidayDataset();
+                        Calendar1.SelectedDates.Clear();
+                        //Calendar1.SelectedDates.Remove(Calendar1.SelectedDates[0]);
+                        Session.RemoveAll();
+                        //string display = "Pop-up!";
+                        //ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + display + "');", true);
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+                newList.Clear();
             }
-             newList.Clear();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
         }
     }
     protected void btnAdminCalViewBlockDates_Click(object sender, EventArgs e)
     {
-        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-        newList.Clear();
-        grdviewAdminCalendar.Visible = true;
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("select * from AdminCalendar", conn);
-
-        System.Data.DataTable dt = new System.Data.DataTable();
-
-        conn.Open();
-        rdr = cmd.ExecuteReader();
-
-        if (rdr.HasRows)
+        try
         {
-            dt.Load(rdr);
-            grdviewAdminCalendar.DataSource = dt;
-            grdviewAdminCalendar.DataBind();
+            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+            newList.Clear();
+            grdviewAdminCalendar.Visible = true;
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("select * from AdminCalendar", conn);
+
+            System.Data.DataTable dt = new System.Data.DataTable();
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
+            {
+                dt.Load(rdr);
+                grdviewAdminCalendar.DataSource = dt;
+                grdviewAdminCalendar.DataBind();
+            }
+            else
+            {
+                dt.Load(rdr);
+                grdviewAdminCalendar.DataSource = dt;
+                grdviewAdminCalendar.EmptyDataText = "No Record Found";
+                grdviewAdminCalendar.DataBind();
+            }
+            FillHolidayDataset();
+            conn.Close();
         }
-        else
+        catch (Exception ex)
         {
-            dt.Load(rdr);
-            grdviewAdminCalendar.DataSource = dt;
-            grdviewAdminCalendar.EmptyDataText = "No Record Found";
-            grdviewAdminCalendar.DataBind();
-        }
-        FillHolidayDataset();
-        conn.Close();
-    
+            Exception ex2 = ex;
+        }    
     }
     protected void btnAdminCalEdit_Click(object sender, EventArgs e)
     {
-        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-        newList.Clear();
-        lblAdminCalBlockDate.Visible = true;
-        txtAdminCalBlockDate.Visible = true;
-        grdviewAdminCalendar.Visible = true;
-
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("select * from AdminCalendar", conn);
-
-        System.Data.DataTable dt = new System.Data.DataTable();
-
-        conn.Open();
-        rdr = cmd.ExecuteReader();
-
-        if (rdr.HasRows)
+        try
         {
-            dt.Load(rdr);
-            grdviewAdminCalendar.DataSource = dt;
-            grdviewAdminCalendar.DataBind();
+            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+            newList.Clear();
+            lblAdminCalBlockDate.Visible = true;
+            txtAdminCalBlockDate.Visible = true;
+            grdviewAdminCalendar.Visible = true;
+
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("select * from AdminCalendar", conn);
+
+            System.Data.DataTable dt = new System.Data.DataTable();
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
+            {
+                dt.Load(rdr);
+                grdviewAdminCalendar.DataSource = dt;
+                grdviewAdminCalendar.DataBind();
+                clear();
+            }
+            else
+            {
+                dt.Load(rdr);
+                grdviewAdminCalendar.DataSource = dt;
+                grdviewAdminCalendar.EmptyDataText = "No Record Found";
+                grdviewAdminCalendar.DataBind();
+            }
+            FillHolidayDataset();
+            conn.Close();
             clear();
         }
-        else
+        catch (Exception ex)
         {
-            dt.Load(rdr);
-            grdviewAdminCalendar.DataSource = dt;
-            grdviewAdminCalendar.EmptyDataText = "No Record Found";
-            grdviewAdminCalendar.DataBind();
+            Exception ex2 = ex;
         }
-        FillHolidayDataset();
-        conn.Close();
-        clear();
     }
     protected void btnAdminCalSaveChanges_Click(object sender, EventArgs e)
     {
@@ -265,21 +308,28 @@ public partial class Admin : System.Web.UI.Page
     }
     protected void grdviewAdminCalendar_SelectedIndexChanged(object sender, EventArgs e)
     {
-        List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
-        newList.Clear();
-        Calendar1.SelectedDates.Clear();
-        int rowIndex = grdviewAdminCalendar.SelectedIndex;
-        lblAdminCalID.Text = grdviewAdminCalendar.SelectedRow.Cells[1].Text;
-        txtAdminCalName.Text = grdviewAdminCalendar.SelectedRow.Cells[2].Text;
-        txtAdminCalBlockDate.Text = grdviewAdminCalendar.SelectedRow.Cells[3].Text;
-        txtAdminCalNotes.Text = grdviewAdminCalendar.SelectedRow.Cells[4].Text;
+        try
+        {
+            List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+            newList.Clear();
+            Calendar1.SelectedDates.Clear();
+            int rowIndex = grdviewAdminCalendar.SelectedIndex;
+            lblAdminCalID.Text = grdviewAdminCalendar.SelectedRow.Cells[1].Text;
+            txtAdminCalName.Text = grdviewAdminCalendar.SelectedRow.Cells[2].Text;
+            txtAdminCalBlockDate.Text = grdviewAdminCalendar.SelectedRow.Cells[3].Text;
+            txtAdminCalNotes.Text = grdviewAdminCalendar.SelectedRow.Cells[4].Text;
 
-        lblAdminCalName.Visible = true;
-        lblAdminCalBlockDate.Visible = true;
-        lblAdminCalNotes.Visible = true;
-        txtAdminCalName.Visible = true;
-        txtAdminCalBlockDate.Visible = true;
-        txtAdminCalNotes.Visible = true;
-        FillHolidayDataset();
+            lblAdminCalName.Visible = true;
+            lblAdminCalBlockDate.Visible = true;
+            lblAdminCalNotes.Visible = true;
+            txtAdminCalName.Visible = true;
+            txtAdminCalBlockDate.Visible = true;
+            txtAdminCalNotes.Visible = true;
+            FillHolidayDataset();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
     }
 }

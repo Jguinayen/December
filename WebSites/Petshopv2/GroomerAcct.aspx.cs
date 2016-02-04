@@ -11,15 +11,22 @@ public partial class GroomerAcct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblAdminMyAcctID.Visible = false;
-        lblAdminMyAcctIDS.Visible = false;
-        lblAdminMyAcctID.Text = Session["AdminUserID"].ToString();
-        lblAdminMyAcctIDS.Text = Session["SessionId"].ToString();
-        txtAdminMyAcctName.Text = Session["Name"].ToString();
-        txtAdminMyAcctUserName.Text = Session["UserName"].ToString();
-        txtAdminMyAcctAddress.Text = Session["Address"].ToString();
-        txtAdminMyAcctPhone.Text = Session["Phone"].ToString();
-        txtAdminMyAcctEmail.Text = Session["Email"].ToString();
+        try
+        {
+            lblAdminMyAcctID.Visible = false;
+            lblAdminMyAcctIDS.Visible = false;
+            lblAdminMyAcctID.Text = Session["AdminUserID"].ToString();
+            lblAdminMyAcctIDS.Text = Session["SessionId"].ToString();
+            txtAdminMyAcctName.Text = Session["Name"].ToString();
+            txtAdminMyAcctUserName.Text = Session["UserName"].ToString();
+            txtAdminMyAcctAddress.Text = Session["Address"].ToString();
+            txtAdminMyAcctPhone.Text = Session["Phone"].ToString();
+            txtAdminMyAcctEmail.Text = Session["Email"].ToString();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
     }
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -29,44 +36,51 @@ public partial class GroomerAcct : System.Web.UI.Page
 
     protected void btnAdminMyAcctUpdate_Click(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("select * from AdminUsers where Password='" + txtAdminMyAcctCurrentPassword.Text + "'", conn);
-
-        SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
-        DataSet newDataSet = new DataSet();
-        newAdapter.Fill(newDataSet);
-
-        conn.Open();
-        rdr = cmd.ExecuteReader();
-
-        if (rdr.HasRows)
+        try
         {
-            string UPass = newDataSet.Tables[0].Rows[0]["Password"].ToString();
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("select * from AdminUsers where Password='" + txtAdminMyAcctCurrentPassword.Text + "'", conn);
 
-            if (UPass == txtAdminMyAcctCurrentPassword.Text & txtAdminMyAcctNewPassword.Text == txtAdminMyAcctConfirmPassword.Text)
+            SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
+            DataSet newDataSet = new DataSet();
+            newAdapter.Fill(newDataSet);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
             {
-                conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("update AdminUsers set Name=@Name, UserName=@UserName, Address=@Address, Phone=@Phone, Email=@Email, Password=@Password where AdminUserID='" + Session["AdminUserID"] + "'", conn);
+                string UPass = newDataSet.Tables[0].Rows[0]["Password"].ToString();
 
-                cmd.Parameters.AddWithValue("@AdminUserID", lblAdminMyAcctID.Text);
-                cmd.Parameters.AddWithValue("@Name", txtAdminMyAcctName.Text);
-                cmd.Parameters.AddWithValue("@UserName", txtAdminMyAcctUserName.Text);
-                cmd.Parameters.AddWithValue("@Address", txtAdminMyAcctAddress.Text);
-                cmd.Parameters.AddWithValue("@Phone", txtAdminMyAcctPhone.Text);
-                cmd.Parameters.AddWithValue("@Email", txtAdminMyAcctEmail.Text);
-                cmd.Parameters.AddWithValue("@Password", txtAdminMyAcctNewPassword.Text);
-
-                conn.Open();
-                if (cmd.ExecuteNonQuery() == 1)
+                if (UPass == txtAdminMyAcctCurrentPassword.Text & txtAdminMyAcctNewPassword.Text == txtAdminMyAcctConfirmPassword.Text)
                 {
-                    lblAdminMyAcctMsg.Text = "Your Account has been updated";
+                    conn = new SqlConnection(connstr);
+                    cmd = new SqlCommand("update AdminUsers set Name=@Name, UserName=@UserName, Address=@Address, Phone=@Phone, Email=@Email, Password=@Password where AdminUserID='" + Session["AdminUserID"] + "'", conn);
+
+                    cmd.Parameters.AddWithValue("@AdminUserID", lblAdminMyAcctID.Text);
+                    cmd.Parameters.AddWithValue("@Name", txtAdminMyAcctName.Text);
+                    cmd.Parameters.AddWithValue("@UserName", txtAdminMyAcctUserName.Text);
+                    cmd.Parameters.AddWithValue("@Address", txtAdminMyAcctAddress.Text);
+                    cmd.Parameters.AddWithValue("@Phone", txtAdminMyAcctPhone.Text);
+                    cmd.Parameters.AddWithValue("@Email", txtAdminMyAcctEmail.Text);
+                    cmd.Parameters.AddWithValue("@Password", txtAdminMyAcctNewPassword.Text);
+
+                    conn.Open();
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        lblAdminMyAcctMsg.Text = "Your Account has been updated";
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+                else
+                {
+                    lblAdminMyAcctMsg.Text = "Error Password and/or Password Did not Match";
+                }
             }
-            else
-            {
-                lblAdminMyAcctMsg.Text = "Error Password and/or Password Did not Match";
-            }
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
         }
     }
 }

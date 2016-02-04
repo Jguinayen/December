@@ -20,13 +20,20 @@ public partial class JobType : System.Web.UI.Page
 
     protected void BTNJTYPE_Click(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("Insert into JobTypeTable (JobType) values (@JobType)", conn);
+        try
+        {
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("Insert into JobTypeTable (JobType) values (@JobType)", conn);
 
-        cmd.Parameters.AddWithValue("@JobType", TXTBXJTYPE.Text);
+            cmd.Parameters.AddWithValue("@JobType", TXTBXJTYPE.Text);
 
-        conn.Open();
-        cmd.ExecuteNonQuery();
-        conn.Close();
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
     }
 }

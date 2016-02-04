@@ -1034,13 +1034,13 @@ border:none;
 }
 }
 /*--------------------------------------------------------------------------
-	Footer Style
+ Footer Style
 --------------------------------------------------------------------------*/
 .footer {
-  background: #222;
-  color: #A0A0A0;
-  padding: 0 20px 10px 20px;
-  border-top: 4px solid #aec62c;
+  background: #FDC900; /*#222*/
+  color: #000; /*#A0A0A0*/
+  padding: 10px 30px 10px 30px;
+  border-top: 30px solid #000; /*#aec62c*/
   margin-top: 20px;
   -webkit-box-shadow: 0 -1px 12px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 -1px 12px rgba(0,0,0,0.4);
@@ -1048,9 +1048,21 @@ border:none;
   color: 0 -1px 12px rgba(0,0,0,0.4);
 }
 .footer h3 {
-  color: #E4E4E4;
+  color: #000; /*#E4E4E4*/
   font-size: 1.3em;
   border-bottom: 1px dotted #7C7C7C;
+}
+
+.footer h4 {
+    font-family: Arial, helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #000;
+    text-transform: uppercase;
+    border-bottom: 1px dotted #7C7C7C;
+}
+.footer p {
+  font-size: 12px;
 }
 .footer ul {
   padding: 0;
@@ -1093,10 +1105,10 @@ border:none;
 }
 .footer-copyright {
   text-align: center;
-  color: #7C7C7C;
+  color: #000; /*#7C7C7C*/
   border-top: 1px dotted #7C7C7C;
   padding-top: 10px;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 /*--------------------------------------------------------------------------
 +	Pagination Style (overrides Bootstrap style)
