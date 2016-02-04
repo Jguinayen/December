@@ -8,28 +8,27 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
-
-public partial class GroomerAppointment : System.Web.UI.Page
+public partial class AdminAppointment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         TXTGROOMERID.Text = Session["AdminUserID"].ToString();
         TXTGROOMER.Text = Session["UserName"].ToString();
-      //TXTDATE.Text = DateTime.Today.ToString("dd/mm/yyyy");
+        //TXTDATE.Text = DateTime.Today.ToString("dd/mm/yyyy");
         TXTDATE.Text = DateTime.Today.ToShortDateString();
-               
+
         string GROOMERBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         SqlConnection con = new SqlConnection(GROOMERBOOKING);
-        cmd = new SqlCommand("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails where Groomer = '" + Session["UserName"] + "'", con);
+        cmd = new SqlCommand("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails", con);
         SqlDataAdapter da = new SqlDataAdapter(cmd);
         SqlDataReader rdr;
-       
+
         DataSet ds1 = new DataSet();
 
         da.Fill(ds1);
         con.Open();
-        rdr =cmd.ExecuteReader();
+        rdr = cmd.ExecuteReader();
 
         if (rdr.HasRows)
         {
@@ -42,15 +41,15 @@ public partial class GroomerAppointment : System.Web.UI.Page
         }
 
     }
-   private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+    private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
     private SqlConnection conn;
     private SqlCommand cmd;
 
     protected void BTNSAVE_Click(object sender, EventArgs e)
     {
         string JobPrice = "Select Price from JobTypeTable where Jobtype='" + TXTJOBTYPE.Text + "',conn";
-        
-        
+
+
         conn = new SqlConnection(connstr);
         cmd = new SqlCommand("Insert into InvoiceTransaction(CustomerID,TransacDate, PetID,PetName, JobType, JobDate, PetType, Breed, Weight, Price) values(@CustomerID, @TransacDate, @PetID, @PetName, @JobType, @JobDate, @PetType, @Breed, @Weight, @Price)", conn);
 
@@ -66,7 +65,7 @@ public partial class GroomerAppointment : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@Price", JobPrice);
 
         conn.Open();
-        if(cmd.ExecuteNonQuery()==1)
+        if (cmd.ExecuteNonQuery() == 1)
         {
             LBLMESS.Text = "Ready for Invoicing!";
 
@@ -74,17 +73,17 @@ public partial class GroomerAppointment : System.Web.UI.Page
             SqlConnection conn2 = new SqlConnection(connStr);
             SqlCommand cmd2;
 
-            cmd2 = new SqlCommand("Delete  from BookingDetails where PetName ='"+TXTPETNAME.Text+"' and JobType='"+TXTJOBTYPE.Text+"' ", conn2);
+            cmd2 = new SqlCommand("Delete  from BookingDetails where PetName ='" + TXTPETNAME.Text + "' and JobType='" + TXTJOBTYPE.Text + "' ", conn2);
             conn2.Open();
             cmd2.ExecuteNonQuery();
             GRIDAPPOINTMENT.DataBind();
             conn2.Close();
 
-          //reload gridview
+            //reload gridview
             string GROOMERBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
             SqlConnection con = new SqlConnection(GROOMERBOOKING);
-            SqlDataAdapter da = new SqlDataAdapter("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails where Groomer = '" + Session["UserName"] + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails", con);
 
             DataSet ds1 = new DataSet();
             da.Fill(ds1);

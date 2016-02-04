@@ -10,24 +10,24 @@
             
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style15">Customer ID</td>
+                <td class="auto-style15">Date</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="TXTBXCID" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style6">Date</td>
-                <td class="auto-style15">
                     <asp:TextBox ID="TXTBXDATEREG" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style15">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style15"><%--Pet ID--%></td>
+                <td class="auto-style15"><%--Pet ID--%>Customer ID</td>
                 <td class="auto-style4">
                     <%--<asp:TextBox ID="TXTBXPETID" runat="server"></asp:TextBox>--%>
+                    <asp:TextBox ID="TXTBXCID" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style6">Breed</td>
                 <td class="auto-style15">
-                    <asp:DropDownList ID="DRPBREED" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetBreed" DataValueField="PetType" >
+                    <asp:DropDownList ID="DRPBREED" runat="server" DataSourceID="SqlDataSource1" DataTextField="PetBreed" DataValueField="PetBreed" >
                         <asp:ListItem>-Please Select-</asp:ListItem>
                         <asp:ListItem>labrador</asp:ListItem>
                         <asp:ListItem>Afghan Hound</asp:ListItem>
@@ -71,7 +71,7 @@
                         <asp:ListItem>West Highland White Terrier</asp:ListItem>
                         <asp:ListItem>Yorkshire Terrier</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetType], [PetBreed] FROM [PetTypeBreed] WHERE ([PetType] = @PetType)">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PetBreed] FROM [PetTypeBreed] WHERE ([PetType] = @PetType)">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DRPTYPE" Name="PetType" PropertyName="SelectedValue" Type="String" />
                         </SelectParameters>
@@ -121,14 +121,12 @@
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style1">Others</td>
+                <td class="auto-style1">&nbsp;</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="TXTBXOTHERS" runat="server"></asp:TextBox>
 
                     &nbsp;
 
-                    <asp:Label ID="LBLOTHERS" runat="server" Text="*"></asp:Label>
-                </td>
+                    </td>
                 <td class="auto-style6">Size</td>
                 <td class="auto-style2">
                     <asp:TextBox ID="TXTBXSIZE" runat="server" AutoPostBack="True"></asp:TextBox>

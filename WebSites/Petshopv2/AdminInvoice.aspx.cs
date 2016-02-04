@@ -12,7 +12,8 @@ using System.Configuration;
 using System.IO;
 using System.Text;
 
-public partial class GroomerInvoice : System.Web.UI.Page
+
+public partial class AdminInvoice : System.Web.UI.Page
 {
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
     private SqlConnection conn;
@@ -1791,5 +1792,4 @@ public partial class GroomerInvoice : System.Web.UI.Page
         }
         conn.Close();
     }
-
 }
