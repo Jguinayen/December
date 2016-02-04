@@ -485,7 +485,7 @@
                     <div id="centertable">
                         <h5 class="text-center">INVOICE PREVIEW
                             </h5>
-                    <table class="centerbutton" style="background-color: aliceblue; width: 95%; border: solid 1px black">
+                    <table class="centerbutton" style="background-color: aliceblue; width: 300px; border: solid 1px black">
                         
                         <tr>
                             <td class="text-center">

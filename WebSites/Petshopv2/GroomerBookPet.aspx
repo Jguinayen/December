@@ -65,11 +65,9 @@
         <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="White" />
         <OtherMonthDayStyle ForeColor="#cccccc" />
         <SelectedDayStyle BackColor="#cccccc" ForeColor="White" />
-<<<<<<< HEAD
+
         <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="True" Font-Size="12pt" ForeColor="White" Height="30pt" Font-Names="arial" />
-=======
-        <TitleStyle BackColor="#333333" BorderStyle="Solid" Font-Bold="False" Font-Size="14pt" ForeColor="White" Height="20pt" Font-Names="Arial" />
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
         <TodayDayStyle BackColor="#cccccc" ForeColor="White" Font-Bold="true" />
     </asp:Calendar>
         

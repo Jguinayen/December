@@ -39,7 +39,7 @@ public partial class ReportUsers : System.Web.UI.Page
 
         System.IO.StringWriter sw = new System.IO.StringWriter();
         HtmlTextWriter htw = new HtmlTextWriter(sw);
-        //GridViewUser.RenderControl(htw);
+        GridViewUser.RenderControl(htw);
         Response.Write(sw.ToString());
         Response.End();
 

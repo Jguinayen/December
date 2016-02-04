@@ -26,15 +26,10 @@
 
     <!-- Custom Fonts & Icons -->
    <%-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
-<<<<<<< HEAD
     <link rel="stylesheet" href="css/icomoon-social.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">--%>
  
-=======
-	<link rel="stylesheet" href="css/icomoon-social.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">--%>
-	
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
     <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
     <!-- Dropdown Menu -->
@@ -62,16 +57,28 @@
   <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand2" href="Admin.aspx" style="background-color: #000; margin-top:0px; padding-top: 25px;">Hello <%:Session["UserName"]%></a>
-<<<<<<< HEAD
+
         </div>
-=======
-    </div>
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
 
     <div>
       <ul class="nav navbar-nav2">
-        <li><a href="Admin.aspx">Calendar</a></li>
-        <li><a href="AdminUserAccts.aspx">User Accounts</a></li>
+        <li><a href="Admin.aspx">Schedule Manager</a></li>
+        <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
+        <li><a href="Invoice.aspx">Invoice</a></li>
+        
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
+            <ul class="dropdown-menu">
+                <li><a href="AdminUserAccts.aspx">User Accounts</a></li>
+                <li><a href="AdminAddBranch.aspx">Add Branch</a></li>
+                <li><a href="AdminJobType.aspx">Add Job Type</a></li>
+            </ul>
+         </li>
+        
+        
+        <%--<li class="divider"></li>--%>
+       
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
@@ -82,8 +89,7 @@
                 <li><a href="ReportInvoices.aspx">Invoices</a></li>
             </ul>
          </li>
-        
-         <li class="dropdown">
+<li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account &nbsp;<i class="icon-angle-down"></i>&nbsp;</a>
             <ul class="dropdown-menu">
                 <li><a href="AdminMyAcct.aspx">Update Profile</a></li>
@@ -91,16 +97,13 @@
             </ul>
          </li>
 
-        <li><a href="Invoice.aspx">Invoice</a></li>
-        <%--<li class="divider"></li>--%>
-        <li><a href="AdminBookPet.aspx">Book an Appointment</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <%--<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>--%>
       </ul>
     </div>
   </div>
-</nav>
+    </nav>
      <!-- /TOP ADMIN NAVBAR-->
 </div>
     

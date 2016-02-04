@@ -125,7 +125,7 @@ public partial class login : System.Web.UI.Page
                             Session["Active"] = Active;
                             string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
                             Session["Password"] = Password;
-                            Response.Redirect("GroomerReport.aspx");
+                            Response.Redirect("GroomerAppointment.aspx");
                         }
                         else
                         {
@@ -163,17 +163,13 @@ public partial class login : System.Web.UI.Page
                         Session["UserName"] = UserName;
                         string Password = newDataSet2.Tables[0].Rows[0]["Password"].ToString();
                         Session["Password"] = Password;
-<<<<<<< HEAD
                         string Address = newDataSet2.Tables[0].Rows[0]["Address"].ToString();
                         Session["Address"] = Address;
                         Response.Redirect("MemberBookAppt.aspx");
-=======
-                        Response.Redirect("GroomerAppointment.aspx");
                     }
                     else
                     {
                         Response.Write("<script>alert('" + "Error! Your Account has been deactivated. Please contact Admin!" + "')</script>");
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
                     }
                 }
                 else if (UEmail != txtLoginEmail.Text && UPass != txtLoginPassword.Text)

@@ -11,9 +11,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using System.Text;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.text.html.simpleparser;
 
 public partial class Invoice : System.Web.UI.Page
 {

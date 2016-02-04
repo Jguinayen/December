@@ -28,22 +28,16 @@ public partial class AdminAddBranch : System.Web.UI.Page
 
             cmd.Parameters.AddWithValue("@BranchName", TXTBRANCH.Text);
 
-<<<<<<< HEAD:WebSites/Petshopv2/Branch.aspx.cs
             conn.Open();
-            cmd.ExecuteNonQuery();
+            if (cmd.ExecuteNonQuery()==1)
+            {
+                LBLMESS.Text = " Branch Successfully Added!";
+            }
             conn.Close();
         }
         catch (Exception ex)
         {
             Exception ex2 = ex;
         }
-=======
-        conn.Open();
-        if (cmd.ExecuteNonQuery()==1)
-        {
-            LBLMESS.Text = " Branch Successfully Added!";
-        }
-        conn.Close();
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64:WebSites/Petshopv2/AdminAddBranch.aspx.cs
     }
 }

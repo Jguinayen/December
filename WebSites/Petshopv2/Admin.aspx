@@ -3,73 +3,67 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="leftcolumn" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="rightcolumn" Runat="Server">
-    <p id="pagetitle">Admin Calendar</p>
+    <p id="pagetitle">Schedule Manager</p>
 
      <table style="width: 100%; border: 1px solid #000; background-color: #e8dede; padding: 2px 2px 2px 2px;">
             <tr>
                 <td style="width: 91px;" class="input-medium">
                     <asp:Label ID="lblAdminCalID" runat="server" Text=""></asp:Label>
                 </td>
-                <td style="width: 887px"><h3>Holidays and Groomer&#39;s Day Off </h3></td>
+                <td><h4>Holidays and Groomer&#39;s Day Off </h4></td>
             </tr>
             <tr>
-<<<<<<< HEAD
+
                 <td class="auto-style9" style="width: 91px; height: 36px;">&nbsp;&nbsp;
-=======
-                <td class="auto-style9" style="width: 91px; height: 36px;">
-                    &nbsp;&nbsp;
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
                     <asp:Label ID="lblAdminCalName" runat="server" Text="Name"></asp:Label>
                    
                 </td>
-                <td class="auto-style9" style="width: 887px; height: 36px;">
+                <td class="auto-style9" style="height: 36px;">
                     <asp:TextBox ID="txtAdminCalName" runat="server" Width="50%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-<<<<<<< HEAD
+
                 <td style="width: 150px; height: 20px;">&nbsp;&nbsp;
-=======
-                <td style="width: 91px; height: 20px;">
-                    &nbsp;&nbsp;
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
+               
                     <asp:Label ID="lblAdminCalBlockDate" runat="server" Text="Blocked Date"></asp:Label>
                 </td>
-                <td style="width: 887px; height: 20px;">
+                <td style="height: 20px;">
                     <asp:TextBox ID="txtAdminCalBlockDate" runat="server" Width="50%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-<<<<<<< HEAD
+
                 <td style="width: 91px; height: 36px;">&nbsp;&nbsp;
                     <asp:Label ID="lblAdminCalNotes" runat="server" Text="Notes"></asp:Label>
                 </td>
-                <td style="width: 887px; height: 36px;">
+                <td style="height: 36px;">
                     <asp:TextBox ID="txtAdminCalNotes" runat="server" Width="50%"></asp:TextBox>
-=======
-                <td style="width: 91px; height: 36px;">
-                    &nbsp;&nbsp;
-                    <asp:Label ID="lblAdminCalNotes" runat="server" Text="Notes"></asp:Label>
-                </td>
-                <td style="width: 887px; height: 36px;">
-                    <asp:TextBox ID="txtAdminCalNotes" runat="server" Width="60%"></asp:TextBox>
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
                 </td>
             </tr>
             <tr>
                 <td style="height:40px; width: 91px;" class="auto-style9">
                     &nbsp;</td>
-                <td style="height:40px; width: 887px; font: 12px;" class="auto-style9">
-                    <asp:Button ID="btnAdminCalBlockDates" Font-Size="14px" Height="35px" runat="server" Text="Block Dates" Width="100px" OnClick="btnAdminCalBlockDates_Click" CssClass="btn btn-primary" />
-                    <asp:Button ID="btnAdminCalViewBlockDates" Font-Size="14px" Height="35px"  runat="server" Text="View Blocked Dates" Width="175px" OnClick="btnAdminCalViewBlockDates_Click" CssClass="btn btn-primary" />
-                    <asp:Button ID="btnAdminCalEdit" Font-Size="14px" Height="35px"  runat="server" Text="Edit" Width="90px" OnClick="btnAdminCalEdit_Click" CssClass="btn btn-primary" />
-                    <asp:Button ID="btnAdminCalSaveChanges" Font-Size="14px" Height="35px"  runat="server" Text="Save Changes" Width="120px" OnClick="btnAdminCalSaveChanges_Click" CssClass="btn btn-success" />
+                <td style="height:40px; font: 12px; text-align:left;">
+                    
+                    <table style="border:5px solid red; width:400px;">
+                        <tr>
+                            <td><asp:Button ID="btnAdminCalBlockDates" Font-Size="14px" Height="35px" runat="server" Text="Block Dates" Width="100px" OnClick="btnAdminCalBlockDates_Click" CssClass="btn btn-primary" /></td>
+                            <td><asp:Button ID="btnAdminCalViewBlockDates" Font-Size="14px" Height="35px"  runat="server" Text="View Blocked Dates" Width="175px" OnClick="btnAdminCalViewBlockDates_Click" CssClass="btn btn-primary" /></td>
+                            <td><asp:Button ID="btnAdminCalEdit" Font-Size="14px" Height="35px"  runat="server" Text="Edit" Width="90px" OnClick="btnAdminCalEdit_Click" CssClass="btn btn-primary" /></td>
+                            <td><asp:Button ID="btnAdminCalSaveChanges" Font-Size="14px" Height="35px"  runat="server" Text="Save Changes" Width="120px" OnClick="btnAdminCalSaveChanges_Click" CssClass="btn btn-success" /></td>
+                        </tr>
+                        
+                    </table>
                     </td>
             </tr>
             <tr>
                 <td style="height:10px; width: 91px;" class="auto-style9">
                     &nbsp;</td>
-                <td style="height:10px; width: 887px; font: 12px;" class="auto-style9">
+                <td style="height:10px; font: 12px;" class="auto-style9">
                     &nbsp;</td>
             </tr>
         </table>
@@ -100,11 +94,8 @@
 
     
     <br />
-<<<<<<< HEAD
     <asp:Calendar ID="Calendar1" runat="server" BackColor="white" BorderColor="Black" BorderWidth="2" BorderStyle="solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth" Width="100%" DayNameFormat="Full" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged" ShowGridLines="True">
-=======
-    <asp:Calendar ID="Calendar1" runat="server" BackColor="#cccccc" BorderColor="black" BorderWidth="0" BorderStyle="solid" CellSpacing="2" CellPadding="4" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" Height="600px" NextPrevFormat="FullMonth" Width="100%" DayNameFormat="Full" OnDayRender="Calendar1_DayRender" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged" ShowGridLines="True">
->>>>>>> f5b2f58c65e2f1be7127c61681d6ce3f5ca04d64
+
         <DayHeaderStyle Font-Bold="True" Font-Size="10pt" ForeColor="#333333" Height="5pt" />
         <DayStyle BackColor="#ffffff" />
         <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="white" />
