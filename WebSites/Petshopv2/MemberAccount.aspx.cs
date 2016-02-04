@@ -11,6 +11,8 @@ public partial class MemberAccount : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
         TXTBXCUSTOMID.Enabled = false;
         TXTBXCUSTOMID.Text = Session["CustomerID"].ToString();
         TXTBXMEMDATE.Enabled = false;
@@ -21,6 +23,12 @@ public partial class MemberAccount : System.Web.UI.Page
         TXTBXFNAME.Text = Session["FirstName"].ToString();
         TXTBXMOBILE.Text = Session["Mobile"].ToString();
         TXTBXADD.Text = Session["Address"].ToString();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
 
     private string connstr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -30,59 +38,75 @@ public partial class MemberAccount : System.Web.UI.Page
 
     private void Clear()
     {
-        TXTBXCUSTOMID.Text = "";
-        TXTBXLNAME.Text = "";
-        TXTBXFNAME.Text = "";
-        TXTBXMOBILE.Text = "";
-        TXTBXEMAIL.Text = "";
-        TXTBXMEMDATE.Text = "";
-        TXTBXUNAME.Text = "";
-        TXTBXPWORD.Text = "";
-        TXTBXADD.Text = "";
+        try
+        {
+            TXTBXCUSTOMID.Text = "";
+            TXTBXLNAME.Text = "";
+            TXTBXFNAME.Text = "";
+            TXTBXMOBILE.Text = "";
+            TXTBXEMAIL.Text = "";
+            TXTBXMEMDATE.Text = "";
+            TXTBXUNAME.Text = "";
+            TXTBXPWORD.Text = "";
+            TXTBXADD.Text = "";
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
     protected void BTNREGISTER_Click(object sender, EventArgs e)
     {
-        conn = new SqlConnection(connstr);
-        cmd = new SqlCommand("select Password from CustomerDetails where Password='" + Session["Password"] + "'", conn);
-
-        SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
-        DataSet newDataSet = new DataSet();
-        newAdapter.Fill(newDataSet);
-
-        conn.Open();
-        rdr = cmd.ExecuteReader();
-
-        if (rdr.HasRows)
+        try
         {
-            string UPass = newDataSet.Tables[0].Rows[0]["Password"].ToString();
+            conn = new SqlConnection(connstr);
+            cmd = new SqlCommand("select Password from CustomerDetails where Password='" + Session["Password"] + "'", conn);
 
-            if (UPass == TXTBXCPWORD.Text & TXTBXCFMPWORD.Text == TXTBXPWORD.Text)
+            SqlDataAdapter newAdapter = new SqlDataAdapter(cmd);
+            DataSet newDataSet = new DataSet();
+            newAdapter.Fill(newDataSet);
+
+            conn.Open();
+            rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
             {
-                conn = new SqlConnection(connstr);
-                cmd = new SqlCommand("Update CustomerDetails set Lastname=@Lastname, Firstname=@Firstname, Mobile=@Mobile, Email=@Email, MembershipDate=@MembershipDate, Username=@Username, Password=@Password, Address=@Address where CustomerID=@CustomerID", conn);
+                string UPass = newDataSet.Tables[0].Rows[0]["Password"].ToString();
 
-                cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTOMID.Text);
-                cmd.Parameters.AddWithValue("@Lastname", TXTBXLNAME.Text);
-                cmd.Parameters.AddWithValue("@Firstname", TXTBXFNAME.Text);
-                cmd.Parameters.AddWithValue("@Mobile", TXTBXMOBILE.Text);
-                cmd.Parameters.AddWithValue("@Email", TXTBXEMAIL.Text);
-                cmd.Parameters.AddWithValue("@MembershipDate", Convert.ToDateTime(TXTBXMEMDATE.Text));
-                cmd.Parameters.AddWithValue("@Username", TXTBXUNAME.Text);
-                cmd.Parameters.AddWithValue("@Password", TXTBXPWORD.Text);
-                cmd.Parameters.AddWithValue("@Address", TXTBXADD.Text);
-
-                conn.Open();
-                if (cmd.ExecuteNonQuery() == 1)
+                if (UPass == TXTBXCPWORD.Text & TXTBXCFMPWORD.Text == TXTBXPWORD.Text)
                 {
-                    LBLMSG.Text = "SUCCESSFULLY UPDATED!";
-                    Clear();
+                    conn = new SqlConnection(connstr);
+                    cmd = new SqlCommand("Update CustomerDetails set Lastname=@Lastname, Firstname=@Firstname, Mobile=@Mobile, Email=@Email, MembershipDate=@MembershipDate, Username=@Username, Password=@Password, Address=@Address where CustomerID=@CustomerID", conn);
+
+                    cmd.Parameters.AddWithValue("@CustomerID", TXTBXCUSTOMID.Text);
+                    cmd.Parameters.AddWithValue("@Lastname", TXTBXLNAME.Text);
+                    cmd.Parameters.AddWithValue("@Firstname", TXTBXFNAME.Text);
+                    cmd.Parameters.AddWithValue("@Mobile", TXTBXMOBILE.Text);
+                    cmd.Parameters.AddWithValue("@Email", TXTBXEMAIL.Text);
+                    cmd.Parameters.AddWithValue("@MembershipDate", Convert.ToDateTime(TXTBXMEMDATE.Text));
+                    cmd.Parameters.AddWithValue("@Username", TXTBXUNAME.Text);
+                    cmd.Parameters.AddWithValue("@Password", TXTBXPWORD.Text);
+                    cmd.Parameters.AddWithValue("@Address", TXTBXADD.Text);
+
+                    conn.Open();
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        LBLMSG.Text = "SUCCESSFULLY UPDATED!";
+                        Clear();
+                    }
+                    conn.Close();
                 }
-                conn.Close();
-            }
-            else
-            {
-                LBLMSG.Text = "Input Password not recognized or unidentical!";
+                else
+                {
+                    LBLMSG.Text = "Input Password not recognized or unidentical!";
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
 }

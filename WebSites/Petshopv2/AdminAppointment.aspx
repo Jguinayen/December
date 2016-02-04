@@ -108,7 +108,7 @@
                 <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Served" Height="39px" Width="121px" />
             </td>
             <td class="auto-style6" style="width: 246px">
-                <asp:Label ID="LBLMESS" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="LBLMESS" runat="server"></asp:Label>
             </td>
             <td class="auto-style6" style="width: 246px">
                 &nbsp;</td>

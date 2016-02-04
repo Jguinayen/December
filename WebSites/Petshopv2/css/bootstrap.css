@@ -1993,6 +1993,7 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
+  /*padding: 6px 12px;*/
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
@@ -2018,7 +2019,7 @@ select[multiple].input-lg {
 }
 .btn:hover,
 .btn:focus {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 .btn:active,

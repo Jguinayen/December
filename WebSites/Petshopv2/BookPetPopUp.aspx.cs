@@ -612,6 +612,7 @@ public partial class BookPetPopUp : System.Web.UI.Page
                 sendMail();
                 BTNBOOK.Enabled = false;
                 Clear();
+                Response.Write("<script>alert('" + "You have Successfully Booked!" + "')</script>");
             }
 
             else if (Session["PetNumber"] == "2")

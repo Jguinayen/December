@@ -13,16 +13,24 @@ public partial class ReportUsers : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string REPORTUSERS = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        try
+        {
+            string REPORTUSERS = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
-        SqlConnection con = new SqlConnection(REPORTUSERS);
-        SqlDataAdapter da = new SqlDataAdapter("Select * from AdminUsers", con);
+            SqlConnection con = new SqlConnection(REPORTUSERS);
+            SqlDataAdapter da = new SqlDataAdapter("Select * from AdminUsers", con);
 
-        DataSet ds1 = new DataSet();
-        da.Fill(ds1);
+            DataSet ds1 = new DataSet();
+            da.Fill(ds1);
 
-        GridViewUser.DataSource = ds1;
-        GridViewUser.DataBind();
+            GridViewUser.DataSource = ds1;
+            GridViewUser.DataBind();
+        }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+        
     }
 
     public override void VerifyRenderingInServerForm(Control control)
@@ -33,33 +41,41 @@ public partial class ReportUsers : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Response.ClearContent();
-        Response.AppendHeader("content-disposition", "attachment; filename=UserDB.xls");
-        Response.ContentType = "application/excel";
-
-        System.IO.StringWriter sw = new System.IO.StringWriter();
-        HtmlTextWriter htw = new HtmlTextWriter(sw);
-        GridViewUser.RenderControl(htw);
-        Response.Write(sw.ToString());
-        Response.End();
-
-        //StringWriter stringWriter = new StringWriter();
-        //HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
-
-        GridViewUser.HeaderRow.Style.Add("background-color", "#FFFFFF");
-
-        foreach (TableCell tableCell in GridViewUser.HeaderRow.Cells)
+        try
         {
-            tableCell.Style["background-color"] = "#A55129";
-        }
+            Response.ClearContent();
+            Response.AppendHeader("content-disposition", "attachment; filename=UserDB.xls");
+            Response.ContentType = "application/excel";
 
-        foreach (GridViewRow gridViewRow in GridViewUser.Rows)
-        {
-            gridViewRow.BackColor = System.Drawing.Color.White;
-            foreach (TableCell gridViewRowTableCell in gridViewRow.Cells)
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            GridViewUser.RenderControl(htw);
+            Response.Write(sw.ToString());
+            Response.End();
+
+            //StringWriter stringWriter = new StringWriter();
+            //HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
+
+            GridViewUser.HeaderRow.Style.Add("background-color", "#FFFFFF");
+
+            foreach (TableCell tableCell in GridViewUser.HeaderRow.Cells)
             {
-                gridViewRowTableCell.Style["background-color"] = "#FFF7E7";
+                tableCell.Style["background-color"] = "#A55129";
+            }
+
+            foreach (GridViewRow gridViewRow in GridViewUser.Rows)
+            {
+                gridViewRow.BackColor = System.Drawing.Color.White;
+                foreach (TableCell gridViewRowTableCell in gridViewRow.Cells)
+                {
+                    gridViewRowTableCell.Style["background-color"] = "#FFF7E7";
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Exception ex2 = ex;
+        }
+       
     }
 }

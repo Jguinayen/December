@@ -49,12 +49,12 @@
                     &nbsp;</td>
                 <td style="height:40px; font: 12px; text-align:left;">
                     
-                    <table style="border:5px solid red; width:400px;">
+                    <table style="width:700px;">
                         <tr>
-                            <td><asp:Button ID="btnAdminCalBlockDates" Font-Size="14px" Height="35px" runat="server" Text="Block Dates" Width="100px" OnClick="btnAdminCalBlockDates_Click" CssClass="btn btn-primary" /></td>
-                            <td><asp:Button ID="btnAdminCalViewBlockDates" Font-Size="14px" Height="35px"  runat="server" Text="View Blocked Dates" Width="175px" OnClick="btnAdminCalViewBlockDates_Click" CssClass="btn btn-primary" /></td>
-                            <td><asp:Button ID="btnAdminCalEdit" Font-Size="14px" Height="35px"  runat="server" Text="Edit" Width="90px" OnClick="btnAdminCalEdit_Click" CssClass="btn btn-primary" /></td>
-                            <td><asp:Button ID="btnAdminCalSaveChanges" Font-Size="14px" Height="35px"  runat="server" Text="Save Changes" Width="120px" OnClick="btnAdminCalSaveChanges_Click" CssClass="btn btn-success" /></td>
+                            <td>
+                                <asp:Button ID="btnAdminCalBlockDates" Font-Size="14px" Height="35px" runat="server" Text="Block Dates" Width="100px" OnClick="btnAdminCalBlockDates_Click" CssClass="btn btn-primary" />
+                                <asp:Button ID="btnAdminCalViewBlockDates" Font-Size="14px" Height="35px"  runat="server" Text="View Blocked Dates" Width="175px" OnClick="btnAdminCalViewBlockDates_Click" CssClass="btn btn-primary" /><asp:Button ID="btnAdminCalEdit" Font-Size="14px" Height="35px"  runat="server" Text="Edit" Width="90px" OnClick="btnAdminCalEdit_Click" CssClass="btn btn-primary" /><asp:Button ID="btnAdminCalSaveChanges" Font-Size="14px" Height="35px"  runat="server" Text="Save Changes" Width="120px" OnClick="btnAdminCalSaveChanges_Click" CssClass="btn btn-success" /></td>
+                           
                         </tr>
                         
                     </table>

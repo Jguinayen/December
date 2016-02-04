@@ -63,7 +63,7 @@
     <tr>
             <td style="width:117px; ">Pet ID</td>
             <td class="auto-style6" style="width: 156px; ">
-            <asp:TextBox ID="TXTPETID" runat="server" Width="140px"></asp:TextBox> </td>
+            <asp:TextBox ID="TXTPETID" runat="server" Width="140px" ></asp:TextBox> </td>
             <td class="auto-style6" style="width: 123px; ">
                 Pet Name:</td>
             <td >
@@ -103,12 +103,12 @@
     <tr>
             <td style="width:86px;">Precaution:</td>
             <td class="auto-style6" style="width: 295px">
-            <asp:TextBox ID="TXTPRECAUTION" runat="server" Width="232px" Height="49px" TextMode="MultiLine"></asp:TextBox> </td>
+            <asp:TextBox ID="TXTPRECAUTION" runat="server" Width="232px" Height="49px"></asp:TextBox> </td>
             <td class="auto-style6" style="width: 181px">
                 <asp:Button ID="BTNSAVE" runat="server" OnClick="BTNSAVE_Click" Text="Served" Height="39px" Width="121px" />
             </td>
             <td class="auto-style6" style="width: 246px">
-                <asp:Label ID="LBLMESS" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="LBLMESS" runat="server"></asp:Label>
             </td>
             <td class="auto-style6" style="width: 246px">
                 &nbsp;</td>
