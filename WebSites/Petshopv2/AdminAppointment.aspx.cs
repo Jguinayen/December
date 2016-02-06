@@ -98,7 +98,7 @@ public partial class AdminAppointment : System.Web.UI.Page
 
                 GRIDAPPOINTMENT.DataSource = ds1;
                 GRIDAPPOINTMENT.DataBind();
-                CLEARTEXTBOXES()
+                CLEARTEXTBOXES();
 
             }
             conn.Close();
