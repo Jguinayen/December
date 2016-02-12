@@ -469,9 +469,7 @@
         <br />
         <br />
 
-        <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" />
-        
-        <br />
+        <asp:Button ID="BTNBOOK" runat="server" Height="30px" Text="BOOK" Width="135px" OnClick="BTNBOOK_Click" /> &nbsp;&nbsp; <a href="GroomerBookPet.aspx">To Homepage</a><br />
 
     <!-- /Forms -->
         <br />
