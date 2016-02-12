@@ -17,7 +17,6 @@ public partial class GroomerAppointment : System.Web.UI.Page
         {
             TXTGROOMERID.Text = Session["AdminUserID"].ToString();
             TXTGROOMER.Text = Session["UserName"].ToString();
-            //TXTDATE.Text = DateTime.Today.ToString("dd/mm/yyyy");
             TXTDATE.Text = DateTime.Today.ToShortDateString();
 
             string GROOMERBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -58,59 +57,69 @@ public partial class GroomerAppointment : System.Web.UI.Page
     {
         try
         {
-            string JobPrice = "Select Price from JobTypeTable where Jobtype='" + TXTJOBTYPE.Text + "',conn";
+            string connStrP = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            SqlCommand cmd;
+            string JobPrice;
 
-            conn = new SqlConnection(connstr);
-            cmd = new SqlCommand("Insert into InvoiceTransaction(CustomerID,TransacDate, PetID,PetName, JobType, JobDate, PetType, Breed, Weight, Price) values(@CustomerID, @TransacDate, @PetID, @PetName, @JobType, @JobDate, @PetType, @Breed, @Weight, @Price)", conn);
-
-            cmd.Parameters.AddWithValue("@CustomerID", TXTCUSTID.Text);
-            cmd.Parameters.AddWithValue("@TransacDate", TXTDATE.Text);
-            cmd.Parameters.AddWithValue("@PetID", TXTPETID.Text);
-            cmd.Parameters.AddWithValue("@PetName", TXTPETNAME.Text);
-            cmd.Parameters.AddWithValue("@JobType", TXTJOBTYPE.Text);
-            cmd.Parameters.AddWithValue("@JobDate", Convert.ToDateTime(TXTJDATE.Text));
-            cmd.Parameters.AddWithValue("@PetType", TXTPTYPE.Text);
-            cmd.Parameters.AddWithValue("@Breed", TXTPETBREED.Text);
-            cmd.Parameters.AddWithValue("@Weight", TXTWEIGHT.Text);
-            cmd.Parameters.AddWithValue("@Price", JobPrice);
-
+            SqlConnection conn = new SqlConnection(connStrP);
             conn.Open();
-            if (cmd.ExecuteNonQuery() == 1)
+            JobPrice = "select Price from JobTypeTable where JobType = '" + TXTJOBTYPE.Text + "' ";
+            cmd = new SqlCommand(JobPrice, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
             {
-                LBLMESS.Text = "Ready for Invoicing!";
-               
-                string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-                SqlConnection conn2 = new SqlConnection(connStr);
-                SqlCommand cmd2;
+                string Price = reader["Price"].ToString();
+                conn = new SqlConnection(connstr);
+                cmd = new SqlCommand("Insert into InvoiceTransaction(CustomerID,TransacDate, PetID,PetName, JobType, JobDate, PetType, Breed, Weight, Price) values(@CustomerID, @TransacDate, @PetID, @PetName, @JobType, @JobDate, @PetType, @Breed, @Weight, @Price)", conn);
 
-                cmd2 = new SqlCommand("Delete  from BookingDetails where PetName ='" + TXTPETNAME.Text + "' and JobType='" + TXTJOBTYPE.Text + "' ", conn2);
-                conn2.Open();
-                cmd2.ExecuteNonQuery();
-                GRIDAPPOINTMENT.DataBind();
-                conn2.Close();
+                cmd.Parameters.AddWithValue("@CustomerID", TXTCUSTID.Text);
+                cmd.Parameters.AddWithValue("@TransacDate", Convert.ToDateTime(TXTDATE.Text));
+                cmd.Parameters.AddWithValue("@PetID", TXTPETID.Text);
+                cmd.Parameters.AddWithValue("@PetName", TXTPETNAME.Text);
+                cmd.Parameters.AddWithValue("@JobType", TXTJOBTYPE.Text);
+                cmd.Parameters.AddWithValue("@JobDate", Convert.ToDateTime(TXTJDATE.Text));
+                cmd.Parameters.AddWithValue("@PetType", TXTPTYPE.Text);
+                cmd.Parameters.AddWithValue("@Breed", TXTPETBREED.Text);
+                cmd.Parameters.AddWithValue("@Weight", TXTWEIGHT.Text);
+                cmd.Parameters.AddWithValue("@Price", Price);
 
-                //reload gridview
-                string GROOMERBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                conn.Open();
+                reader.Close();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    LBLMESS.Text = "Ready for Invoicing!";
 
-                SqlConnection con = new SqlConnection(GROOMERBOOKING);
-                SqlDataAdapter da = new SqlDataAdapter("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails where Groomer = '" + Session["UserName"] + "'", con);
+                    string connStr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                    SqlConnection conn2 = new SqlConnection(connStr);
+                    SqlCommand cmd2;
 
-                DataSet ds1 = new DataSet();
-                da.Fill(ds1);
+                    cmd2 = new SqlCommand("Delete  from BookingDetails where PetName ='" + TXTPETNAME.Text + "' and JobType='" + TXTJOBTYPE.Text + "' ", conn2);
+                    conn2.Open();
+                    cmd2.ExecuteNonQuery();
+                    GRIDAPPOINTMENT.DataBind();
+                    conn2.Close();
 
-                GRIDAPPOINTMENT.DataSource = ds1;
-                GRIDAPPOINTMENT.DataBind();
+                    //reload gridview
+                    string GROOMERBOOKING = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
-                CLEARTEXTBOXES();
-                
+                    SqlConnection con = new SqlConnection(GROOMERBOOKING);
+                    SqlDataAdapter da = new SqlDataAdapter("Select CustomerID,PetID,PetName,JobType,JobDate,PetType,Breed,Weight from BookingDetails", con);
+
+                    DataSet ds1 = new DataSet();
+                    da.Fill(ds1);
+
+                    GRIDAPPOINTMENT.DataSource = ds1;
+                    GRIDAPPOINTMENT.DataBind();
+                    CLEARTEXTBOXES();
+                }
+                conn.Close();
             }
-            conn.Close();
         }
         catch (Exception ex)
         {
             Exception ex2 = ex;
         }
-        
     }
 
     private void CLEARTEXTBOXES()
@@ -150,8 +159,5 @@ public partial class GroomerAppointment : System.Web.UI.Page
         {
             Exception ex2 = ex;
         }
-        
-
     }
-   
 }
