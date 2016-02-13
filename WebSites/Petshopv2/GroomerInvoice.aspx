@@ -384,7 +384,7 @@
                         <tr>
                             <td style="align-items:center; vertical-align:top;">
                                 
-                                    <asp:GridView ID="GRDINVOICE" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;">
+                                    <asp:GridView ID="GRDINVOICE" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;" OnRowDataBound="GRDINVOICE_RowDataBound" ShowFooter="True">
                                         <Columns>
                                             <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                                             <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />

@@ -384,7 +384,7 @@
                         <tr>
                             <td style="align-items:center; vertical-align:top;">
                                 
-                                    <asp:GridView ID="GRDINVOICE" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;">
+                                    <asp:GridView ID="GRDINVOICE" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" style="width:95%; margin-left: 10px;" OnRowDataBound="GRDINVOICE_RowDataBound" ShowFooter="True">
                                         <Columns>
                                             <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                                             <asp:BoundField DataField="JobType" HeaderText="JobType" SortExpression="JobType" />
@@ -392,7 +392,11 @@
                                             <asp:BoundField DataField="TotalPrice" HeaderText="TotalPrice" SortExpression="TotalPrice" />
                                         </Columns>
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Qty], [JobType], [UnitPrice], [TotalPrice] FROM [InvoiceTemp]"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Qty], [JobType], [UnitPrice], [TotalPrice] FROM [InvoiceTemp] WHERE ([CustomerID] = @CustomerID)">
+                                        <SelectParameters>
+                                            <asp:ControlParameter ControlID="LBLCUSTID" Name="CustomerID" PropertyName="Text" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
                                 
                            
                                  </td>

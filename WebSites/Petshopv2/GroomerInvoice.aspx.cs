@@ -2036,4 +2036,43 @@ public partial class GroomerInvoice : System.Web.UI.Page
        
     }
 
+    private decimal TotalSales = (decimal)0.0;
+    protected void GRDINVOICE_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        // check row type
+        if (e.Row.RowType == DataControlRowType.DataRow)
+            // if row type is DataRow, add ProductSales value to TotalSales
+            TotalSales += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "TotalPrice"));
+        else if (e.Row.RowType == DataControlRowType.Footer)
+            // If row type is footer, show calculated total value
+            // Since this example uses sales in dollars, I formatted output as currency
+            e.Row.Cells[3].Text = String.Format("{0:c}", TotalSales);
+    }
+
+    protected void getSUM()
+    {
+        // SQL query that gets total of product sales where category id = 1
+        string SqlQuery = @"SELECT SUM(TotalPrice) AS TotalSales 
+      FROM InvoiceTemp 
+      WHERE CustomerID= '" + LBLCUSTID.Text + "',conn ";
+
+        // Declare and open a connection to database
+        SqlConnection conn = new SqlConnection(
+        ConfigurationManager.ConnectionStrings["NorthwindConnStr"].ConnectionString);
+        conn.Open();
+
+        // Creates SqlCommand object
+        SqlCommand comm = new SqlCommand(SqlQuery, conn);
+
+        // Gets total sales
+        decimal TotalSales = Convert.ToDecimal(comm.ExecuteScalar());
+
+        // Close connection
+        conn.Close();
+        conn.Dispose();
+        comm.Dispose();
+
+        // Adds formatted output to GridView footer
+        GRDINVOICE.Columns[1].FooterText = String.Format("{0:c}", TotalSales);
+    }
 }
